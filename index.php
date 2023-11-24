@@ -1,4 +1,3 @@
-
 <?php
     include "model/pdo.php";
     include "view/header.php";
