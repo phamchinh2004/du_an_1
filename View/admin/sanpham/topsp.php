@@ -1,0 +1,8 @@
+<main class="content">
+    <h1>Top sp</h1>
+</main>
+<script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script>
+<!--Crossorigin: Nguồn gốc chéo, Anonymous: Vô danh-->
+</body>
+
+</html>
