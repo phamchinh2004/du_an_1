@@ -15,7 +15,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    position: fixed ;
+    top:0;
+    left: 0;
 }
 .aside_menu{
     width: 100%;
@@ -96,9 +98,9 @@ body{
     padding: 10px 20px;
 }
 .content{
-    padding-top: 15px;
+    padding: 15px 0 0 220px;
     color: #000;
-    width: 1336px;
+    width: 100%;
     height: auto;
     /* margin-left: 200px; */
 }
