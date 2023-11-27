@@ -11,7 +11,7 @@ body{
 .aside{
     background-color: #222d32;
     width: 200px;
-    height: 707px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
