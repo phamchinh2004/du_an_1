@@ -10,7 +10,7 @@
 
 <body>
     <aside class="aside">
-        <h1 style="font-size: 20px;margin: 10px 0;color: red;">SYSTEM MANAGER</h1>
+        <h1 style="font-size: 20px;margin: 10px 0;color: red;">ADMIN</h1>
         <div class="aside_menu">
             <ul class="aside_menu_list">
                 <li class="aside_menu_list_item">
