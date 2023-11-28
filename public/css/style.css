@@ -5,7 +5,12 @@
 }
 
 body {
-    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.box_center {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .header {
@@ -21,7 +26,7 @@ body {
 
 .header_around {
     width: 70%;
-    height: 60px;
+    height: 70px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -57,7 +62,7 @@ body {
 }
 
 .header_nav_logo_text_1 {
-    color: #ff6138
+    color: #ff6138;
 }
 
 .header_nav_logo_text_2 {
@@ -142,5 +147,265 @@ body {
     margin-bottom: 5px;
 }
 
+/* CSS CHO PHẦN MENU */
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.row2 {
+    float: left;
+    width: 100%;
+}
+
+.mb {
+    margin-bottom: 20px;
+}
+
+.menu {
+    background: black;
+    border: 1px solid #000;
+    padding: 10px;
+    height: 40px;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.menu ul li {
+    list-style: none;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.menu li a:hover,
+.dropdown:hover .dropbtn {
+    color: #c20303;
+    font-weight: bold;
+
+}
+
+.dropdown:hover {
+    display: block;
+    margin-top: 1px;
+}
+
 /* DONE HEADER/NAVBAR */
 
+/* css cho phần nội dung */
+.box_content {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.catalog {
+    display: flex;
+    gap: 20px;
+}
+
+.content {
+    width: 100%;
+
+}
+
+/* Banner */
+.box_banner {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 300px;
+}
+
+.banner {
+    float: left;
+    width: 65%;
+    text-align: center;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.banner2 {
+    float: right;
+    width: 34%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#banner1 {
+    width: 100%;
+    height: 145px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#banner2 {
+    width: 100%;
+    height: 145px;
+    border-radius: 5px;
+}
+
+.pre,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 42%;
+    width: auto;
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease-in-out;
+    border-radius: 0 3px 3px 0;
+    border: none;
+
+}
+
+.pre:hover,
+.next:hover {
+    color: rgba(221, 1, 1, 0.8);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.pre {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/* done banner */
+/* danhmuc */
+.danhmuc {
+    width: 100%;
+    margin: 20px auto 0px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.box_danhmuc {
+    border: 1px solid #EEEE;
+    border-radius: 5px;
+    text-align: center;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.box_danhmuc img {
+    width: 90%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.danhmuc_name {
+    line-height: 22px;
+    font-size: 16px;
+    padding: 12px 20px 20px;
+    width: 100%;
+    background-color: #ff6138;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.danhmuc_name:hover {
+    transition: 0.5s;
+    background-color: #FCB75E;
+}
+
+/* done danhmuc */
+.anhtc {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.anhtc img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.sale_title {
+    display: flex;
+    color: #C3080A;
+    padding-bottom: 20px;
+}
+
+.sale_title h3 {
+    padding-left: 8px;
+}
+
+.sale_title i {
+    font-size: 19px;
+}
+
+.items {
+    width: 100%;
+    margin: 0px auto 0px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.box_items {
+    border: 1px solid #EEEE;
+    border-radius: 5px;
+    text-align: center;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+}
+
+.box_items img {
+    width: 70%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.box_items a {
+    text-decoration: none;
+    color: black;
+}
+.box_items .item_name {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.box_items .price {
+    margin: 10px 0;
+    color: red;
+    font-weight: 500;
+
+}
+.box_items:hover .add {
+    width: 100%;
+    bottom: 0%;
+}
+
+.box_items .add {
+    position: absolute;
+    bottom: -100%;
+    padding: 10px;
+    background-color:#cc0a0d;
+    border-radius: 6px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+}
