@@ -9,6 +9,16 @@ body{
 .box_admin{
     width: 100%;
 }
+.row{
+    display: flex;
+    width: 100%;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mr20{
+    margin-right: 10px;
+}
 .aside{
     background-color: #222d32;
     width: 14%;
@@ -115,6 +125,7 @@ body{
     color: #fff;
     border: #00D153;
     font-weight: bold;
+    cursor: pointer;
 }
 .listok{
     padding: 10px 0px;
@@ -162,4 +173,26 @@ body{
     padding:10px 20px;
     border:1px #ccc solid;
     padding:30px;
+}
+
+.form_content input[type="text"]{
+width:100%;
+border:1px solid #ccc;
+border-radius:5px ;
+padding:6px 10px;
+margin-bottom:12px;
+}
+.form_content input[type="submit"],
+.form_content input[type="reset"],
+.form_content input[type="button"]{
+  padding:6px;
+  background:white;
+  border:1px solid #CCC;
+  border-radius:5px;
+  cursor: pointer;
+}
+.form_content input[type="submit"]:hover,
+.form_content input[type="reset"]:hover,
+.form_content input[type="button"]:hover{
+  background:#CCC;
 }
