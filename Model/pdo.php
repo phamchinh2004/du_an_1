@@ -1,4 +1,5 @@
 <?php
+//Connect DB
 function pdo_get_connection(){
     $servername = "localhost";
     $username = "root";
