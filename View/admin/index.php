@@ -25,6 +25,31 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
         case 'addDm':
             include "danhmuc/add.php";
             break;
+        case 'addDmDone':
+            if(isset($_POST['themmoi'])){
+                $name=$_POST['tendm'];
+                $file=$_FILES['img']['name'];
+                $file_thay_the=$_FILES['img']['tmp_name'];
+                $target_dir="../../public/image/";
+                $target_file=$target_dir.basename($file);
+                if(move_uploaded_file($file_thay_the,$target_file)){
+                    $imgSuc="Image upload successfully";
+                }else{
+                    $imgFail="Image upload failed";
+                }
+                if(isset($imgFail)){
+                    echo $imgFail;
+                    include "danhmuc/add.php";
+                }else{
+                    if(isset($imgSuc)){
+                        echo $imgSuc;
+                    }
+                    addDmDone($name,$file);
+                    $listdm=listDanhMuc();
+                    include "danhmuc/list.php";
+                }
+                break;
+            }
             //Lấy danh sách các bản ghi tính năng và include trang hiển thị tính năng
         case 'listtn':
             $tinhnang = listtn();

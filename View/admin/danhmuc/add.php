@@ -9,7 +9,7 @@
             <h1>THÊM MỚI DANH MỤC</h1>
         </div>
         <div class="box_content form_content">
-            <form action="index.php?act=addDmDone" method="POST" style="line-height: 40px;">
+            <form action="index.php?act=addDmDone" method="POST" style="line-height: 40px;" enctype="multipart/form-data">
                 <div class="box_content mb10">
                     <label>Tên danh mục </label> <br>
                     <input type="text" name="tendm" placeholder="Nhập vào tên" required>
@@ -21,7 +21,7 @@
                 <div class="row">
                     <input class="mr20" type="submit" value="THÊM MỚI" name="themmoi">
                     <input class="mr20" type="reset" value="NHẬP LẠI">
-                    <a href="index.php?act=listtn"><input class="mr20" type="button" value="DANH SÁCH"></a>
+                    <a href="index.php?act=listdm"><input class="mr20" type="button" value="DANH SÁCH"></a>
                 </div>
             </form>
         </div>

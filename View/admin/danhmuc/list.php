@@ -18,7 +18,7 @@
                             extract($value);
                             $hinhpath="../../public/image/".$img;
                             if(is_file($hinhpath)){
-                                $hinhpath="<img src='".$hinhpath."' width='100px' height='100px'>";
+                                $hinhpath="<img src='".$hinhpath."' width='150px' height='100px'>";
                             }else{
                                 $hinhpath="Chưa có hình ảnh";
                             }
@@ -27,7 +27,7 @@
                                     <td>'.$name.'</td>
                                     <td>'.$hinhpath.'</td>
                                     <td>
-                                        <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
+                                        <a href="index.php?suaDm"> <input type="button" value="Sửa"> </a> 
                                         <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
                                     </td>
                                 </tr>';
