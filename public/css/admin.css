@@ -112,7 +112,7 @@ body{
     padding: 15px 20px;
     color: #000;
     margin-left: 200px;
-    width: 100%;
+    width: auto;
     height: auto;
     /* margin-left: 200px; */
 }
