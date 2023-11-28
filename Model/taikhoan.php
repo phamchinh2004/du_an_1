@@ -7,18 +7,18 @@
         if($taikhoan!=false){
             $_SESSION['nameuser']=$taikhoan['name'];
             $_SESSION['iduser']=$taikhoan['id'];
-            if($taikhoan['role']==1){
+            if($taikhoan['role']==1){   //Nếu là người dùng
                 header("location: index.php");
                 exit();
-            }else if($taikhoan['role']==2){
+            }else if($taikhoan['role']==2){//Nếu là shipper
                 header("location: index.php");
                 exit();
-            }else if($taikhoan['role']==3){
+            }else if($taikhoan['role']==3){//Nếu là kho
                 header("location: index.php");
                 exit();
-            }else if($taikhoan['role']==4){
+            }else if($taikhoan['role']==4){//Nếu bị ban
                 $error['block']="Tài khoản của bạn đã bị hạn chế!";
-            }else{
+            }else{                          //Admin
                 header("location: admin/index.php");
                 exit();
             }
