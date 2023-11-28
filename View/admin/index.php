@@ -65,6 +65,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                     include "tinhnang/update.php";
                 }
             }
+            break;
         case 'listtnct':
             if (isset($_GET['idtn'])) {
                 $tnParent = oldNameTn($_GET['idtn']);
