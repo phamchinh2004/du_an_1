@@ -367,32 +367,82 @@ body {
     border: 1px solid #EEEE;
     border-radius: 5px;
     text-align: center;
-    height: 360px;
+    height: 410px;
     position: relative;
     overflow: hidden;
+    
 }
-
+.box_items_bg{ 
+    margin: 10px;
+    background: url("../image/khuyenmai.png") no-repeat;
+    background-size: cover;
+    background-size: 100% 255px;
+    position: relative;
+}
+.box_items_bg .tg{
+    position: absolute;
+    top: 165px;
+    padding: 5px 15px;
+    background-color: #EEAE2E;
+    border-radius: 0px 5px 5px 0;
+    color: #fff;
+    font-size: 15px;
+}
+.box_items_bg .sale{
+    position: absolute;
+    top: 205px;
+    padding: 5px 15px;
+    background-color: #D20E15;
+    border-radius: 0px 5px 5px 0;
+    color: #fff;
+    font-size: 15px;
+}
+.box_items_img{ 
+    height: 260px;
+}
 .box_items img {
-    width: 70%;
+    padding-top: 37px;
+    width: 64%;
     height: 250px;
     border-radius: 10px;
 }
 
 .box_items a {
     text-decoration: none;
-    color: black;
+    color: #50555A;
 }
-.box_items .item_name {
+.box_items a:hover {
+    color:#170acc;
+    text-decoration: underline;
+}
+.items_text{
+    width: 100%;
+    text-align: left;
+}
+.items_text .item_name {
     margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
-
+    padding-left: 10px;
 }
-.box_items .price {
-    margin: 10px 0;
-    color: red;
-    font-weight: 500;
-
+.price{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+}
+.price .price-old{
+    margin: 18px 10px;
+    color: #50555A;
+}
+.price .price-new {
+    width: 130px;
+    padding: 7px 15px;
+    margin: 10px 10px;
+    border-radius: 29px;
+    background-color: #D20E15;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
 }
 .box_items:hover .add {
     width: 100%;
