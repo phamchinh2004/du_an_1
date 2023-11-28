@@ -32,7 +32,7 @@
                     <a class="aside_menu_list_item_link" href="index.php?act=listdm">Danh mục</a>
                 </li>
                 <li class="aside_menu_list_item">
-                    <a class="aside_menu_list_item_link" href="">Tính năng</a>
+                    <a class="aside_menu_list_item_link" href="index.php?act=listtn">Tính năng</a>
                 </li>
                 <li class="aside_menu_list_item">
                     <a class="aside_menu_list_item_link" href="">Đơn hàng</a>
