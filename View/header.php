@@ -50,7 +50,7 @@
                                 <div class="header_nav_user_list_link_logo">
                                     <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
                                 </div>
-                                <p><?=$_SESSION['nameuser']?></p>
+                                <p>Xin chào <?=$_SESSION['nameuser']?></p>
                             </a>
                             <?php }?>
                             <a class="header_nav_user_list_link" href="">
