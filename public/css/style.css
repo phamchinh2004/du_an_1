@@ -201,7 +201,7 @@ body {
 
 /* css cho phần nội dung */
 .box_content {
-    width: 1300px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -211,8 +211,8 @@ body {
 }
 
 .content {
-    width: 100%;
-
+    width: 70%;
+    margin: auto;
 }
 
 /* Banner */
