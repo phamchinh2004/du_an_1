@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <script src="public/js/script.js"></script>
     <script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script>
 </head>
 
@@ -63,3 +64,23 @@
                 </div>
             </div>
         </div>
+        <div class="box_menu">
+                <div class="mb menu">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php">TRANG CHỦ</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=gioithieu">GIỚI THIỆU</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=sanpham">SẢN PHẨM</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=dichvu">DỊCH VỤ</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=khuyenmai">KHUYẾN MÃI</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=tintuc">TIN TỨC</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
