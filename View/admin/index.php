@@ -1,6 +1,7 @@
 <?php
 include "../../Model/pdo.php";
 include "../../Model/tinhnang.php";
+include "../../Model/danhmuc.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
@@ -18,7 +19,11 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "sanpham/topsp.php";
             break;
         case 'listdm':
+            $listdm=listDanhMuc();
             include "danhmuc/list.php";
+            break;
+        case 'addDm':
+            include "danhmuc/add.php";
             break;
             //Lấy danh sách các bản ghi tính năng và include trang hiển thị tính năng
         case 'listtn':
