@@ -7,32 +7,32 @@
         ?>
         <br>
         <div class="box_content font_title">
-            <h1>Danh sách tính năng</h1>
+            <h1><?=$tnParent['name']?></h1>
         </div>
-        <a href="index.php?act=addtn"> <input class="spadm" type="button" value="Thêm tính năng"></a>
+        <!-- Lấy id tính năng để thêm mới cho id tính năng chi tiết -->
+        <a href="index.php?act=addtnct&idtn=<?=$tnParent['id']?>"> <input class="spadm" type="button" value="Thêm value"></a>
         <div class="box_content form_content ">
             <form>
                 <div class="box_content form_loai ">
                     <table>
                         <tr>
                             <th>ID</th>
-                            <th>Tên tính năng</th>
-                            <th>Tổng value</th>
+                            <th>Giá trị</th>
                             <th></th>
                         </tr>
-                        <?php foreach ($tinhnang as $value) {
-                            extract($value);
+                        <?php foreach ($listTnct as $values) {
+                            extract($values);
                             echo '<tr>
                             <td>' . $id . '</td>
-                            <td>' . $name . '</td>
-                            <td>' . $tongValue . '</td>
+                            <td>' . $value . '</td>
                             <td>
-                                <a href="index.php?act=listtnct&idtn='.$id.'"> <input type="button" value="Xem chi tiết"> </a> 
-                                <a href="index.php?act=suatn&idtn='.$id.'"> <input type="button" value="Sửa"> </a> 
+                                <a href="index.php?act=suatnct&idtnct='.$id.' &idtn='.$tnParent['id'].'"> <input type="button" value="Sửa"> </a> 
                             </td>
                         </tr>';
                         } ?>
                     </table>
+                    <br>
+                    <a href="index.php?act=listtn"><input class="mr20" type="button" value="QUAY LẠI"></a>
                 </div>
             </form>
         </div>
