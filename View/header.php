@@ -38,21 +38,21 @@
                                 </div>
                                 <p>0987 654 321</p>
                             </a>
-                            <?php if(!isset($_SESSION['nameuser'])){?>
+                            <?php if (!isset($_SESSION['nameuser'])) { ?>
                                 <a class="header_nav_user_list_link" href="index.php?act=login">
-                                <div class="header_nav_user_list_link_logo">
-                                    <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
-                                </div>
-                                <p>Tài khoản</p>
-                            </a>
-                            <?php } else {?>
+                                    <div class="header_nav_user_list_link_logo">
+                                        <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
+                                    </div>
+                                    <p>Tài khoản</p>
+                                </a>
+                            <?php } else { ?>
                                 <a class="header_nav_user_list_link" href="">
-                                <div class="header_nav_user_list_link_logo">
-                                    <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
-                                </div>
-                                <p>Xin chào <?=$_SESSION['nameuser']?></p>
-                            </a>
-                            <?php }?>
+                                    <div class="header_nav_user_list_link_logo">
+                                        <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
+                                    </div>
+                                    <p>Xin chào <?= $_SESSION['nameuser'] ?></p>
+                                </a>
+                            <?php } ?>
                             <a class="header_nav_user_list_link" href="">
                                 <div class="header_nav_user_list_link_logo">
                                     <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
@@ -65,22 +65,23 @@
             </div>
         </div>
         <div class="box_menu">
-                <div class="mb menu">
-                    <ul>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php">TRANG CHỦ</a>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php?act=gioithieu">GIỚI THIỆU</a>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php?act=sanpham">SẢN PHẨM</a>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php?act=dichvu">DỊCH VỤ</a>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php?act=khuyenmai">KHUYẾN MÃI</a>
-                        <li class="dropdown">
-                            <a class="dropdownbtn" href="index.php?act=tintuc">TIN TỨC</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="mb menu">
+                <ul>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php">TRANG CHỦ</a>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php?act=gioithieu">GIỚI THIỆU</a>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php?act=sanpham">SẢN PHẨM</a>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php?act=dichvu">DỊCH VỤ</a>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php?act=khuyenmai">KHUYẾN MÃI</a>
+                    <li class="dropdown">
+                        <a class="dropdownbtn" href="index.php?act=tintuc">TIN TỨC</a>
+                    </li>
+                </ul>
             </div>
-        </header>
+        </div>
+    </header>
+    

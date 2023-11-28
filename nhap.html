@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản Phẩm</title>
+    <style>
+        /* CSS styling here */
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Danh sách Tính Năng</h2>
+        <!-- Hiển thị danh sách tính năng -->
+        <ul id="featureList">
+            <!-- Mỗi tính năng là một list item -->
+            <li onclick="displayFeatureValues('feature1')">Tính Năng 1</li>
+            <li onclick="displayFeatureValues('feature2')">Tính Năng 2</li>
+            <!-- Thêm các tính năng khác tương tự -->
+        </ul>
+    </div>
+
+    <div>
+        <h2>Lựa Chọn Giá Trị Tính Năng</h2>
+        <div id="selectedFeatures">
+            <!-- Giá trị của tính năng được chọn sẽ hiển thị ở đây -->
+        </div>
+    </div>
+
+    <div>
+        <h2>Thông Tin Sản Phẩm</h2>
+        <!-- Form để người dùng nhập thông tin sản phẩm -->
+        <form id="productForm">
+            <!-- Tên sản phẩm, mô tả, giá, v.v. -->
+            <label for="productName">Tên Sản Phẩm:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <!-- Thêm các trường thông tin sản phẩm khác tương tự -->
+
+            <!-- Nút Thêm Sản Phẩm -->
+            <button type="button" onclick="addProduct()">Thêm Sản Phẩm</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Lọc Sản Phẩm theo Tính Năng</h2>
+        <!-- Giao diện để lọc sản phẩm -->
+        <select id="filterFeatures" onchange="filterProducts()">
+            <option value="feature1">Tính Năng 1</option>
+            <option value="feature2">Tính Năng 2</option>
+            <!-- Thêm các tính năng khác tương tự -->
+        </select>
+
+        <!-- Hiển thị danh sách sản phẩm sau khi lọc -->
+        <ul id="filteredProducts">
+            <!-- Sản phẩm sau khi áp dụng bộ lọc sẽ hiển thị ở đây -->
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript code here
+        // Các hàm xử lý sự kiện và thêm sản phẩm sẽ được triển khai ở đây
+    </script>
+</body>
+</html>

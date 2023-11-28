@@ -19,7 +19,7 @@
             }else if($taikhoan['role']==4){
                 $error['block']="Tài khoản của bạn đã bị hạn chế!";
             }else{
-                header("location: view/admin/index.php");
+                header("location: admin/index.php");
                 exit();
             }
         }else{
