@@ -51,6 +51,6 @@
         <div>
         </div>
         <div class="logout">
-            <a class="" href="">Đăng xuất</a>
+            <a class="" href="../../index.php?act=dangxuat">Đăng xuất</a>
         </div>
     </aside>

@@ -24,8 +24,11 @@
             }
         }else{
             $error['errorAccount']="Sai tài khoản hoặc mật khẩu!";
-            header("location: view/login/login.php?act=login");
         }
         return $error;
+    }
+    function dangxuat(){
+        session_destroy();
+        header("location: index.php");
     }
 ?>

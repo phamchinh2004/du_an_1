@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
     <style>
+        /*LOGIN*/
+        .title_login{
+            margin-bottom: 10px;
+        }
         .login-form {
+            line-height: 30px;
             width: auto;
             height: auto;
             background-color: #FFF;
@@ -59,16 +64,28 @@
             margin-top: 20px;
         }
 
-        .additional-options a{
+        .additional-options a {
             text-decoration: none;
             color: black;
+        }
+        .register_css,
+        .forget_css{
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
+
     <div class="login-form">
-        <h2>Đăng Nhập</h2>
+        <?php
+        if (!empty($thongbao)) {
+            foreach ($thongbao as $tb) {
+                echo "<span style='color:red;font-size:20px;'>$tb</span>";
+            }
+        }
+        ?>
+        <h2 class="title_login">Đăng Nhập</h2>
         <form action="index.php?act=sendLogin" method="POST">
             <div class="form-group">
                 <label for="username">Tài khoản:</label>
@@ -79,8 +96,8 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="additional-options">
-                <div >Bạn chưa có tài khoản? <a href=""><u style="color: red;">Đăng ký</u></a> ngay!</div>
-                <a href="#">Quên mật khẩu?</a>
+                <div class="register_css">Bạn chưa có tài khoản? <a href=""><u style="color: red;">Đăng ký</u></a> ngay!</div>
+                <a class="forget_css" href="#">Quên mật khẩu?</a>
             </div>
             <div class="form-group">
                 <button type="submit" name="btnsubmit">Đăng Nhập</button>

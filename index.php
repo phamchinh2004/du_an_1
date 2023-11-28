@@ -13,8 +13,13 @@
                     $username=$_POST['username'];
                     $password=$_POST['password'];
                     $thongbao=dangnhap($username,$password);
-                    include "view/trangchu.php";
+                    if(!empty($thongbao)){
+                        include "View/login/login.php";
+                    }
                 }
+                break;
+            case "dangxuat":
+                dangxuat();
                 break;
         }
     }else{
