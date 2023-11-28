@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="box_admin">
     <aside class="aside">
         <h1 style="font-size: 20px;margin: 10px 0;color: red;">ADMIN</h1>
         <div class="aside_menu">
@@ -28,7 +29,7 @@
                     </ul>
                 </li>
                 <li class="aside_menu_list_item">
-                    <a class="aside_menu_list_item_link" href="">Danh mục</a>
+                    <a class="aside_menu_list_item_link" href="index.php?act=listdm">Danh mục</a>
                 </li>
                 <li class="aside_menu_list_item">
                     <a class="aside_menu_list_item_link" href="">Tính năng</a>

@@ -12,6 +12,9 @@ if(isset($_GET['act'])&& ($_GET['act'])!=""){
         case 'topsp':
             include "sanpham/topsp.php";
             break;
+        case 'listdm':
+            include "danhmuc/list.php";
+            break;
     }
 }else{
     include "main.php";
