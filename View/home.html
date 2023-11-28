@@ -6,60 +6,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
     <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header class="header"><!--Phần header-->
-        <div class="header_bg"><!--Màu nền cho phần nav-->
-            <div class="header_around"><!--Bọc xung quanh nav và căn giữa-->
-                <div class="header_nav"><!--Bọc nội dung nav-->
-                    <a class="header_nav_logo" href=""><!--Bọc nội dung logo-->
-                        <img class="header_nav_logo_img" src="../public/image/calling.png" alt="Logo">
-                        <div class="header_nav_logo_text">
-                            <h3 class="header_nav_logo_text_1">SAN'S</h3>
-                            <h3 class="header_nav_logo_text_2">MOBILE</h3>
+    <div class="box_center">
+        <header class="header"><!--Phần header-->
+            <div class="header_bg"><!--Màu nền cho phần nav-->
+                <div class="header_around"><!--Bọc xung quanh nav và căn giữa-->
+                    <div class="header_nav"><!--Bọc nội dung nav-->
+                        <a class="header_nav_logo" href=""><!--Bọc nội dung logo-->
+                            <img class="header_nav_logo_img" src="../public/image/calling.png" alt="Logo">
+                            <div class="header_nav_logo_text">
+                                <h3 class="header_nav_logo_text_1">SAN'S</h3>
+                                <h3 class="header_nav_logo_text_2">MOBILE</h3>
+                            </div>
+                        </a>
+                        <div class="header_nav_search">
+                            <form class="header_nav_search_form" action="">
+                                <input class="header_nav_search_form_input" type="text" placeholder="Nhập từ khóa tìm kiếm ... ">
+                                <button class="header_nav_search_form_submit" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+                                </button>
+                            </form>
                         </div>
-                    </a>
-                    <div class="header_nav_search">
-                        <form class="header_nav_search_form" action="">
-                            <input class="header_nav_search_form_input" type="text" placeholder="Nhập từ khóa tìm kiếm ... ">
-                            <button class="header_nav_search_form_submit" type="submit">
-                                <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <div class="header_nav_user">
-                        <div class="header_nav_user_list">
-                            <a class="header_nav_user_list_link" href="">
-                                <div class="header_nav_user_list_link_logo">
-                                    <i class="fa-solid fa-phone fa-lg" style="color: #ffffff;"></i>
-                                </div>
-                                <p>0987 654 321</p>
-                            </a>
-                            <a class="header_nav_user_list_link" href="">
-                                <div class="header_nav_user_list_link_logo">
-                                    <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
-                                </div>
-                                <p>Tài khoản</p>
-                            </a>
-                            <a class="header_nav_user_list_link" href="">
-                                <div class="header_nav_user_list_link_logo">
-                                    <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
-                                </div>
-                                <p>Giỏ hàng</p>
-                            </a>
+                        <div class="header_nav_user">
+                            <div class="header_nav_user_list">
+                                <a class="header_nav_user_list_link" href="">
+                                    <div class="header_nav_user_list_link_logo">
+                                        <i class="fa-solid fa-phone fa-lg" style="color: #ffffff;"></i>
+                                    </div>
+                                    <p>0987 654 321</p>
+                                </a>
+                                <a class="header_nav_user_list_link" href="">
+                                    <div class="header_nav_user_list_link_logo">
+                                        <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
+                                    </div>
+                                    <p>Tài khoản</p>
+                                </a>
+                                <a class="header_nav_user_list_link" href="">
+                                    <div class="header_nav_user_list_link_logo">
+                                        <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                    </div>
+                                    <p>Giỏ hàng</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <nav class="header_menu">
-            <ul>
-                <li><a href=""></a></li>
-            </ul>
-        </nav>
-    </header>
-    <script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script> <!--Crossorigin: Nguồn gốc chéo, Anonymous: Vô danh-->
+            <!-- Menu -->
+            <div class="box_menu">
+                <div class="mb menu">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php">TRANG CHỦ</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=gioithieu">GIỚI THIỆU</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=sanpham">SẢN PHẨM</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=dichvu">DỊCH VỤ</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=khuyenmai">KHUYẾN MÃI</a>
+                        <li class="dropdown">
+                            <a class="dropdownbtn" href="index.php?act=tintuc">TIN TỨC</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        <!-- Content -->
+        <!-- banner -->
+        <main class="box_content">
+            <div class="catalog mb">
+                <div class="content">
+                    <div class="box_banner">
+                        <div class="banner">
+                            <img id="banner" src="../public/image/banner0.jpg" alt="">
+                            <button class="pre" onclick="pre()">&#10094;</button>
+                            <button class="next" onclick="next()">&#10095;</button>
+                        </div>
+                        <div class="banner2 ">
+                            <img id="banner1" src="../public/image/anh1.jpg" alt="">
+                            <img id="banner2" src="../public/image/anh2.jpg" alt="">
+                        </div>
+                    </div>
+                    <!-- end banner -->
+
+                    <!-- danh muc -->
+                    <div class="danhmuc_title">
+                        <h3>DANH MỤC</h3>
+                    </div>
+                    <div class="danhmuc">
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                        <div class="box_danhmuc">
+                            <div class="danhmuc_item">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                            </div>
+                                <a href="index.php?"> <input class="danhmuc_name" type="button" value="Điện thoại"></a>
+                        </div>
+                    </div>
+                    <!-- end danhmuc -->
+                    <div class="anhtc">
+                        <img src="../public/image/anhtc.jpg" alt="">
+                    </div>
+                    <!-- Sp khuyen mai-->
+                    <div class="sale_title">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <h3>KHUYẾN MÃI HOT</h3>
+                    </div>
+                    <div class="items">
+                        <div class="box_items">
+                            <div class="box_items_img">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                                
+                            </div>
+                            <a class="item_name" href="">Iphone 14 Pro Max</a>
+                            <p class="price">$4000</p>
+                            <div class="add" href="">ADD TO CART</div>
+                        </div>
+                        <div class="box_items">
+                            <div class="box_items_img">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                                <div class="add" href="">ADD TO CART</div>
+                            </div>
+                            <a class="item_name" href="">SamSung J4</a>
+                            <p class="price">$4000</p>
+            
+                        </div>
+                        <div class="box_items">
+                            <div class="box_items_img">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                                <div class="add" href="">ADD TO CART</div>
+                            </div>
+                            <a class="item_name" href="">SamSung J4</a>
+                            <p class="price">$4000</p>
+            
+                        </div>
+                        <div class="box_items">
+                            <div class="box_items_img">
+                                <img src="../public/image/dienthoai.jpg" alt="">
+                                <div class="add" href="">ADD TO CART</div>
+                            </div>
+                            <a class="item_name" href="">SamSung J4</a>
+                            <p class="price">$4000</p>
+            
+                        </div>           
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
 </body>
 
 </html>
