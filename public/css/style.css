@@ -540,7 +540,7 @@ body {
     border-radius: 5px;
 }
 
-/* footer section starts */
+/* footer */
 .box_footer{
     width: 100%;
     height: auto;
@@ -555,4 +555,125 @@ body {
     padding: 30px 0;
 }
 
-/* footer section ends */
+/* footer end */
+
+/* Css Trang thông tin */
+/* Thông tin người dùng */
+.user-form{
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.user-form h2{
+    text-align: center;
+}
+.status-nav{
+    width: 100%;
+}
+.home{
+    display: flex;
+}
+.focus-home{
+    font-size: 14px;
+    text-decoration: none;
+    color: #74787c;
+    padding-right: 10px;
+}
+.focus-home i{
+    padding-right: 6px;
+}
+.focus-home:hover{
+    font-weight: bold;
+    color: #D20E15;
+}
+.focus-page{
+    padding-left: 10px;
+    font-size: 15px;
+    color: #D20E15;
+    font-weight: bold;
+}
+.user-content{
+    width: 100%;
+    display: flex;
+    height: auto;
+}
+.box-right{
+    width: 30%;
+    border: 1px solid gray;
+    border-radius: 10px;
+    height: 135px;
+}
+.box-right .box-right-item{
+    padding: 20px 15px;
+}
+
+.focus-cart i{
+    padding-right: 8px;
+}
+.focus-cart{
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    color: #74787c;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.focus-cart:hover{
+    font-weight: bold;
+    color: #D20E15;
+}
+
+.box-left{
+    width: 68%;
+    padding-left: 60px;
+    display: flex;
+}
+.img-user{
+    margin-right: 30px;
+    width: 30%;
+}
+.img-user img{
+    width: 100%;
+    border-radius: 10px;
+}
+.thongtin-user p{
+    padding-bottom: 15px;
+}
+
+.thongtin-user .dmk {
+    width: 70%;
+    padding: 10px;
+    background-color: #FE6343;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.dmk a {
+    padding-left: 15px;
+    text-decoration: none;
+    color: #fff;
+}
+.dmk:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff785d;
+}
+.thongtin-user .udt-tk {
+    width: 90%;
+    padding: 10px;
+    background-color: #FE6343;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.udt-tk a {
+    padding-left: 15px;
+    text-decoration: none;
+    color: #fff;
+}
+.udt-tk:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff785d;
+}
