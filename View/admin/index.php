@@ -2,6 +2,7 @@
 include "../../Model/pdo.php";
 include "../../Model/tinhnang.php";
 include "../../Model/danhmuc.php";
+include "../../Model/sanpham.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
@@ -10,46 +11,115 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "main.php";
             break;
         case 'listsp':
+            if (isset($_POST['listok'])) {
+                $keyw = $_POST['kyw'];
+                $iddm = $_POST['iddm'];
+            } else {
+                $keyw = "";
+                $iddm = 0;
+            }
+            $loadAllDm = listDanhMuc();
+            $listSp = loadSp($keyw, $iddm);
             include "sanpham/list.php";
             break;
         case 'addsp':
+            $loadAllDm = listDanhMuc();
             include "sanpham/add.php";
+            break;
+        case 'loadTnct':
+            if (isset($_POST['listok'])) {
+                $idtn = $_POST['idtn'];
+                $loadTnct = listTnct($idtn);
+                include "sanpham/add.php";
+            }
+            break;
+        case 'addSpDone':
+            if (isset($_POST['themmoi'])) {
+                $name = $_POST['tensp'];
+                $gianhap = $_POST['gianhap'];
+                $giaban = $_POST['giaban'];
+                $soluong = $_POST['soluong'];
+                $iddm=$_POST['iddm'];
+                $execute = addSpDone($name, $gianhap, $giaban, $soluong, $iddm);
+                if ($execute) {
+                    $succ="Thêm sản phẩm thành công";
+                    $loadAllDm = listDanhMuc();
+                    include "sanpham/add.php";
+                }else{
+                    $failed="Thêm sản phẩm không thành công";
+                    print_r($execute);
+                    $loadAllDm = listDanhMuc();
+                    include "sanpham/add.php";
+                }
+            }
             break;
         case 'topsp':
             include "sanpham/topsp.php";
             break;
         case 'listdm':
-            $listdm=listDanhMuc();
+            $listdm = listDanhMuc();
             include "danhmuc/list.php";
             break;
         case 'addDm':
             include "danhmuc/add.php";
             break;
         case 'addDmDone':
-            if(isset($_POST['themmoi'])){
-                $name=$_POST['tendm'];
-                $file=$_FILES['img']['name'];
-                $file_thay_the=$_FILES['img']['tmp_name'];
-                $target_dir="../../public/image/";
-                $target_file=$target_dir.basename($file);
-                if(move_uploaded_file($file_thay_the,$target_file)){
-                    $imgSuc="Image upload successfully";
-                }else{
-                    $imgFail="Image upload failed";
+            if (isset($_POST['themmoi'])) {
+                $name = $_POST['tendm'];
+                $file = $_FILES['img']['name'];
+                $file_thay_the = $_FILES['img']['tmp_name'];
+                $target_dir = "../../public/image/";
+                $target_file = $target_dir . basename($file);
+                if (move_uploaded_file($file_thay_the, $target_file)) {
+                    $imgSuc = "Image upload successfully";
+                } else {
+                    $imgFail = "Image upload failed";
                 }
-                if(isset($imgFail)){
+                if (isset($imgFail)) {
                     echo $imgFail;
                     include "danhmuc/add.php";
-                }else{
-                    if(isset($imgSuc)){
+                } else {
+                    if (isset($imgSuc)) {
                         echo $imgSuc;
                     }
-                    addDmDone($name,$file);
-                    $listdm=listDanhMuc();
+                    addDmDone($name, $file);
+                    $listdm = listDanhMuc();
                     include "danhmuc/list.php";
                 }
                 break;
             }
+        case 'suaDm':
+            if (isset($_GET['iddm']) && ($_GET['iddm'] != "")) {
+                $iddm = $_GET['iddm'];
+                $odlDataDm = getOldDataDm($iddm);
+                include "danhmuc/update.php";
+            }
+            break;
+        case 'updateDmDone':
+            if (isset($_POST['sua']) && ($_GET['iddm'] != "")) {
+                $iddm = $_GET['iddm'];
+                $name = $_POST['tendm'];
+                $imgNew = $_FILES['imgNew']['name'];
+                $imgNew_thay_the = $_FILES['imgNew']['tmp_name'];
+                $target_dir = "../../public/image/";
+                $target_file = $target_dir . basename($imgNew);
+                if (move_uploaded_file($imgNew_thay_the, $target_file)) {
+                    $imgSuc = "Image updated succsessfully";
+                } else {
+                    $imgFail = "Image update failed";
+                }
+                if (isset($imgFail)) {
+                    echo $imgFail;
+                    $odlDataDm = getOldDataDm($iddm);
+                    include "danhmuc/update.php";
+                } else if (isset($imgSuc)) {
+                    // echo $imgSuc;
+                    updateDmDone($iddm, $name, $imgNew);
+                    $listdm = listDanhMuc();
+                    include "danhmuc/list.php";
+                }
+            }
+            break;
             //Lấy danh sách các bản ghi tính năng và include trang hiển thị tính năng
         case 'listtn':
             $tinhnang = listtn();
@@ -137,7 +207,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
         case 'updateTnctDone':
             if (isset($_POST['sua'])) {
                 $idtnct = $_GET['idtnct'];
-                $idtn=$_GET['idtn'];
+                $idtn = $_GET['idtn'];
                 $value = $_POST['tenvalue'];
                 $mess = updateTnct($idtnct, $value);
                 if (empty($mess)) {

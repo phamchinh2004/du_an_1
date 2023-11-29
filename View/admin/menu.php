@@ -26,6 +26,9 @@
                         <li class="aside_menu_list_item_hidden_item">
                             <a class="aside_menu_list_item_hidden_item_link" href="index.php?act=topsp">- Sản phẩm bán chạy nhất</a>
                         </li>
+                        <li class="aside_menu_list_item_hidden_item">
+                            <a class="aside_menu_list_item_hidden_item_link" href="index.php?act=salesp">- Sản phẩm giảm giá</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="aside_menu_list_item">

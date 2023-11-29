@@ -1,7 +1,7 @@
 <div class="content">
     <div class="box_content">
         <div class="box_content font_title">
-            <h1>THÊM MỚI SẢN PHẨM</h1>
+            <h1>SỬA SẢN PHẨM</h1>
         </div>
         <div class="box_content form_content">
             <?php if(isset($failed)){

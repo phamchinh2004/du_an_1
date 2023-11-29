@@ -10,6 +10,13 @@ function listtn()
     $tinhnang = pdo_query($sql);
     return $tinhnang;
 }
+//Lấy danh sách tất cả tính năng
+function loadAllTn()
+{
+    $sql = "SELECT * FROM `tinh_nang`";
+    $run = pdo_query($sql);
+    return $run;
+}
 // Thêm mới tính năng
 function addTn($name)
 {

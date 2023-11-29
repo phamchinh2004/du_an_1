@@ -3,79 +3,81 @@
         <div class="box_content font_title">
             <h1>Danh sách sản phẩm</h1>
         </div>
-        <form action="" method="POST">
-            <div class="listok">
-                <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw">
-                <select name="iddm" id="">
-                    <option value="0">Danh mục</option>
-                </select>
-                <input type="submit" value="Lọc" name="listok">
-            </div>
-        </form>
         <a href="index.php?act=addsp"> <input class="spadm" type="button" value="Thêm sản phẩm"></a>
         <div class="box_content form_content ">
-            <form action="" method="POST">
+            <form action="#" method="POST">
+                <form action="index.php?act=listsp" method="POST">
+                    <div class="listok">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw">
+                        <select name="iddm" id="">
+                            <option value="0" selected>Danh mục</option>
+                            <?php
+                            foreach ($loadAllDm as $value) {
+                                extract($value);
+                                echo '<option value="' . $id . '">' . $name . '</option>';
+                            }
+                            ?>
+                        </select>
+                        <input type="submit" value="Lọc" name="listok">
+                    </div>
+                </form>
                 <div class="box_content form_loai ">
                     <table>
                         <tr>
                             <th>ID</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
-                            <th>Giá</th>
+                            <th>Giá nhập</th>
+                            <th>Giá bán</th>
                             <th>Số lượng</th>
                             <th>Lượt xem</th>
                             <th>Lượt mua</th>
                             <th>Lượt đánh giá</th>
-                            <th></th>
+                            <th>Thao tác</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Iphone</td>
-                            <td>Ảnh</td>
-                            <td>17.000.000VNĐ</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>
-                                <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
-                                <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Iphone</td>
-                            <td>Ảnh</td>
-                            <td>17.000.000VNĐ</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>
-                                <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
-                                <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Iphone</td>
-                            <td>Ảnh</td>
-                            <td>17.000.000VNĐ</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>
-                                <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
-                                <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
-                            </td>
-                        </tr>
+                        <?php if (!empty($listSp)) {
+                            foreach ($listSp as $value) {
+                                extract($value);
+                                $hinhpath = "../../public/image/" . $hinhanh;
+                                if (is_file($hinhpath)) {
+                                    $hinhpath = "<img src='" . $hinhpath . "' width='30px' height='30px'>";
+                                } else {
+                                    $hinhpath = "Chưa có hình ảnh";
+                                }
+                                if ($luotmua == "") {
+                                    $luotmua = "Chưa có lượt mua";
+                                } else if ($luotvote == "") {
+                                    $luotvote = "Chưa có lượt đánh giá nào";
+                                }
+                                echo    '<tr>
+                                            <td>' . $id . '</td>
+                                            <td>' . $name . '</td>
+                                            <td>' . $gianhap . '</td>
+                                            <td>' . $giaban . '</td>
+                                            <td>' . $hinhpath . '</td>
+                                            <td>' . $soluong . '</td>
+                                            <td>' . $luotxem . '</td>
+                                            <td>' . $luotmua . '</td>
+                                            <td>' . $luotvote . '</td>
+                                            <td>
+                                                <a href="suasp.php"> <input type="button" value="Thêm tính năng"> </a>
+                                                <a href="suasp.php"> <input type="button" value="Thêm ảnh"> </a> 
+                                                <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
+                                                <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
+                                            </td>
+                                        </tr>';
+                            }
+                        } else {
+                            echo "<tr >
+                                    <td colspan='10'>Không tìm thấy sản phẩm nào</td>
+                                </tr>";
+                        } ?>
                     </table>
                 </div>
             </form>
         </div>
     </div>
-    
+
 </div>
 </div>
 </body>
