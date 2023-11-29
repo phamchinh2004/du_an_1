@@ -21,6 +21,11 @@
                         <input type="submit" value="Lọc" name="listok">
                     </div>
                 </form>
+                <?php
+                if (isset($thanhcong)) {
+                    echo "<span style='color:green;'>$thanhcong</span>";
+                }
+                ?>
                 <div class="box_content form_loai ">
                     <table>
                         <tr>
@@ -49,6 +54,7 @@
                                 } else if ($luotvote == "") {
                                     $luotvote = "Chưa có lượt đánh giá nào";
                                 }
+                                $suaSp = "index.php?act=suaSp&idsp=" . $id;
                                 echo    '<tr>
                                             <td>' . $id . '</td>
                                             <td>' . $name . '</td>
@@ -62,8 +68,9 @@
                                             <td>
                                                 <a href="suasp.php"> <input type="button" value="Thêm tính năng"> </a>
                                                 <a href="suasp.php"> <input type="button" value="Thêm ảnh"> </a> 
-                                                <a href="suasp.php"> <input type="button" value="Sửa"> </a> 
-                                                <a href="xoasp.php"> <input type="button" value="Xóa"> </a> 
+                                                <a href="' . $suaSp . '"> <input type="button" value="Sửa"> </a> 
+                                                <a href="xoasp.php"> <input type="button" value="Xóa mềm"> </a>
+                                                <a href="xoasp.php"> <input type="button" value="Xóa cứng"> </a>
                                             </td>
                                         </tr>';
                             }

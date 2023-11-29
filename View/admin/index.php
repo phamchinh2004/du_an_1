@@ -10,6 +10,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
         case 'trangchu':
             include "main.php";
             break;
+        //Hiển thị sản phẩm theo tìm kiếm và lọc (nếu không tìm kiếm và lọc sẽ hiển thị tất cả sp)
         case 'listsp':
             if (isset($_POST['listok'])) {
                 $keyw = $_POST['kyw'];
@@ -22,17 +23,19 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             $listSp = loadSp($keyw, $iddm);
             include "sanpham/list.php";
             break;
+        //Tạo 1 biến lưu trữ tất cả các danh mục để vào trang thêm sản phẩm các danh mục sẽ được hiển thị và Include trang thêm sản phẩm
         case 'addsp':
             $loadAllDm = listDanhMuc();
             include "sanpham/add.php";
             break;
-        case 'loadTnct':
-            if (isset($_POST['listok'])) {
-                $idtn = $_POST['idtn'];
-                $loadTnct = listTnct($idtn);
-                include "sanpham/add.php";
-            }
-            break;
+        // case 'loadTnct':
+        //     if (isset($_POST['listok'])) {
+        //         $idtn = $_POST['idtn'];
+        //         $loadTnct = listTnct($idtn);
+        //         include "sanpham/add.php";
+        //     }
+        //     break;
+        //Kiểm tra đã click nút thêm mới chưa nếu rồi tạo các biến để lưu trữ những dữ liệu nhập vào và thực hiện sql thêm mới
         case 'addSpDone':
             if (isset($_POST['themmoi'])) {
                 $name = $_POST['tensp'];
@@ -51,6 +54,35 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                     $loadAllDm = listDanhMuc();
                     include "sanpham/add.php";
                 }
+            }
+            break;
+        case 'suaSp':
+            if(isset($_GET['idsp']) && $_GET['idsp']>0){
+                $OldDataSp=loadOldDataSp($_GET['idsp']);
+                $loadAllDm = listDanhMuc();
+                include "sanpham/update.php";
+            }
+            break;
+        case 'updateSpDone':
+            if(isset($_POST['update'])){
+                $idsp=$_POST['idsp'];
+                $name=$_POST['tensp'];
+                $gianhap=$_POST['gianhap'];
+                $giaban=$_POST['giaban'];
+                $soluong=$_POST['soluong'];
+                $mota=$_POST['mota'];
+                updateSpDone($idsp,$name,$gianhap,$giaban,$soluong,$mota);
+                $thanhcong="Cập nhật sản phẩm thành công";
+                if (isset($_POST['listok'])) {
+                    $keyw = $_POST['kyw'];
+                    $iddm = $_POST['iddm'];
+                } else {
+                    $keyw = "";
+                    $iddm = 0;
+                }
+                $loadAllDm = listDanhMuc();
+                $listSp = loadSp($keyw, $iddm);
+                include "sanpham/list.php";
             }
             break;
         case 'topsp':
