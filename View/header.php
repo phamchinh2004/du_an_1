@@ -16,7 +16,7 @@
             <div class="header_bg"><!--Màu nền cho phần nav-->
                 <div class="header_around"><!--Bọc xung quanh nav và căn giữa-->
                     <div class="header_nav"><!--Bọc nội dung nav-->
-                        <a class="header_nav_logo" href=""><!--Bọc nội dung logo-->
+                        <a class="header_nav_logo" href="index.php"><!--Bọc nội dung logo-->
                             <img class="header_nav_logo_img" src="public/image/calling.png" alt="Logo">
                             <div class="header_nav_logo_text">
                                 <h3 class="header_nav_logo_text_1">SAN'S</h3>
@@ -47,7 +47,7 @@
                                     <p>Tài khoản</p>
                                 </a>
                             <?php } else { ?>
-                                <a class="header_nav_user_list_link" href="">
+                                <a class="header_nav_user_list_link" href="index.php?act=user">
                                     <div class="header_nav_user_list_link_logo">
                                         <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
                                     </div>

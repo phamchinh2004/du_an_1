@@ -5,6 +5,15 @@
     if(isset($_GET['act']) && ($_GET['act']!="")){
         $act=$_GET['act'];
         switch($act){
+            case "user":
+                include "View/user/user.php";
+                break;
+            case "doimk":
+                include "View/user/doimk.php";
+                break;
+            case "updatetk":
+                include "View/user/update.php";
+                break;
             case "login":
                 include "View/login/login.php";
                 break;
