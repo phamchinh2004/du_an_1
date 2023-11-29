@@ -10,7 +10,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
         case 'trangchu':
             include "main.php";
             break;
-        //Hiển thị sản phẩm theo tìm kiếm và lọc (nếu không tìm kiếm và lọc sẽ hiển thị tất cả sp)
+            //Hiển thị sản phẩm theo tìm kiếm và lọc (nếu không tìm kiếm và lọc sẽ hiển thị tất cả sp)
         case 'listsp':
             if (isset($_POST['listok'])) {
                 $keyw = $_POST['kyw'];
@@ -23,33 +23,68 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             $listSp = loadSp($keyw, $iddm);
             include "sanpham/list.php";
             break;
-        //Tạo 1 biến lưu trữ tất cả các danh mục để vào trang thêm sản phẩm các danh mục sẽ được hiển thị và Include trang thêm sản phẩm
+        case 'addTnSp':
+            if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
+                $idsp = $_GET['idsp'];
+                $loadAllTn = loadAllTn();
+                include "sanpham/addTnSp.php";
+            }
+            break;
+            //Kiểm tra đã click nút chưa nếu rồi tạo 1 biến gán id tính năng vào đó và gọi hàm lấy tính năng chi tiết của tính năng đó
+        case 'loadTnct':
+            if (isset($_POST['listok'])) {
+                $loadAllTn = loadAllTn();
+                $idsp = $_POST['idsp'];
+                $idtn = $_POST['idtn'];
+                $loadTnct = listTnct($idtn);
+                include "sanpham/addTnSp.php";
+            }
+            break;
+        case 'addTnSpDone':
+            if (isset($_POST['themmoi']) && ($_POST['idtn'] != "") && ($_POST['idtnct'] != "") && ($_POST['idsp'] != "")) {
+                $idsp = $_POST['idsp'];
+                $idtn = $_POST['idtn'];
+                $idtnct = $_POST['idtnct'];
+                $mess = addTnSpDone($idsp, $idtn, $idtnct);
+                if (empty($mess)) {
+                    $thanhcong = "Feature added successfully";
+                    $loadAllTn = loadAllTn();
+                    $loadTnct = listTnct($idtn);
+                    include "sanpham/addTnSp.php";
+                } else {
+                    $loadAllTn = loadAllTn();
+                    $loadTnct = listTnct($idtn);
+                    include "sanpham/addTnSp.php";
+                }
+            } else {
+                $needSelect="Cần chọn tính năng chi tiết";
+                $idsp = $_POST['idsp'];
+                $idtn = $_POST['idtn'];
+                $loadAllTn = loadAllTn();
+                $loadTnct = listTnct($idtn);
+                include "sanpham/addTnSp.php";
+            }
+            break;
+            //Tạo 1 biến lưu trữ tất cả các danh mục để vào trang thêm sản phẩm các danh mục sẽ được hiển thị và Include trang thêm sản phẩm
         case 'addsp':
             $loadAllDm = listDanhMuc();
             include "sanpham/add.php";
             break;
-        // case 'loadTnct':
-        //     if (isset($_POST['listok'])) {
-        //         $idtn = $_POST['idtn'];
-        //         $loadTnct = listTnct($idtn);
-        //         include "sanpham/add.php";
-        //     }
-        //     break;
-        //Kiểm tra đã click nút thêm mới chưa nếu rồi tạo các biến để lưu trữ những dữ liệu nhập vào và thực hiện sql thêm mới
+            //Kiểm tra đã click nút thêm mới chưa nếu rồi tạo các biến để lưu trữ những dữ liệu nhập vào và thực hiện sql thêm mới
         case 'addSpDone':
             if (isset($_POST['themmoi'])) {
                 $name = $_POST['tensp'];
                 $gianhap = $_POST['gianhap'];
                 $giaban = $_POST['giaban'];
                 $soluong = $_POST['soluong'];
-                $iddm=$_POST['iddm'];
+                $iddm = $_POST['iddm'];
                 $execute = addSpDone($name, $gianhap, $giaban, $soluong, $iddm);
                 if ($execute) {
-                    $succ="Thêm sản phẩm thành công";
+                    $succ = "Thêm sản phẩm thành công";
                     $loadAllDm = listDanhMuc();
                     include "sanpham/add.php";
-                }else{
-                    $failed="Thêm sản phẩm không thành công";
+                } else {
+                    $failed = "Thêm sản phẩm không thành công";
                     print_r($execute);
                     $loadAllDm = listDanhMuc();
                     include "sanpham/add.php";
@@ -57,22 +92,79 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'suaSp':
-            if(isset($_GET['idsp']) && $_GET['idsp']>0){
-                $OldDataSp=loadOldDataSp($_GET['idsp']);
+            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+                $OldDataSp = loadOldDataSp($_GET['idsp']);
                 $loadAllDm = listDanhMuc();
                 include "sanpham/update.php";
             }
             break;
         case 'updateSpDone':
-            if(isset($_POST['update'])){
-                $idsp=$_POST['idsp'];
-                $name=$_POST['tensp'];
-                $gianhap=$_POST['gianhap'];
-                $giaban=$_POST['giaban'];
-                $soluong=$_POST['soluong'];
-                $mota=$_POST['mota'];
-                updateSpDone($idsp,$name,$gianhap,$giaban,$soluong,$mota);
-                $thanhcong="Cập nhật sản phẩm thành công";
+            if (isset($_POST['update'])) {
+                $idsp = $_POST['idsp'];
+                $name = $_POST['tensp'];
+                $gianhap = $_POST['gianhap'];
+                $giaban = $_POST['giaban'];
+                $soluong = $_POST['soluong'];
+                $mota = $_POST['mota'];
+                updateSpDone($idsp, $name, $gianhap, $giaban, $soluong, $mota);
+                $thanhcong = "Cập nhật sản phẩm thành công";
+                if (isset($_POST['listok'])) {
+                    $keyw = $_POST['kyw'];
+                    $iddm = $_POST['iddm'];
+                } else {
+                    $keyw = "";
+                    $iddm = 0;
+                }
+                $loadAllDm = listDanhMuc();
+                $listSp = loadSp($keyw, $iddm);
+                include "sanpham/list.php";
+            }
+            break;
+        case 'addImgSp':
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $OldDataSp = loadOldDataSp($_GET['idsp']);
+                include "sanpham/addImg.php";
+            }
+            break;
+        case 'addImgSpDone':
+            if (isset($_POST['themmoi'])) {
+                $idsp = $_POST['idsp'];
+                $img = $_FILES['img']['name'];
+                $img_thaythe = $_FILES['img']['tmp_name'];
+                $target_dir = "../../public/image/";
+                $target_file = $target_dir . basename($img);
+                if (move_uploaded_file($img_thaythe, $target_file)) {
+                    $messError=uploadImgSp($img, $idsp);
+                    if(empty($messError)){
+                        $succFile = "Image uploaded successfully";
+                    }
+                } else {
+                    $failFile = "Imgae upload failed";
+                }
+                $OldDataSp = loadOldDataSp($_POST['idsp']);
+                include "sanpham/addImg.php";
+            }
+            break;
+        case 'softDeleteSp':
+            if(isset($_GET['idsp'])&& ($_GET['idsp']!="")){
+                softDeleteSp($_GET['idsp']);
+                $deleteSoft="Xóa mềm sản phẩm thành công";
+                if (isset($_POST['listok'])) {
+                    $keyw = $_POST['kyw'];
+                    $iddm = $_POST['iddm'];
+                } else {
+                    $keyw = "";
+                    $iddm = 0;
+                }
+                $loadAllDm = listDanhMuc();
+                $listSp = loadSp($keyw, $iddm);
+                include "sanpham/list.php";
+            }
+            break;
+        case 'hardDeleteSp':
+            if(isset($_GET['idsp'])&& ($_GET['idsp']!="")){
+                hardDeleteSp($_GET['idsp']);
+                $deleteHard="Xóa cứng sản phẩm thành công";
                 if (isset($_POST['listok'])) {
                     $keyw = $_POST['kyw'];
                     $iddm = $_POST['iddm'];

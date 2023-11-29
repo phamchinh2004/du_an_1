@@ -14,7 +14,7 @@
                             <?php
                             foreach ($loadAllDm as $value) {
                                 extract($value);
-                                echo '<option value="' . $id . '">' . $name . '</option>';
+                                echo '<option value="' . $id . '" ' . (($iddm == $id) ? 'selected' : '') . '>' . $name . '</option>';
                             }
                             ?>
                         </select>
@@ -24,6 +24,10 @@
                 <?php
                 if (isset($thanhcong)) {
                     echo "<span style='color:green;'>$thanhcong</span>";
+                }else if (isset($deleteSoft)) {
+                    echo "<span style='color:green;'>$deleteSoft</span>";
+                }else if (isset($deleteHard)) {
+                    echo "<span style='color:green;'>$deleteHard</span>";
                 }
                 ?>
                 <div class="box_content form_loai ">
@@ -45,7 +49,7 @@
                                 extract($value);
                                 $hinhpath = "../../public/image/" . $hinhanh;
                                 if (is_file($hinhpath)) {
-                                    $hinhpath = "<img src='" . $hinhpath . "' width='30px' height='30px'>";
+                                    $hinhpath = "<img src='" . $hinhpath . "' width='150px' height='100px'>";
                                 } else {
                                     $hinhpath = "Chưa có hình ảnh";
                                 }
@@ -55,22 +59,26 @@
                                     $luotvote = "Chưa có lượt đánh giá nào";
                                 }
                                 $suaSp = "index.php?act=suaSp&idsp=" . $id;
+                                $addImgSp="index.php?act=addImgSp&idsp=" . $id;
+                                $addTnSp="index.php?act=addTnSp&idsp=" . $id;
+                                $softDeleteSp="index.php?act=softDeleteSp&idsp=" . $id;
+                                $hardDeleteSp="index.php?act=hardDeleteSp&idsp=" . $id;
                                 echo    '<tr>
                                             <td>' . $id . '</td>
                                             <td>' . $name . '</td>
+                                            <td>' . $hinhpath . '</td>
                                             <td>' . $gianhap . '</td>
                                             <td>' . $giaban . '</td>
-                                            <td>' . $hinhpath . '</td>
                                             <td>' . $soluong . '</td>
                                             <td>' . $luotxem . '</td>
                                             <td>' . $luotmua . '</td>
                                             <td>' . $luotvote . '</td>
                                             <td>
-                                                <a href="suasp.php"> <input type="button" value="Thêm tính năng"> </a>
-                                                <a href="suasp.php"> <input type="button" value="Thêm ảnh"> </a> 
+                                                <a href="'.$addTnSp.'"> <input type="button" value="Thêm tính năng"> </a>
+                                                <a href="'.$addImgSp.'"> <input type="button" value="Thêm ảnh"> </a> 
                                                 <a href="' . $suaSp . '"> <input type="button" value="Sửa"> </a> 
-                                                <a href="xoasp.php"> <input type="button" value="Xóa mềm"> </a>
-                                                <a href="xoasp.php"> <input type="button" value="Xóa cứng"> </a>
+                                                <a href="'.$softDeleteSp.'"> <input type="button" value="Xóa mềm" onclick="return confirm(\'Bạn có chắc chắn muốn xóa mềm? Điều này sẽ đặt trạng thái của sản phẩm thành 0 và ở những trang hiển thị sản phẩm chỉ xem được những sản phẩm có trạng thái là 1!\')"> </a>
+                                                <a href="'.$hardDeleteSp.'"> <input type="button" value="Xóa cứng" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm!\')"> </a>
                                             </td>
                                         </tr>';
                             }
