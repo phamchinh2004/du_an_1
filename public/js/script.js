@@ -2,7 +2,7 @@
 var album=[];
 for(var i=0;i<5;i++){
     album[i]=new Image();
-    album[i].src="../public/image/banner"+i+".jpg";
+    album[i].src="public/image/banner"+i+".jpg";
 }
  var interval=setInterval(slideshow,2000);
 index=0;

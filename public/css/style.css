@@ -192,11 +192,6 @@ body {
 
 }
 
-.dropdown:hover {
-    display: block;
-    margin-top: 1px;
-}
-
 /* DONE HEADER/NAVBAR */
 
 /* css cho phần nội dung */
@@ -545,8 +540,19 @@ body {
     border-radius: 5px;
 }
 
-
 /* footer section starts */
+.box_footer{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border-top: 2px solid rgb(133, 131, 131);
+}
 
+.content_footer{
+    color: #fff;
+    background-color: #998c8c;
+    font-size: 20px;
+    padding: 30px 0;
+}
 
 /* footer section ends */

@@ -21,6 +21,9 @@
             case "dangxuat":
                 dangxuat();
                 break;
+            default:
+            include "view/trangchu.php";
+            break;
         }
     }else{
         include "view/trangchu.php";
