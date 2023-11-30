@@ -1,69 +1,68 @@
 <?php
-//Connect DB
-function pdo_get_connection(){
+//Kết nối với database
+function pdo_get_connection()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname="du_an_1";
+    $dbname = "du_an_1";
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-    } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
+    } catch (PDOException $e) {
+        die("Connection failed: " . $e->getMessage());
     }
 }
-//CUD
-function pdo_execute($sql){
-    $sql_args=array_slice(func_get_args(),1);
-    try{
-        $conn=pdo_get_connection();
-        $stmt=$conn->prepare($sql);
-        $stmt->execute($sql_args);
-
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
+//Hàm thêm, sửa, xóa
+function pdo_execute($sql, $params = [])
+{
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+    } catch (PDOException $e) {
+        error_log("Execution failed: " . $e->getMessage());
+    } finally {
+        if ($conn) {
+            unset($conn);
+        }
     }
 }
-// READS
-function pdo_query($sql){
-    $sql_args=array_slice(func_get_args(),1);
 
-    try{
-        $conn=pdo_get_connection();
-        $stmt=$conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows=$stmt->fetchAll();
+// Hàm truy vấn nhiều dữ liệu
+function pdo_query($sql, $params = [])
+{
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+        $rows = $stmt->fetchAll();
         return $rows;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
+    } catch (PDOException $e) {
+        error_log("Query failed: " . $e->getMessage());
+    } finally {
+        if ($conn) {
+            unset($conn);
+        }
     }
 }
-// READ
-function pdo_query_one($sql){
-    $sql_args=array_slice(func_get_args(),1);
-    try{
-        $conn=pdo_get_connection();
-        $stmt=$conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row=$stmt->fetch(PDO::FETCH_ASSOC);
-        // Đọc và hiển thị giá trị trong danh sách trả về
+
+// Hàm truy vấn 1 dữ liệu
+function pdo_query_one($sql, $params = [])
+{
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($params);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
+    } catch (PDOException $e) {
+        error_log("Query failed: " . $e->getMessage());
+    } finally {
+        if ($conn) {
+            unset($conn);
+        }
     }
 }
 pdo_get_connection();
-?>

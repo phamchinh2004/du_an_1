@@ -1,21 +1,21 @@
 <?php
-    include "Model/pdo.php";
-    include "Model/taikhoan.php";
+    include "model/pdo.php";
+    include "model/taikhoan.php";
     include "view/header.php";
     if(isset($_GET['act']) && ($_GET['act']!="")){
         $act=$_GET['act'];
         switch($act){
             case "user":
-                include "View/user/user.php";
+                include "view/user/user.php";
                 break;
             case "doimk":
-                include "View/user/doimk.php";
+                include "view/user/doimk.php";
                 break;
             case "updatetk":
-                include "View/user/update.php";
+                include "view/user/update.php";
                 break;
             case "login":
-                include "View/login/login.php";
+                include "view/login/login.php";
                 break;
             case "sendLogin":
                 if(isset($_POST['btnsubmit'])){
@@ -23,7 +23,7 @@
                     $password=$_POST['password'];
                     $thongbao=dangnhap($username,$password);
                     if(!empty($thongbao)){
-                        include "View/login/login.php";
+                        include "view/login/login.php";
                     }
                 }
                 break;

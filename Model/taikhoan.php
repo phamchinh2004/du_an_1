@@ -1,9 +1,8 @@
 <?php
     session_start();
     function dangnhap($username,$password){
-        $error=array();
-        $sql="SELECT * FROM `user` WHERE `username`='$username' and `password`='$password'";
-        $taikhoan=pdo_query_one($sql);
+        $sql="SELECT * FROM `user` WHERE `username`=? and `password`=?";
+        $taikhoan=pdo_query_one($sql,[$username,$password]);
         if($taikhoan!=false){
             $_SESSION['nameuser']=$taikhoan['name'];
             $_SESSION['iduser']=$taikhoan['id'];
@@ -19,7 +18,7 @@
             }else if($taikhoan['role']==4){//Nếu bị ban
                 $error['block']="Tài khoản của bạn đã bị hạn chế!";
             }else{                          //Admin
-                header("location: ./View/admin/index.php");
+                header("location: view/admin/index.php");
                 exit();
             }
         }else{

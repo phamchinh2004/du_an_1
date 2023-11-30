@@ -1,8 +1,8 @@
 <?php
-include "../../Model/pdo.php";
-include "../../Model/tinhnang.php";
-include "../../Model/danhmuc.php";
-include "../../Model/sanpham.php";
+include "../../model/pdo.php";
+include "../../model/tinhnang.php";
+include "../../model/danhmuc.php";
+include "../../model/sanpham.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
@@ -78,17 +78,10 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $giaban = $_POST['giaban'];
                 $soluong = $_POST['soluong'];
                 $iddm = $_POST['iddm'];
-                $execute = addSpDone($name, $gianhap, $giaban, $soluong, $iddm);
-                if ($execute) {
-                    $succ = "Thêm sản phẩm thành công";
-                    $loadAllDm = listDanhMuc();
-                    include "sanpham/add.php";
-                } else {
-                    $failed = "Thêm sản phẩm không thành công";
-                    print_r($execute);
-                    $loadAllDm = listDanhMuc();
-                    include "sanpham/add.php";
-                }
+                addSpDone($name, $gianhap, $giaban, $soluong, $iddm);
+                $succ = "Thêm sản phẩm thành công";
+                $loadAllDm = listDanhMuc();
+                include "sanpham/add.php";
             }
             break;
         case 'suaSp':

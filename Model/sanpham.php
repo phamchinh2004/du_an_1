@@ -7,15 +7,18 @@ function loadSp($keyw = "", $iddm = 0)
         LEFT JOIN `danh_gia` as dg ON dg.id_order_detail = ctdh.id 
         LEFT JOIN `image` as img ON img.id_product = sp.id 
         WHERE sp.trangthai=1";
+    $params=[];
     if ($keyw != "") {
-        $sql .= " AND sp.name LIKE '%" . $keyw . "%'";
+        $sql .= " AND sp.name LIKE ?";
+        $params="%" . $keyw . "%";
     }
     if ($iddm > 0) {
-        $sql .= " AND sp.id_dm ='" . $iddm . "'";
+        $sql .= " AND sp.id_dm =?";
+        $params="" . $iddm . "";
     }
     $sql .= " GROUP BY sp.id";
     $sql .= " ORDER BY sp.id ASC";
-    $run = pdo_query($sql);
+    $run = pdo_query($sql,$params);
     return $run;
 }
 function loadAllSpBanChay(){
@@ -32,13 +35,13 @@ function loadAllSpBanChay(){
     return $run;
 }
 function addSpTop($idsp){
-    $check="SELECT * FROM `product` WHERE `id`='$idsp'";
-    $checkRun=pdo_query_one($check);
-    $check2="SELECT * FROM `product_chay_nhat` WHERE `id_product`='$idsp'";
-    $checkRun2=pdo_query_one($check2);
+    $check="SELECT * FROM `product` WHERE `id`=?";
+    $checkRun=pdo_query_one($check,[$idsp]);
+    $check2="SELECT * FROM `product_chay_nhat` WHERE `id_product`=?";
+    $checkRun2=pdo_query_one($check2,[$idsp]);
     if(!empty($checkRun)&& empty($checkRun2)){
-        $sql="INSERT INTO `product_chay_nhat`(`id_product`) VALUE ('$idsp')";
-        pdo_execute($sql);
+        $sql="INSERT INTO `product_chay_nhat`(`id_product`) VALUE (?)";
+        pdo_execute($sql,[$idsp]);
     }else if(!empty($checkRun2)){
         $error="Sản phẩm đã tồn tại trong danh sách sản phẩm bán chạy!";
         return $error;
@@ -48,61 +51,61 @@ function addSpTop($idsp){
     }
 }
 function DeleteTopSp($idsp){
-    $sql="DELETE FROM `product_chay_nhat` WHERE `id_product`='$idsp'";
-    pdo_execute($sql);
+    $sql="DELETE FROM `product_chay_nhat` WHERE `id_product`=";
+    pdo_execute($sql,[$idsp]);
 }
 function addSpDone($name, $gianhap, $giaban, $soluong, $iddm)
 {
-    $sql = "INSERT INTO `product`(`name`,`gianhap`,`giaban`,`soluong`,`id_dm`) values ('$name','$gianhap','$giaban','$soluong','$iddm')";
-    pdo_execute($sql);
+    $sql = "INSERT INTO `product`(`name`,`gianhap`,`giaban`,`soluong`,`id_dm`) values (?,?,?,?,?)";
+    pdo_execute($sql,[$name, $gianhap, $giaban, $soluong, $iddm]);
 }
 function loadOldDataSp($id)
 {
     $sql = "SELECT sp.*,dm.id as iddanhmuc,dm.name as tendanhmuc 
         FROM `product` as sp 
         LEFT JOIN `danhmuc` as dm ON dm.id=sp.id_dm
-        WHERE sp.id=$id";
-    $run = pdo_query_one($sql);
+        WHERE sp.id=?";
+    $run = pdo_query_one($sql,[$id]);
     return $run;
 }
 function updateSpDone($idsp, $name, $gianhap, $giaban, $soluong, $mota)
 {
-    $sql = "UPDATE `product` SET `name`='$name',`gianhap`='$gianhap',`giaban`='$giaban',`soluong`='$soluong',`mota`='$mota' WHERE `id`='$idsp'";
-    pdo_execute($sql);
+    $sql = "UPDATE `product` SET `name`=?,`gianhap`=?,`giaban`=?,`soluong`=?,`mota`=? WHERE `id`=?";
+    pdo_execute($sql,[$name, $gianhap, $giaban, $soluong, $mota,$idsp]);
 }
 function uploadImgSp($link,$idsp){
-    $check="SELECT * FROM `image` WHERE `link`='$link' and `id_product`='$idsp'";
-    $run=pdo_query_one($check);
+    $check="SELECT * FROM `image` WHERE `link`='$link' and `id_product`=?";
+    $run=pdo_query_one($check,[$idsp]);
     if(empty($run)){
-        $sql="INSERT INTO `image`(`link`,`id_product`) VALUES ('$link','$idsp')";
-        pdo_execute($sql);
+        $sql="INSERT INTO `image`(`link`,`id_product`) VALUES (?,?)";
+        pdo_execute($sql,[$link,$idsp]);
     }else{
         $error="Đường dẫn này đã tồn tại";
         return $error;
     }
 }
 function addTnSpDone($idtn,$idtnct,$idsp){
-    $check="SELECT * FROM `sp_tnct` WHERE `id_tn`='$idtn' and `id_tnct`='$idtnct' and `id_product`='$idsp'";
-    $run=pdo_query_one($check);
+    $check="SELECT * FROM `sp_tnct` WHERE `id_tn`=? and `id_tnct`=? and `id_product`=?";
+    $run=pdo_query_one($check,[$idtn,$idtnct,$idsp]);
     if(empty($run)){
-        $sql="INSERT INTO `sp_tnct`(`id_tn`,`id_tnct`,`id_product`) VALUES ('$idtn','$idtnct','$idsp')";
-        pdo_execute($sql);
+        $sql="INSERT INTO `sp_tnct`(`id_tn`,`id_tnct`,`id_product`) VALUES (?,?,?)";
+        pdo_execute($sql,[$idtn,$idtnct,$idsp]);
     }else{
         $error="Giá trị đã tồn tại";
         return $error;
     }
 }
 function softDeleteSp($idsp){
-    $sql="UPDATE `product` SET `trangthai`=0 WHERE `id`='$idsp'";
-    pdo_execute($sql);
+    $sql="UPDATE `product` SET `trangthai`=0 WHERE `id`=?";
+    pdo_execute($sql,[$idsp]);
 }
 function hardDeleteSp($idsp){
-    $check="SELECT * FROM `image` WHERE `id_product`='$idsp'";
-    $run=pdo_query_one($check);
+    $check="SELECT * FROM `image` WHERE `id_product`=?";
+    $run=pdo_query_one($check,[$idsp]);
     if(!empty($run)){
-        $deleteImg="DELETE FROM `image` WHERE `id_product`='$idsp'";
-        pdo_execute($deleteImg);
+        $deleteImg="DELETE FROM `image` WHERE `id_product`=?";
+        pdo_execute($deleteImg,[$idsp]);
     }
-    $sql="DELETE FROM `product` WHERE `id`='$idsp'";
-    pdo_execute($sql);
+    $sql="DELETE FROM `product` WHERE `id`=?";
+    pdo_execute($sql,[$idsp]);
 }

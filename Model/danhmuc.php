@@ -5,20 +5,23 @@
         return $run;
     }
     function addDmDone($name,$hinh){
-        $sql="INSERT INTO `danhmuc`(`name`,`img`) values ('$name','$hinh')";
-        pdo_execute($sql);
+        $sql="INSERT INTO `danhmuc`(`name`,`img`) values (?,?)";
+        pdo_execute($sql,[$name,$hinh]);
     }
     function getOldDataDm($iddm){
-        $sql="SELECT * FROM `danhmuc` WHERE `id`='$iddm'";
-        $run=pdo_query_one($sql);
+        $sql="SELECT * FROM `danhmuc` WHERE `id`=?";
+        $run=pdo_query_one($sql,[$iddm]);
         return $run;
     }
     function updateDmDone($iddm,$name,$img){
+        $params=[$name];
+        $sql="UPDATE `danhmuc` SET `name`=?";
         if($img!=""){
-            $sql="UPDATE `danhmuc` SET `name`='$name',`img`='$img' WHERE `id`='$iddm'";
-        }else{
-            $sql="UPDATE `danhmuc` SET `name`='$name' WHERE `id`='$iddm'";
+            $sql.=",`img`=?";
+            $params[]=$img;
         }
-        pdo_execute($sql);
+        $sql.=" WHERE `id`=?";
+        $params[]=$iddm;
+        pdo_execute($sql,$params);
     }
 ?>
