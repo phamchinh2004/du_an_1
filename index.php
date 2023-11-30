@@ -37,5 +37,11 @@
     }else{
         include "view/trangchu.php";
     }
-    include "view/footer.php";
+    if(isset($_GET['act'])){
+        if(($_GET['act']!="login") || ($_GET['act']=="") || ($_GET['act']!="sendLogin")){
+            include "view/footer.php";
+        }
+    }else{
+        include "view/footer.php";
+    }
 ?>

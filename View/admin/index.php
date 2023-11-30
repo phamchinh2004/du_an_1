@@ -178,7 +178,31 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'topsp':
-            include "sanpham/topsp.php";
+            $listSp=loadAllSpBanChay();
+            include "sanpham/spBanChay.php";
+            break;
+        case 'addTopSp':
+            include "sanpham/addTopSp.php";
+            break;
+        case 'addSpTopDone':
+            if(isset($_POST['themmoi'])){
+                $idsp=$_POST['idsp'];
+                $mess=addSpTop($idsp);
+                if(!empty($mess)){
+                    include "sanpham/addTopSp.php";
+                }else{
+                    $thanhcong="Thêm sản phẩm bán chạy thành công!";
+                    include "sanpham/addTopSp.php";
+                }
+            }
+            break;
+        case 'DeleteTopSp':
+            if(isset($_GET['idsp'])&& $_GET['idsp']!=""){
+                $idsp=$_GET['idsp'];
+                DeleteTopSp($idsp);
+                $deleteSucc="Xóa sản phẩm thành công";
+                include "sanpham/spBanChay.php";
+            }
             break;
         case 'listdm':
             $listdm = listDanhMuc();

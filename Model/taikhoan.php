@@ -19,7 +19,7 @@
             }else if($taikhoan['role']==4){//Nếu bị ban
                 $error['block']="Tài khoản của bạn đã bị hạn chế!";
             }else{                          //Admin
-                header("location: ../View/admin/index.php");
+                header("location: ./View/admin/index.php");
                 exit();
             }
         }else{

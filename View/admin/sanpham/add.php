@@ -30,15 +30,15 @@
                 </div>
                 <div class="box_content mb10">
                     <label>Giá nhập </label> <br>
-                    <input type="text" name="gianhap" placeholder="Nhập vào giá nhập">
+                    <input type="number" name="gianhap" placeholder="Nhập vào giá nhập">
                 </div>
                 <div class="box_content mb10">
                     <label>Giá bán </label> <br>
-                    <input type="text" name="giaban" placeholder="Nhập vào giá bán">
+                    <input type="number" name="giaban" placeholder="Nhập vào giá bán">
                 </div>
                 <div class="box_content mb10">
                     <label>Số lượng </label> <br>
-                    <input type="text" name="soluong" placeholder="Nhập vào số lượng">
+                    <input type="number" name="soluong" placeholder="Nhập vào số lượng">
                 </div>
                 <div class="box_content mb10">
                     <label>Mô tả sản phẩm </label> <br>
