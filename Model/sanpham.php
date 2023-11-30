@@ -10,11 +10,11 @@ function loadSp($keyw = "", $iddm = 0)
     $params=[];
     if ($keyw != "") {
         $sql .= " AND sp.name LIKE ?";
-        $params="%" . $keyw . "%";
+        $params[]="%" . $keyw . "%";
     }
     if ($iddm > 0) {
         $sql .= " AND sp.id_dm =?";
-        $params="" . $iddm . "";
+        $params[]="" . $iddm . "";
     }
     $sql .= " GROUP BY sp.id";
     $sql .= " ORDER BY sp.id ASC";

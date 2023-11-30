@@ -198,3 +198,9 @@ margin-bottom:12px;
 .form_content input[type="button"]:hover{
   background:#CCC;
 }
+.arrange_loctk_forms{
+    display: flex;
+}
+.arrange_loctk_forms>form{
+    margin-right: 10px;
+}

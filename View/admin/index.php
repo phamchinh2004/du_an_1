@@ -3,6 +3,7 @@ include "../../model/pdo.php";
 include "../../model/tinhnang.php";
 include "../../model/danhmuc.php";
 include "../../model/sanpham.php";
+include "../../model/taikhoan.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
@@ -57,7 +58,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                     include "sanpham/addTnSp.php";
                 }
             } else {
-                $needSelect="Cần chọn tính năng chi tiết";
+                $needSelect = "Cần chọn tính năng chi tiết";
                 $idsp = $_POST['idsp'];
                 $idtn = $_POST['idtn'];
                 $loadAllTn = loadAllTn();
@@ -127,8 +128,8 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $target_dir = "../../public/image/";
                 $target_file = $target_dir . basename($img);
                 if (move_uploaded_file($img_thaythe, $target_file)) {
-                    $messError=uploadImgSp($img, $idsp);
-                    if(empty($messError)){
+                    $messError = uploadImgSp($img, $idsp);
+                    if (empty($messError)) {
                         $succFile = "Image uploaded successfully";
                     }
                 } else {
@@ -139,9 +140,9 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'softDeleteSp':
-            if(isset($_GET['idsp'])&& ($_GET['idsp']!="")){
+            if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
                 softDeleteSp($_GET['idsp']);
-                $deleteSoft="Xóa mềm sản phẩm thành công";
+                $deleteSoft = "Xóa mềm sản phẩm thành công";
                 if (isset($_POST['listok'])) {
                     $keyw = $_POST['kyw'];
                     $iddm = $_POST['iddm'];
@@ -155,9 +156,9 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'hardDeleteSp':
-            if(isset($_GET['idsp'])&& ($_GET['idsp']!="")){
+            if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
                 hardDeleteSp($_GET['idsp']);
-                $deleteHard="Xóa cứng sản phẩm thành công";
+                $deleteHard = "Xóa cứng sản phẩm thành công";
                 if (isset($_POST['listok'])) {
                     $keyw = $_POST['kyw'];
                     $iddm = $_POST['iddm'];
@@ -171,29 +172,29 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'topsp':
-            $listSp=loadAllSpBanChay();
+            $listSp = loadAllSpBanChay();
             include "sanpham/spBanChay.php";
             break;
         case 'addTopSp':
             include "sanpham/addTopSp.php";
             break;
         case 'addSpTopDone':
-            if(isset($_POST['themmoi'])){
-                $idsp=$_POST['idsp'];
-                $mess=addSpTop($idsp);
-                if(!empty($mess)){
+            if (isset($_POST['themmoi'])) {
+                $idsp = $_POST['idsp'];
+                $mess = addSpTop($idsp);
+                if (!empty($mess)) {
                     include "sanpham/addTopSp.php";
-                }else{
-                    $thanhcong="Thêm sản phẩm bán chạy thành công!";
+                } else {
+                    $thanhcong = "Thêm sản phẩm bán chạy thành công!";
                     include "sanpham/addTopSp.php";
                 }
             }
             break;
         case 'DeleteTopSp':
-            if(isset($_GET['idsp'])&& $_GET['idsp']!=""){
-                $idsp=$_GET['idsp'];
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET['idsp'];
                 DeleteTopSp($idsp);
-                $deleteSucc="Xóa sản phẩm thành công";
+                $deleteSucc = "Xóa sản phẩm thành công";
                 include "sanpham/spBanChay.php";
             }
             break;
@@ -361,6 +362,75 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                     $tenTnctOld = oldNameTnct($idtnct);
                     include "tinhnangchitiet/update.php";
                 }
+            }
+            break;
+        case 'listtk':
+            $keyw = null;
+            $trangthai = null;
+            if (isset($_POST['listok'])) {
+                if (isset($_POST['keyw'])) {
+                    $keyw = $_POST['keyw'];
+                } else {
+                    $keyw = "";
+                }
+                if (isset($_GET['trangthai'])) {
+                    $trangthai = $_GET['trangthai'];
+                }
+            }
+            $listtk = listTaiKhoan($keyw, $trangthai);
+            include "taikhoan/list.php";
+            break;
+        case 'suaTk':
+            if (isset($_GET['idtk']) && ($_GET['idtk'] != "")) {
+                $OldDataTk = loadOldDataTk($_GET['idtk']);
+                include "taikhoan/updateTk.php";
+            }
+            break;
+        case 'updateTkDone':
+            if (isset($_POST['update'])) {
+                $idtk = $_POST['idtk'];
+                $name = $_POST['name'];
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $oldAvatar=$_POST['oldAvatar'];
+                $avatarNew = $_FILES['avatarNew']['name'];
+                $avatarNew_tmp = $_FILES['avatarNew']['tmp_name'];
+                $email = $_POST['email'];
+                $tel = $_POST['tel'];
+                $address = $_POST['address'];
+                $role = $_POST['role'];
+                $target_dir = "../../public/image/";
+                $target_file = $target_dir . basename($avatarNew);
+                $target_file_old = $target_dir . basename($oldAvatar);
+                if (move_uploaded_file($avatarNew_tmp, $target_file)) {
+                    $ImgSusc = "Image Uploaed Successfully";
+                } else {
+                    $ImgFail = "Image Upload Failed";
+                }
+                //Kiểm tra nếu ảnh cũ đã có hoặc ảnh cũ chưa có nhưng đã tải ảnh mới lên hoặc ảnh cũ đã có và ảnh đã tải ảnh mới lên thì cho cập nhật tk
+                if($oldAvatar!="" || ($oldAvatar=="" && $avatarNew!="")|| ($oldAvatar!="" && $avatarNew!="")){
+                //Tạo biến mess để chứa giá trị trả về của hàm
+                $mess = updateTkDone($idtk, $name, $username, $password, $avatarNew, $email, $tel, $address, $role);
+                if (empty($mess)) { //Kiểm tra biến $mess nếu rỗng có nghĩa là không có lỗi thì thực thi lệnh bên trong
+                    if(!isset($ImgFail)){//Kiểm tra nếu không tồn tại biến lưu trữ thông báo lỗi tải file có nghĩa là 
+                        //đã up ảnh mới lên thành công và thực hiện gỡ ảnh cũ
+                        unlink($target_file_old);
+                    }
+                    // cập nhật thành công và chuyển hướng đến trang list tài khoản
+                    $_SESSION['update_success'] = "Cập nhật tài khoản thành công";//tạo 1 biến session lưu trữ thông báo
+                    header("location: index.php?act=listtk");
+                } else { //Ngược lại nếu biến mess có giá trị thì gỡ ảnh và ở lại trang update
+                    if (is_file($target_file)) { //Kiểm tra xem tệp file ảnh có tồn tại ko, nếu có thì xóa
+                        unlink($target_file);
+                    }
+                    $OldDataTk = loadOldDataTk($idtk);
+                    include "taikhoan/updateTk.php";
+                }
+            }else{//Trường hợp còn lại này là ảnh cũ chưa có và cũng chưa tải ảnh mới lên
+                $_SESSION['update_failed'] = "Bạn cần thêm ảnh đại diện";
+                $OldDataTk = loadOldDataTk($idtk);
+                include "taikhoan/updateTk.php";
+            }
             }
             break;
     }
