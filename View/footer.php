@@ -8,12 +8,12 @@
                         </div>
                         <div class="footer_text">
                             <a href="#">Chính sách hướng dẫn mua hàng trả góp</a>
-                            <a href="#">Chính sách hướng dẫn mua hàng trả góp</a>
-                            <a href="#">Chính sách hướng dẫn mua hàng trả góp</a>
-                            <a href="#">Tra cứu đươn hàng</a>
+                            <a href="#">Hướng dẫn mua hàng và chính sách vận chuyển</a>
+                            <a href="#">Chính sách đổi mới sản phẩm và bảo hành</a>
+                            <a href="#">Tra cứu đơn hàng</a>
                             <a href="#">Dịch vụ bảo hành mở rộng</a>
                             <a href="#">Chính sách bảo mật</a>
-                            <a href="#">Chính sách giải quyết khiếu nại</a>
+                            <a href="#">Chính sách xử lý khiếu nại</a>
                             <a href="#">Quy chế hoạt động</a>
                         </div>
                     </div>
@@ -65,13 +65,10 @@
             </div>
             <div class="content_footer_bottom">
                 <div class="copyright">
-                    © 2023. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI SAN MOBILE. MST: 0106713191. (Đăng ký lần đầu: Ngày 15 tháng 12 năm 2014, Đăng ký thay đổi ngày 24/11/2023)
-                </div>
-                <div class="copyright">
-                    <b>GP số 426/GP-TTĐT do sở TTTT Hà Nội cấp ngày 22/01/2021</b> 
+                © 2007 - 2023 Công Ty Cổ Phần Bán Lẻ Kỹ Thuật Số SAN'S MOBILE / Địa chỉ: 273 - 204 Trịnh Văn Bô, Xuân Phương, Phương Canh, TP. Hà Nội / GPĐKKD số 0311609355 do Sở KHĐT TP.HN cấp ngày 08/03/2012.
                 </div>
                 <div class="footer_location">
-                    Địa chỉ: Số 89 Đường Tam Trinh, Phường Mai Động, Quận Hoàng Mai, Thành Phố Hà Nội, Việt Nam. Điện thoại: 0987.654.321. Chịu trách nhiệm nội dung: <b>Trương Đắc Sơn.</b> 
+                GP số 47/GP-TTĐT do sở TTTT TP Hà Nội cấp ngày 02/07/2018. Điện thoại: (0987) 654 321. Email: sanmobile@gmail.com.vn. Chịu trách nhiệm nội dung: Trương Đắc Sơn. 
                 </div>
             </div>
         </footer>
