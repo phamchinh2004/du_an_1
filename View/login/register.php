@@ -95,6 +95,10 @@
                 <input type="text" name="name" value="" placeholder="Nhập vào tên">
             </div>
             <div class="form-group">
+                <label>Email </label>
+                <input type="email" name="email" value="" placeholder="Nhập vào email">
+            </div>
+            <div class="form-group">
                 <label>Username </label>
                 <input type="text" name="username" value="" placeholder="Nhập vào tên đăng nhập">
             </div>
@@ -109,10 +113,6 @@
             <div class="form-group">
                 <label>Avatar</label>
                 <input type="file" name="avatar">
-            </div>
-            <div class="form-group">
-                <label>Email </label>
-                <input type="email" name="email" value="" placeholder="Nhập vào email">
             </div>
             <div class="form-group">
                 <label>Số điện thoại </label>
