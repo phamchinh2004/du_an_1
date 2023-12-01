@@ -5,6 +5,9 @@
     if(isset($_GET['act']) && ($_GET['act']!="")){
         $act=$_GET['act'];
         switch($act){
+            case "sanpham":
+                include "view/sanpham.php";
+                break;
             case "user":
                 include "view/user/user.php";
                 break;
