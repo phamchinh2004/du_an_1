@@ -57,7 +57,7 @@ ob_start();
                                         <p>Xin chào <?= $_SESSION['nameuser'] ?></p>
                                     </a>
                                 <?php } ?>
-                                <a class="header_nav_user_list_link" href="">
+                                <a class="header_nav_user_list_link" href="index.php?act=cart">
                                     <div class="header_nav_user_list_link_logo">
                                         <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
                                     </div>

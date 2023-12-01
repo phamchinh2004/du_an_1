@@ -88,7 +88,7 @@
             unset($_SESSION['error']);
         }
         ?>
-        <h2 class="title_login">Đăng Nhập</h2>
+        <h2 class="title_login">Đăng Ký</h2>
         <form action="index.php?act=sendRegister" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Tên người dùng </label>
