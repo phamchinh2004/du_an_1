@@ -5,14 +5,15 @@
         </div>
         <div class="box_content form_content">
             <?php if (isset($ImgFail)) {
-                echo "<span style='color:red;'>$ImgFail</span>";
+                echo "<span style='color:red;'>$ImgFail</span><br>";
             } else if (isset($ImgSusc)) {
                 echo "<span style='color:green;'>$ImgSusc</span><br>";
             }
-            if (isset($mess)) {
-                foreach ($mess as $me) {
-                    echo "<span style='color:red;'>$me</span>";
+            if (isset($_SESSION['error'])&& $_SESSION['error']!="") {
+                foreach ($_SESSION['error'] as $mess) {
+                    echo "<span style='color:red;'>$mess</span><br>";
                 }
+                unset($_SESSION['error']);
             } 
             if (isset($_SESSION['update_failed'])) {
                 echo '<div style="color: red;">' . $_SESSION['update_failed'] . '</div>';
@@ -30,12 +31,15 @@
                     <input type="text" name="name" value="' . $name . '" placeholder="Nhập vào tên">
                 </div>
                 <div class="box_content mb10">
+                    <input type="text" name="usernameOld" value="' . $username . '" placeholder="Nhập vào tên đăng nhập" hidden>
+                </div>
+                <div class="box_content mb10">
                     <label>Username </label> <br>
-                    <input type="text" name="username" value="' . $username . '" placeholder="Nhập vào giá nhập">
+                    <input type="text" name="username" value="' . $username . '" placeholder="Nhập vào tên đăng nhập">
                 </div>
                 <div class="box_content mb10">
                     <label>Password </label> <br>
-                    <input type="text" name="password" value="' . $password . '" placeholder="Nhập vào giá bán">
+                    <input type="text" name="password" value="' . $password . '" placeholder="Nhập vào mật khẩu">
                 </div>';
 
                     $imgOld = "../../public/image/" . $avatar;
@@ -57,19 +61,19 @@
                 </div>
                 <div class="box_content mb10">
                     <label>Email </label> <br>
-                    <input type="email" name="email" value="' . $email . '" placeholder="Nhập vào số lượng">
+                    <input type="email" name="email" value="' . $email . '" placeholder="Nhập vào email">
                 </div>
                 <div class="box_content mb10">
                     <label>Số điện thoại </label> <br>
-                    <input type="number" name="tel" value="' . $tel . '" placeholder="Nhập vào số lượng">
+                    <input type="number" name="tel" value="' . $tel . '" placeholder="Nhập vào số điện thoại">
                 </div>
                 <div class="box_content mb10">
                     <label>Địa chỉ</label> <br>
-                    <input type="text" name="address" value="' . $address . '" placeholder="Nhập vào số lượng">
+                    <input type="text" name="address" value="' . $address . '" placeholder="Nhập vào địa chỉ">
                 </div>
                 <div class="box_content mb10">
                     <label>Vai trò </label> <br>
-                    <input type="number" name="role" value="' . $role . '" placeholder="Nhập vào số lượng">
+                    <input type="number" name="role" value="' . $role . '" placeholder="Nhập vào vai trò">
                 </div>
                 <div class="row">
                     <input class="mr20" type="submit" value="CẬP NHẬT" name="update">

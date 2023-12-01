@@ -14,8 +14,10 @@ body {
 }
 
 .header {
+    position: fixed;
     width: 100%;
     height: auto;
+    z-index: 1000;
 }
 
 .header_bg {
@@ -197,6 +199,7 @@ body {
 /* css cho phần nội dung */
 .box_content {
     width: 100%;
+    padding-top: 130px;
     margin: 0 auto;
 }
 
@@ -747,4 +750,68 @@ body {
     text-decoration: none;
     color: #fff;
     background-color: #ff785d;
+}
+.title_login{
+    margin-bottom: 10px;
+}
+.login-form {
+    line-height: 30px;
+    width: auto;
+    height: auto;
+    background-color: #FFF;
+    padding-top: 140px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-form h2 {
+    color: #FF6138;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #C3080A;
+}
+
+.form-group input {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #C3080A;
+    border-radius: 4px;
+}
+
+.form-group button {
+    background-color: #FF6138;
+    color: #FFF;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #C3080A;
+}
+
+.additional-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.additional-options a {
+    text-decoration: none;
+    color: black;
+}
+.register_css,
+.forget_css{
+    margin-bottom: 10px;
 }
