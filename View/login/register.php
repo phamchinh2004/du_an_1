@@ -25,9 +25,6 @@
             color: #FF6138;
         }
 
-        .form-group {
-            /* margin-bottom: 20px; */
-        }
 
         .form-group label {
             display: block;
