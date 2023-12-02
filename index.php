@@ -20,6 +20,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "cart":
             include "view/cart.php";
             break;
+            case "formthanhtoan":
+                include "view/formthanhtoan.php";
+                break;
         case "sanpham":
             include "view/sanpham.php";
             break;

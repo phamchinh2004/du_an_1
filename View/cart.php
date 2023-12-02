@@ -55,7 +55,7 @@
             <div class="row mb10 ">
                 <input class="mr10" type="button" value="CHỌN TẤT CẢ">
                 <input class="mr10" type="button" value="BỎ CHỌN TẤT CẢ">
-                <a href="index.php?act=dathang"> <input class="mr10" type="button" value="ĐẶT HÀNG"></a>
+                <a href="index.php?act=formthanhtoan"> <input class="mr10" type="button" value="ĐẶT HÀNG"></a>
             </div>
         </form>
     </div>
