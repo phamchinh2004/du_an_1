@@ -9,53 +9,75 @@
         </div>
     </div>
     <div class="cart-title">
-    <i class="fa-solid fa-cart-arrow-down"></i>
-    <h3 class="mb">Giỏ hàng</h3>
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        <h3 class="mb">Giỏ hàng</h3>
     </div>
-    
+
     <div class="user-content formds_loai form_content">
-        <form>
+        <form action="" style="width:100%;" method="POST">
             <table class="mb box-cart">
                 <tr>
-                    <th></th>
+                    <th>STT</th>
                     <th>Tên sản phẩm</th>
                     <th>Hình ảnh</th>
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
-                    <th></th>
+                    <th>Thao tác</th>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Iphone 14 Pro Max</td>
-                    <td><img src="public/image/dienthoai.jpg" alt=""></td>
-                    <td><input type="number" id="price1" name="price1" value="6000" onchange="calculateTotal()"></td>
-                    <td><input type="number" id="quantity1" name="quantity1" value="1" onchange="calculateTotal()"></td>
-                    <td><input type="number" id="total1" name="total1" value="6000" readonly></td>
-                    <td>
-                        <a href=""> <input type="button" value="Xoá"> </a> 
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Iphone 14 Pro Max</td>
-                    <td><img src="public/image/dienthoai.jpg" alt=""></td>
-                    <td><input type="number" id="price2" name="price2" value="6000" onchange="calculateTotal()"></td>
-                    <td><input type="number" id="quantity2" name="quantity2" value="1" onchange="calculateTotal()"></td>
-                    <td><input type="number" id="total2" name="total2" value="6000" readonly></td>
-                    <td>
-                        <a href=""> <input type="button" value="Xoá"> </a> 
-                    </td>
-                </tr>
+                <?php if (!empty($listSpCart)) {
+                    foreach ($listSpCart as $key => $value) {
+                        extract($value);
+                        $gia = $giaban - ($giamgia / 100);
+                        $total = $gia * $soluong;
+                        $totalAll += $total;
+                        $hinhanh = "public/image/" . $img;
+                        if (!is_file($hinhanh)) {
+                            $hinhanh = "";
+                        } ?>
+                        <tr>
+                            <td></td>
+                            <td><?= $name ?></td>
+                            <td><?php if ($hinhanh != "") { ?>
+                                    <img src="<?= $hinhanh ?>" alt="">
+                                <?php } else { ?>
+                                    <img src="" alt="<?= $hinhanh ?>">
+                                <?php } ?>
+                            </td>
+                            <td><input type="number" id="price1" name="price1" value="<?= $giaban ?>" readonly></td>
+                            <td>
+                                <form action="index.php?act=updateQuantity" method="POST">
+                                    <input type="text" hidden name="product_id" value="<?= $id ?>">
+                                    <input type="number" id="quantity1" name="soluong" value="<?= $soluong ?>" min="1">
+                                    <input type="submit" name="btnSoluong" value="Cập nhật số lượng">
+                                </form>
+                            </td>
+                            <td><input type="number" id="total1" name="total1" value="<?= $total ?>" readonly></td>
+                            <td>
+                                <form action="index.php?act=formthanhtoan" method="POST">
+                                    <!-- ... (các trường thông tin sản phẩm) ... -->
+                                    <input type="text" hidden name="product_id" value="<?= $id ?>">
+                                    <input type="text" hidden name="quantity" value="<?= $soluong ?>">
+                                    <input type="submit" name="btnOrder" value="Đặt hàng">
+                                </form>
+                                <a href=""> <input type="button" value="Xoá"> </a>
+                            </td>
+                        </tr>
+                    <?php }
+                } else { ?>
+                    <tr>
+                        <td colspan="7" style="text-align:center;">Bạn chưa thêm sản phẩm nào!</td>
+                    </tr>
+                <?php } ?>
                 <tr>
                     <td colspan="5">Tổng tiền:</td>
-                    <td colspan="2"><input type="number" id="grandTotal" name="grandTotal" value="12000" readonly></td>
+                    <td colspan="2"><input type="number" id="grandTotal" name="grandTotal" value="<?php echo isset($totalAll) ? number_format($totalAll,0,",",".") : "0" ?>" readonly><u>đ</u></td>
                 </tr>
             </table>
             <div class="row mb10 ">
                 <input class="mr10" type="button" value="CHỌN TẤT CẢ">
                 <input class="mr10" type="button" value="BỎ CHỌN TẤT CẢ">
-                <a href="index.php?act=formthanhtoan"> <input class="mr10" type="button" value="ĐẶT HÀNG"></a>
+                <a href="index.php?act=formthanhtoan"> <input class="mr10" type="button" value="ĐẶT TẤT CẢ"></a>
             </div>
         </form>
     </div>

@@ -26,7 +26,6 @@
                     <p><input type="radio" name="pttt" id="" value="1" required> Thanh toán tiền mặt</p>
                     <p><input type="radio" name="pttt" id="" value="2" required> Thanh toán online</p>
                 </div>
-                
                 <input type="submit" value="Xác nhận đặt hàng" name="order_confirm">
             </form>
         </div>
@@ -37,23 +36,26 @@
                     <th>Sản phẩm</th>
                     <th>Thành tiền</th>
                 </tr>
+                <?php if(isset($selectSp)&&$selectSp!=""){
+                    extract($selectSp);
+                    $gia = $giaban - ($giamgia / 100);
+                        $total = $gia * $soluong;
+                        $totalAll += $total;
+                        $hinhanh = "public/image/" . $img;
+                        if (!is_file($hinhanh)) {
+                            $hinhanh = "";
+                        }?>
                 <tr>
                     <td>
-                        Iphone 14 pro max<br>
-                        <small>SL: 1</small>
+                        <?=$name?><br>
+                        <small><?=$soluong?></small>
                     </td>
-                    <td>15.000.000 ₫</td>
+                    <td><?=number_format($total,0,",",".")?><u>đ</u></td>
                 </tr>
-                <tr>
-                    <td>
-                        Iphone 14 pro max<br>
-                        <small>SL: 1</small>
-                    </td>
-                    <td>15.000.000 ₫</td>   
-                </tr>
+                <?php }?>
                 <tr>
                     <td><b>Tổng tiền:</b></td>
-                    <td style="color:red;"><b>30.000.000 ₫</b></td>
+                    <td style="color:red;"><b value="<?php echo isset($totalAll) ? $totalAll : "0" ?>"><u>đ</u></b></td>
                 </tr>
             </table>
         </div>

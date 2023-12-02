@@ -37,7 +37,7 @@
                                     <span>Chưa có hình ảnh</span>
                                 <?php } ?>
                             </div>
-                            <a href="index.php?act="> <input class="danhmuc_name" type="button" value="<?= $name ?>"></a>
+                            <a href="index.php?act=listsptrangchu&iddm=<?=$id?>"> <input class="danhmuc_name" type="button" value="<?= $name ?>"></a>
                         </div>
                     <?php }
                 } else { ?>

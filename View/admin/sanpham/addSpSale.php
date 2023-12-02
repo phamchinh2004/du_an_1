@@ -71,7 +71,8 @@
                                             <td>
                                                 <form action="index.php?act=addSpSaleDone" method="POST">
                                                 <input type="text" name="idsp" value="'.$id.'" hidden>
-                                                <input type="number" name="valueGiamgia" min="0">
+                                                <label>Nhập % giảm giá</label>
+                                                <input type="number" name="valueGiamgia" min="0" max="99">
                                                 <input type="submit" name="them" value="Thêm">
                                                 </form>
                                             </td>
