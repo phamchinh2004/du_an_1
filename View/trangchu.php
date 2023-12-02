@@ -74,7 +74,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="tg" href="">Trả góp 0%/0đ</div>
-                                <div class="sale" href=""><?= number_format($giaGiam) ?>đ</div>
+                                <div class="sale" href="">Giảm <?= number_format($giaGiam) ?>đ</div>
                             </div>
 
                             <div class="items_text">
