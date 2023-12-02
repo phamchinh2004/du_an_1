@@ -21,6 +21,18 @@ function loadSp($keyw = "", $iddm = 0)
     $run = pdo_query($sql, $params);
     return $run;
 }
+function loadAllSpUser( $iddm = 0){
+    $params = [];
+    $sql = "SELECT sp.*,img.link as hinhanh FROM `product` as sp
+    LEFT JOIN `image` as img ON img.id_product = sp.id 
+     WHERE sp.trangthai=1";
+    if ($iddm > 0) {
+        $sql .= " AND sp.id_dm =?";
+        $params[] = "" . $iddm . "";
+    }
+    $run = pdo_query($sql, $params);
+    return $run;
+}
 function loadAllSpBanChay()
 {
     $sql = "SELECT topPro.*,sp.*, COUNT(ctdh.id) as luotmua, COUNT(dg.id) as luotvote, img.link as hinhanh 
@@ -126,13 +138,13 @@ function listSpGG()
 {
     $sql = "SELECT topPro.*, sp.*, COUNT(ctdh.id) as luotmua, COUNT(dg.id) as luotvote, img.link as hinhanh 
     FROM `product_chay_nhat` as topPro 
-    LEFT JOIN `product`as sp ON sp.id=topPro.id_product
+    RIGHT JOIN `product`as sp ON sp.id=topPro.id_product
     LEFT JOIN `chi_tiet_don_hang` as ctdh ON ctdh.id_product = sp.id 
     LEFT JOIN `danh_gia` as dg ON dg.id_order_detail = ctdh.id 
     LEFT JOIN `image` as img ON img.id_product = sp.id 
+    WHERE sp.giamgia!=0
     GROUP BY sp.id
-    HAVING sp.giamgia != 0
-    ORDER BY sp.id ASC";
+    ORDER BY sp.id ASC;";
     $run = pdo_query($sql);
     return $run;
 }
@@ -186,4 +198,43 @@ function listaddSpTop($keyw = "", $iddm = 0)
     $sql .= " ORDER BY sp.id ASC";
     $run = pdo_query($sql, $params);
     return $run;
+}
+function listSpHome( $keyw= "", $iddm = 0){
+    $sql = "SELECT sp.*, img.link as hinhanh 
+    FROM `product` as sp
+    LEFT JOIN `image` as img ON img.id_product = sp.id
+    WHERE sp.trangthai=1";
+    $params = [];
+    if ($keyw != "") {
+        $sql .= " AND sp.name LIKE ?";
+        $params[] = "%" . $keyw . "%";
+    }
+    if ($iddm > 0) {
+        $sql .= " AND sp.id_dm =?";
+        $params[] = "" . $iddm . "";
+    }
+    $sql .= " GROUP BY sp.id";
+    $run = pdo_query($sql, $params);
+    return $run;
+}
+function listCart($id){
+    $sql = "SELECT cart.*,sp.*,image.link as hinhanh FROM `cart` 
+    RIGHT JOIN `product` as sp ON sp.id=cart.id_product
+    LEFT JOIN `image` ON image.id_product=sp.id
+    WHERE `id_user`=?";
+    $run=pdo_query($sql, [$id]);
+    return $run;
+}
+function selectSp($idsp,$soluong){
+    $check="SELECT `soluong` FROM `cart` WHERE `id_product`=? and `id_user`=?";
+    $runCheck=pdo_query_one($check,[$idsp,$_SESSION['iduser']]);
+    if ($runCheck==$soluong) {
+    $sql = "SELECT sp.*,cart.* FROM `cart`
+    LEFT JOIN `product` as sp ON cart.id_product=sp.id
+    WHERE  `id_product`=?";
+    $run=pdo_query_one($sql, [$idsp]);
+    return $run;
+    }else{
+        $_SESSION["errorSl"] = "Bạn cần cập nhật lại số lượng";
+    }
 }

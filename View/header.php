@@ -27,9 +27,11 @@ ob_start();
                             </div>
                         </a>
                         <div class="header_nav_search">
-                            <form class="header_nav_search_form" action="">
-                                <input class="header_nav_search_form_input" type="text" placeholder="Nhập từ khóa tìm kiếm ... ">
-                                <button class="header_nav_search_form_submit" type="submit">
+                            <form class="header_nav_search_form" action="index.php?act=listsptrangchu" method="POST">
+                                <input class="header_nav_search_form_input" name="keyw" type="text" placeholder="Nhập từ khóa tìm kiếm sản phẩm ... " value="<?php if (isset($keyw)) {
+                                                                                                                                                                    echo htmlspecialchars($keyw);
+                                                                                                                                                                } ?>">
+                                <button class="header_nav_search_form_submit" name="btnsubmit" type="submit">
                                     <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
                                 </button>
                             </form>
@@ -56,13 +58,13 @@ ob_start();
                                         </div>
                                         <p>Xin chào <?= $_SESSION['nameuser'] ?></p>
                                     </a>
+                                    <a class="header_nav_user_list_link" href="index.php?act=cart">
+                                        <div class="header_nav_user_list_link_logo">
+                                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                        </div>
+                                        <p>Giỏ hàng</p>
+                                    </a>
                                 <?php } ?>
-                                <a class="header_nav_user_list_link" href="index.php?act=cart">
-                                    <div class="header_nav_user_list_link_logo">
-                                        <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
-                                    </div>
-                                    <p>Giỏ hàng</p>
-                                </a>
                             </div>
                         </div>
                     </div>
