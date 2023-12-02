@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="add"><a href="#">Mua ngay</a></div>
-                            <div class="ctsp"> <a href="#">Chi tiết</a></div>
+                            <div class="ctsp"> <a href="index.php?act=cart">Add cart</a></div>
                         </div>
                     <?php }
                 } else { ?>
