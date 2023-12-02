@@ -78,14 +78,14 @@
                             </div>
 
                             <div class="items_text">
-                                <a class="item_name" href=""><?= $name ?></a>
+                                <a class="item_name" href="index.php?act=chitietsp"><?= $name ?></a>
                                 <div class="price">
                                     <p class="price-new"><?= number_format($giaNew,0,",",".") ?><u>đ</u></p>
                                     <p class="price-old"><del><?= number_format($giaban,0,",",".") ?><u>đ</u></del></p>
                                 </div>
                             </div>
                             <div class="add"><a href="#">Mua ngay</a></div>
-                            <div class="ctsp"> <a href="#">Chi tiết</a></div>
+                            <div class="ctsp"> <a href="index.php?act=chitietsp">Chi tiết</a></div>
                         </div>
                     <?php }
                 } else { ?>
@@ -122,7 +122,7 @@
                             </div>
 
                             <div class="items_text">
-                                <a class="item_name" href=""><?=$name?></a>
+                                <a class="item_name" href="index.php?act=chitietsp"><?=$name?></a>
                                 <div class="price">
                                     <p class="price-new"><?=number_format($giaban,0,",",".")?><u>đ</u></p>
                                     <p class="price-old"><del><?=number_format($giaban,0,",",".")?><u>đ</u></del></p>

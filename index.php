@@ -17,6 +17,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listdm = listDanhMuc();
             include "view/sanpham.php";
             break;
+            case 'chitietsp':
+                $listdm = listDanhMuc();
+                include "view/chitietSp.php";
+                break;
         case "cart":
             include "view/cart.php";
             break;

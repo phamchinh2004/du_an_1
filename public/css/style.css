@@ -1061,3 +1061,169 @@ body {
 .sub-order th:last-child {
     text-align: right;
 }
+
+/* done form thanh toán */
+
+/* chi tiết sản phẩm */
+.box-spct{
+    width: 100%;
+}
+.ctsp-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(164, 164, 164);
+    padding-bottom: 10px;
+}
+.ctsp-title{
+    font-size: 22px;
+    font-weight: bold;  
+}
+.ctsp-title-rate {
+    text-align: right;
+}
+
+.ctsp-title-rate i{
+    color: #F6FB06;
+}
+.ctsp-title-rate a{
+    text-decoration: none;
+    font-size: 14px;
+}
+.content-ctsp{
+    width: 100%;
+    display: flex;
+}
+.ctsp-left{
+    width: 30%;
+    margin-right: 30px;
+}
+.ctsp-img-top{
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 5px;
+    height: 350px;
+}
+.ctsp-slide-img{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+.ctsp-slide-img img{
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.ctsp-ttsale i{
+    color: #c20303;
+    padding-right: 5px;
+}
+.ctsp-right{
+    width: 70%;
+}
+.ctsp-right-price{
+    display: flex;
+}
+.ctsp-right-price .price-new{
+    font-size: 23px;
+    color: #c20303;
+    padding-right: 30px;
+    font-weight: bold;
+}
+.ctsp-right-price .price-old{
+    padding-top: 3px;
+    font-size: 16px;
+    color: #898888;
+}
+
+.ctsp-kythuat{
+    width: 50%;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 5px;
+}
+.ctsp-kythuat h3{
+    padding: 10px;
+    background-color: #e4e4e4;
+    border-bottom: 1px solid rgb(158, 158, 158)
+}
+.ctsp-kythuat table{
+    padding: 10px;
+}
+.ctsp-kythuat th{
+    text-align: left;
+    padding-bottom: 5px;
+}
+.ctsp-kythuat td{
+    text-align: left;
+    padding-left: 20px;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.ctsp-khuyenmai{
+    width: 100%;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 5px;
+}
+.ctsp-khuyenmai h3{
+    padding: 10px 0 0 10px;
+    background-color: #e4e4e4;
+}
+.ctsp-khuyenmai h5{
+    color: #989090;
+    padding: 5px 0 10px 10px;
+    background-color: #e4e4e4;
+    border-bottom: 1px solid rgb(158, 158, 158)
+}
+.ctsp-box-khuyenmai{
+    padding: 10px;
+}
+.ctsp-ttkm{
+    display: flex;
+    padding-bottom: 10px;
+}
+.ctsp-box-khuyenmai .ctsp-sttkm{
+    height: 25px;
+    padding: 3px 8px 5px 8px;
+    border-radius: 50%;
+    background-color: #037df6;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.ctsp-box-button{
+    width: 100%;
+    display: flex;
+}
+.ctsp-button-left{
+    margin-left: 25px;
+    height: 80px;
+    width: 60%;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px 5px 20px;
+    background-color: #C3080A;
+    color: #fff;
+    border-radius: 10px;
+    margin-right: 40px;
+}
+.ctsp-button-right{
+    height: 80px;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: #FF6138;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.ctsp-button-right i{
+    padding-top: 5px;
+    font-size: 25px;
+}
+.ctsp-button-left:hover{
+    background-color: #f73437;
+}
+.ctsp-button-right:hover{
+    background-color: #f98062;
+}
