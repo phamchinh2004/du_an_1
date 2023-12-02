@@ -11,6 +11,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "user":
             include "view/user/user.php";
             break;
+        case "cart":
+            include "view/user/cart.php";
+            break;
         case "doimk":
             include "view/user/doimk.php";
             break;

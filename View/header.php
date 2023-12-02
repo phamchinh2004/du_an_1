@@ -9,6 +9,7 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/cart.css">
     <script src="public/js/script.js"></script>
     <script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script>
 </head>
@@ -57,7 +58,7 @@ ob_start();
                                         <p>Xin chào <?= $_SESSION['nameuser'] ?></p>
                                     </a>
                                 <?php } ?>
-                                <a class="header_nav_user_list_link" href="">
+                                <a class="header_nav_user_list_link" href="index.php?act=cart">
                                     <div class="header_nav_user_list_link_logo">
                                         <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
                                     </div>
