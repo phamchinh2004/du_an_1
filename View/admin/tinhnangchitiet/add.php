@@ -2,7 +2,9 @@
     <div class="box_content">
         <?php
             if(isset($mess)){
-                echo "<span style='color:red;'>$mess</span>";
+                foreach($mess as $key => $value){
+                echo "<span style='color:red;'>$value</span>";
+                }
             }
         ?>
         <div class="box_content font_title">
@@ -10,6 +12,17 @@
         </div>
         <div class="box_content form_content">
             <form action="index.php?act=addtnctDone&idtn=<?=$tnParent['id']?>" method="POST">
+                    <div class="listok">
+                        <select name="iddm" id="">
+                            <option value="0" selected>Danh mục</option>
+                            <?php
+                            foreach ($loadAllDm as $value) {
+                                extract($value);
+                                echo '<option value="' . $id . '" ' . (($iddm == $id) ? 'selected' : '') . '>' . $name . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
                 <div class="box_content mb10">
                     <label>Tính năng</label> <br>
                     <input type="text" name="tentn" placeholder="Nhập vào giá trị" value="<?=$tnParent['name']?>" required readonly disabled>

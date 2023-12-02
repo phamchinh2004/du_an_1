@@ -97,24 +97,16 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             break;
         case 'updateSpDone':
             if (isset($_POST['update'])) {
+                $iddm = $_POST['iddm'];
                 $idsp = $_POST['idsp'];
                 $name = $_POST['tensp'];
                 $gianhap = $_POST['gianhap'];
                 $giaban = $_POST['giaban'];
                 $soluong = $_POST['soluong'];
                 $mota = $_POST['mota'];
-                updateSpDone($idsp, $name, $gianhap, $giaban, $soluong, $mota);
-                $thanhcong = "Cập nhật sản phẩm thành công";
-                if (isset($_POST['listok'])) {
-                    $keyw = $_POST['kyw'];
-                    $iddm = $_POST['iddm'];
-                } else {
-                    $keyw = "";
-                    $iddm = 0;
-                }
-                $loadAllDm = listDanhMuc();
-                $listSp = loadSp($keyw, $iddm);
-                include "sanpham/list.php";
+                updateSpDone($idsp, $name, $gianhap, $giaban, $soluong, $mota, $iddm);
+                $_SESSION['addSucc'] = "Cập nhật sản phẩm thành công";
+                header("location: index.php?act=listsp");
             }
             break;
         case 'addImgSp':
@@ -179,17 +171,26 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "sanpham/spBanChay.php";
             break;
         case 'addTopSp':
+            if (isset($_POST['listok'])) {
+                $keyw = $_POST['kyw'];
+                $iddm = $_POST['iddm'];
+            } else {
+                $keyw = "";
+                $iddm = 0;
+            }
+            $loadAllDm = listDanhMuc();
+            $listAddSpTop = listaddSpTop($keyw, $iddm);
             include "sanpham/addTopSp.php";
             break;
         case 'addSpTopDone':
-            if (isset($_POST['themmoi'])) {
-                $idsp = $_POST['idsp'];
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET['idsp'];
                 $mess = addSpTop($idsp);
                 if (!empty($mess)) {
                     include "sanpham/addTopSp.php";
                 } else {
-                    $thanhcong = "Thêm sản phẩm bán chạy thành công!";
-                    include "sanpham/addTopSp.php";
+                    $_SESSION['thanhcong'] = "Thêm sản phẩm bán chạy thành công!";
+                    header("location: index.php?act=addTopSp");
                 }
             }
             break;
@@ -197,8 +198,46 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET['idsp'];
                 DeleteTopSp($idsp);
-                $deleteSucc = "Xóa sản phẩm thành công";
+                $listSp = loadAllSpBanChay();
+                $_SESSION['deleteSucc'] = "Xóa sản phẩm thành công";
                 include "sanpham/spBanChay.php";
+            }
+            break;
+        case 'salesp':
+            $listSpgg = listSpGG();
+            include "sanpham/spSale.php";
+            break;
+        case 'addSpgg':
+            if (isset($_POST['listok'])) {
+                $keyw = $_POST['kyw'];
+                $iddm = $_POST['iddm'];
+            } else {
+                $keyw = "";
+                $iddm = 0;
+            }
+            $loadAllDm = listDanhMuc();
+            $listAddSpGG = listaddSpGG($keyw, $iddm);
+            include "sanpham/addSpSale.php";
+            break;
+        case 'addSpSaleDone':
+            if (isset($_POST['them']) && ($_POST['valueGiamgia'] != "")) {
+                $idsp = $_POST['idsp'];
+                $valueGiamgia = $_POST['valueGiamgia'];
+                addSpSaleDone($idsp, $valueGiamgia);
+                $tb = 'Thêm giảm giá sản phẩm thành công!';
+                header('location: index.php?act=addSpgg&addSuc=' . $tb);
+            } else {
+                $tb = 'Thêm giảm giá sản phẩm không thành công, bạn cần bảo đảm đã nhập giá trị giảm giá!';
+                header('location: index.php?act=addSpgg&addFail=' . $tb);
+            }
+            break;
+        case 'DeleteSpSale':
+            if (isset($_GET['idsp'])) {
+                $idsp = $_GET['idsp'];
+                DeleteSaleSp($idsp);
+                $_SESSION['deleteSucc'] = "Xóa giảm giá thành công";
+                $listSpgg = listSpGG();
+                include "sanpham/spSale.php";
             }
             break;
         case 'listdm':
@@ -320,21 +359,24 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             break;
         case 'addtnct':
             if (isset($_GET['idtn']) && ($_GET['idtn'] != "")) {
+                $loadAllDm = listDanhMuc();
                 $tnParent = oldNameTn($_GET['idtn']);
                 include "tinhnangchitiet/add.php";
             }
             break;
         case 'addtnctDone':
             if (isset($_POST['themmoi']) && ($_GET['idtn'] != "")) {
+                $iddm = $_POST['iddm'];
                 $idtn = $_GET['idtn'];
                 $nameValue = $_POST['tenvalue'];
-                $mess = addTnCt($idtn, $nameValue);
+                $mess = addTnCt($idtn, $nameValue, $iddm);
                 if (empty($mess)) {
                     $thanhcong = "Thêm mới giá trị thành công";
                     $tnParent = oldNameTn($_GET['idtn']);
                     $listTnct = listTnct($_GET['idtn']);
                     include "tinhnangchitiet/list.php";
                 } else {
+                    $loadAllDm = listDanhMuc();
                     $tnParent = oldNameTn($_GET['idtn']);
                     include "tinhnangchitiet/add.php";
                 }
@@ -343,6 +385,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             //Lấy dữ liệu hiển thị + chuyển hướng trang
         case 'suatnct':
             if (isset($_GET['idtnct']) && ($_GET['idtnct'] != "")) {
+                $loadAllDm = listDanhMuc();
                 $tnParent = oldNameTn($_GET['idtn']);
                 $idTnct = $_GET['idtnct'];
                 $tenTnctOld = oldNameTnct($idTnct);
@@ -351,16 +394,18 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             break;
         case 'updateTnctDone':
             if (isset($_POST['sua'])) {
+                $iddm = $_POST['iddm'];
                 $idtnct = $_GET['idtnct'];
                 $idtn = $_GET['idtn'];
                 $value = $_POST['tenvalue'];
-                $mess = updateTnct($idtnct, $value);
+                $mess = updateTnct($idtnct, $value, $iddm);
                 if (empty($mess)) {
                     $thanhcong = "Sửa thành công";
                     $tnParent = oldNameTn($idtn);
                     $listTnct = listTnct($idtn);
                     include "tinhnangchitiet/list.php";
                 } else {
+                    $loadAllDm = listDanhMuc();
                     $tnParent = oldNameTn($idtn);
                     $tenTnctOld = oldNameTnct($idtnct);
                     include "tinhnangchitiet/update.php";
@@ -406,8 +451,8 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                     } else {
                         include "taikhoan/add.php";
                     }
-                }else{
-                    $_SESSION['imgFail']=$ImgFail;
+                } else {
+                    $_SESSION['imgFail'] = $ImgFail;
                     include "taikhoan/add.php";
                 }
             }
@@ -423,7 +468,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $idtk = $_POST['idtk'];
                 $name = $_POST['name'];
                 $username = $_POST['username'];
-                $usernameOld=$_POST['usernameOld'];
+                $usernameOld = $_POST['usernameOld'];
                 $password = $_POST['password'];
                 $oldAvatar = $_POST['oldAvatar'];
                 $avatarNew = $_FILES['avatarNew']['name'];
@@ -467,16 +512,16 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             }
             break;
         case 'banTk':
-            if(isset($_GET['idtk']) && $_GET['idtk']!=""){
+            if (isset($_GET['idtk']) && $_GET['idtk'] != "") {
                 banTk($_GET['idtk']);
-                $_SESSION['banSucc']="Hạn chế tài khoản thành công";
+                $_SESSION['banSucc'] = "Hạn chế tài khoản thành công";
                 header("location: index.php?act=listtk");
             }
             break;
         case 'xoaTk':
-            if(isset($_GET['idtk']) && $_GET['idtk']!=""){
+            if (isset($_GET['idtk']) && $_GET['idtk'] != "") {
                 xoaTk($_GET['idtk']);
-                $_SESSION['xoaSucc']="Xóa tài khoản thành công";
+                $_SESSION['xoaSucc'] = "Xóa tài khoản thành công";
                 header("location: index.php?act=listtk");
             }
             break;

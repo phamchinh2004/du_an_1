@@ -9,8 +9,10 @@
                 <?php
                 if (isset($thanhcong)) {
                     echo "<span style='color:green;'>$thanhcong</span>";
-                }else if (isset($deleteHard)) {
-                    echo "<span style='color:green;'>$deleteHard</span>";
+                }else if (isset($_SESSION['deleteSucc'])) {
+                    echo "<span style='color:green;'>".$_SESSION['deleteSucc']."</span>";
+                    unset($_SESSION["deleteSucc"]);
+                    header("index.php?act=topsp");
                 }
                 ?>
                 <div class="box_content form_loai ">
@@ -53,7 +55,7 @@
                                             <td>' . $luotmua . '</td>
                                             <td>' . $luotvote . '</td>
                                             <td>
-                                                <a href="'.$DeleteSpTop.'"> <input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng?\')"> </a>
+                                                <a href="'.$DeleteSpTop.'"> <input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa?\')"> </a>
                                             </td>
                                         </tr>';
                             }

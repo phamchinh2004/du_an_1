@@ -1,13 +1,13 @@
-<div class="content_cart">
-    <div class="box_content_cart">
-        <div class="box_content_cart font_title_cart">
-            <h1>Giỏ hàng</h1>
+<div class="content">
+    <div class="box_content">
+        <div class="box_content font_title">
+            <h1>Thêm sản phẩm giảm giá</h1>
         </div>
-        <div class="box_content_cart form_content_cart ">
-            <form action="#" method="POST">
-                <form action="index.php?act=listsp" method="POST">
-                    <div class="listok_cart">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw">
+        <div class="box_content form_content ">
+            <form action="" method="POST">
+                <form action="index.php?act=addSpgg" method="POST">
+                    <div class="listok">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw" value="<?php echo htmlspecialchars($keyw); ?>">
                         <select name="iddm" id="">
                             <option value="0" selected>Danh mục</option>
                             <?php
@@ -21,29 +21,30 @@
                     </div>
                 </form>
                 <?php
-                if (isset($thanhcong)) {
-                    echo "<span style='color:green;'>$thanhcong</span>";
-                } else if (isset($deleteSoft)) {
-                    echo "<span style='color:green;'>$deleteSoft</span>";
-                } else if (isset($deleteHard)) {
-                    echo "<span style='color:green;'>$deleteHard</span>";
+                if (isset($_GET['addSuc']) && $_GET['addSuc'] != '') {
+                    echo '<span style="color:green;">' . $_GET['addSuc'] . '</span>';
+                    $_GET['addSuc'] = "";
+                } else if ((isset($_GET['addFail']) && $_GET['addFail'] != '')) {
+                    echo '<span style="color:red;">' . $_GET['addFail'] . '</span>';
+                    $_GET['addFail'] = "";
                 }
                 ?>
-                <div class="box_content_cart form_loai_cart ">
+                <div class="box_content form_loai ">
                     <table>
                         <tr>
                             <th>ID</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
-                            <th>Giá</th>
+                            <th>Giá nhập</th>
+                            <th>Giá bán</th>
                             <th>Số lượng</th>
                             <th>Lượt xem</th>
                             <th>Lượt mua</th>
                             <th>Lượt đánh giá</th>
                             <th>Thao tác</th>
                         </tr>
-                        <?php if (!empty($listSpCart)) {
-                            foreach ($listSpCart as $value) {
+                        <?php if (!empty($listAddSpGG)) {
+                            foreach ($listAddSpGG as $value) {
                                 extract($value);
                                 $hinhpath = "../../public/image/" . $hinhanh;
                                 if (is_file($hinhpath)) {
@@ -56,9 +57,9 @@
                                 } else if ($luotvote == "") {
                                     $luotvote = "Chưa có lượt đánh giá nào";
                                 }
-                                $DeleteSpCart = "index.php?act=hardDeleteSp&idsp=" . $id;
+                                $addSpSaleDone = "index.php?act=addSpSaleDone";
                                 echo    '<tr>
-                                            <td><input type="checkbox" value="' . $id . '"></td>
+                                            <td>' . $id . '</td>
                                             <td>' . $name . '</td>
                                             <td>' . $hinhpath . '</td>
                                             <td>' . $gianhap . '</td>
@@ -68,31 +69,28 @@
                                             <td>' . $luotmua . '</td>
                                             <td>' . $luotvote . '</td>
                                             <td>
-                                                <a href="' . $DeleteSpCart . '"> <input type="button" value="Xóa cứng" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm khỏi giỏ hàng của bạn!\')"> </a>
+                                                <form action="index.php?act=addSpSaleDone" method="POST">
+                                                <input type="text" name="idsp" value="'.$id.'" hidden>
+                                                <input type="number" name="valueGiamgia" min="0">
+                                                <input type="submit" name="them" value="Thêm">
+                                                </form>
                                             </td>
                                         </tr>';
                             }
                         } else {
                             echo "<tr >
-                            <td><input type='checkbox'></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type='number'></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a href=''> <input type='button' value='Xóa cứng' onclick='return confirm(\"Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm khỏi giỏ hàng của bạn!\")'> </a>
-                            </td>
-                            <td>Không tìm thấy sản phẩm nào</td>
+                                    <td colspan='10'>Không tìm thấy sản phẩm nào</td>
                                 </tr>";
                         } ?>
                     </table>
+                    <a href="index.php?act=salesp"><input class="mr20" type="button" value="DANH SÁCH"></a>
                 </div>
             </form>
         </div>
     </div>
 
 </div>
+</div>
+</body>
+
+</html>

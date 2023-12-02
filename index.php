@@ -1,10 +1,22 @@
 <?php
 include "model/pdo.php";
 include "model/taikhoan.php";
+include "model/danhmuc.php";
+include "model/sanpham.php";
 include "view/header.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
+        case 'trangchu':
+            $listdm = listDanhMuc();
+            $listSpgg=listSpGG();
+            $listSp = loadAllSpBanChay();
+            include 'view/trangchu.php';
+            break;
+        case 'listsp':
+            $listdm = listDanhMuc();
+            include "view/sanpham.php";
+            break;
         case "cart":
             include "view/cart.php";
             break;
@@ -13,9 +25,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case "user":
             include "view/user/user.php";
-            break;
-        case "cart":
-            include "view/user/cart.php";
             break;
         case "doimk":
             include "view/user/doimk.php";
@@ -78,11 +87,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             dangxuat();
             break;
         default:
-            include "view/trangchu.php";
+            header("Location: index.php?act=trangchu");
             break;
     }
 } else {
-    include "view/trangchu.php";
+    header("Location: index.php?act=trangchu");
 }
 if (isset($_GET['act'])) {
     if (($_GET['act'] != "login") || ($_GET['act'] == "") || ($_GET['act'] != "sendLogin")) {

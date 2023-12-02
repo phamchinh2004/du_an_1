@@ -82,6 +82,10 @@
                                 $suaTk = "index.php?act=suaTk&idtk=" . $id;
                                 $Ban="index.php?act=banTk&idtk=" . $id;
                                 $hardDeleteTk="index.php?act=xoaTk&idtk=" . $id;
+                                $confirmBan="Bạn có chắc chắn muốn hạn chế tài khoản này? Điều này 
+                                sẽ đặt trạng thái của trạng thái của tài khoản thành 2 và ở những 
+                                tài khoản có trạng thái bằng 2 thì sẽ không thể đăng nhập được!";
+                                $confirmUnBan="Bạn có chắc chắn muốn unban tài khoản này không?";
                                 echo    '<tr>
                                             <td hidden>' . $id . '</td>
                                             <td>' . $name . '</td>
@@ -95,9 +99,13 @@
                                             <td>' . $createAt . '</td>
                                             <td>' . $updateAt . '</td>
                                             <td>
-                                                <a href="' . $suaTk . '"> <input type="button" value="Sửa"> </a> 
-                                                <a href="'.$Ban.'"> <input type="button" value="Ban" onclick="return confirm(\'Bạn có chắc chắn muốn hạn chế tài khoản này? Điều này sẽ đặt trạng thái của trạng thái của tài khoản thành 2 và ở những tài khoản có trạng thái bằng 2 thì sẽ không thể đăng nhập được!\')"> </a>
-                                                <a href="'.$hardDeleteTk.'"> <input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm!\')"> </a>
+                                                <a href="' . $suaTk . '"> <input type="button" value="Sửa"> </a> ';
+                                                if($trangthai==1){
+                                                    echo '<a href="'.$Ban.'"> <input type="button" value="Ban" onclick="return confirm(\''.$confirmBan.'\')"> </a>';
+                                                }else{
+                                                    echo '<a href="'.$Ban.'"> <input type="button" value="Hủy Ban" onclick="return confirm(\''.$confirmUnBan.'\')"> </a>';
+                                                }
+                                                echo '<a href="'.$hardDeleteTk.'"> <input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm!\')"> </a>
                                             </td>
                                         </tr>';
                             }

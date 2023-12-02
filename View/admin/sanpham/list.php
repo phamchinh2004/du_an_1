@@ -8,7 +8,7 @@
             <form action="#" method="POST">
                 <form action="index.php?act=listsp" method="POST">
                     <div class="listok">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw" value="<?php echo htmlspecialchars($keyw); ?>">
                         <select name="iddm" id="">
                             <option value="0" selected>Danh mục</option>
                             <?php
@@ -22,8 +22,9 @@
                     </div>
                 </form>
                 <?php
-                if (isset($thanhcong)) {
-                    echo "<span style='color:green;'>$thanhcong</span>";
+                if (isset($_SESSION['addSucc'])) {
+                    echo '<span style="color:green;">' . $_SESSION['addSucc'] . '</span>';
+                    unset($_SESSION['addSucc']);
                 }else if (isset($deleteSoft)) {
                     echo "<span style='color:green;'>$deleteSoft</span>";
                 }else if (isset($deleteHard)) {

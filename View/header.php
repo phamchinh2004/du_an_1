@@ -9,7 +9,6 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/cart.css">
     <script src="public/js/script.js"></script>
     <script src="https://kit.fontawesome.com/4392bd821c.js" crossorigin="anonymous"></script>
 </head>

@@ -262,7 +262,7 @@ function dangnhap($username, $password)
     return $error;
 }
 function banTk($idtk){
-    $sql="UPDATE `user` SET `trangthai`=2 WHERE `id`=?";
+    $sql="UPDATE `user` SET `trangthai` = CASE WHEN `trangthai` = 1 THEN 2 ELSE 1 END WHERE `id` = ?";
     pdo_execute($sql,[$idtk]);
 }
 function xoaTk($idtk){

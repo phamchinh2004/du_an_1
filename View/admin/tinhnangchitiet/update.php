@@ -2,8 +2,10 @@
     <div class="box_content">
         <!-- Hiển thị thông báo lỗi nếu sửa tên tính năng chi tiết mới trùng với tên tính năng chi tiết đã có trên hệ thống -->
         <?php
-        if (isset($mess)) {
-            echo "<span style='color:red;'>$mess</span>";
+        if(isset($mess)){
+            foreach($mess as $key => $value){
+            echo "<span style='color:red;'>$value</span><br>";
+            }
         }
         ?>
         <div class="box_content font_title">
@@ -11,6 +13,17 @@
         </div>
         <div class="box_content form_content">
             <form action="index.php?act=updateTnctDone&idtnct=<?= $tenTnctOld['id'] ?>&idtn=<?=$tnParent['id']?>" method="POST"><!--Lấy id tnct sang bên index để hệ thống biết là sửa tính năng nào-->
+                <div class="listok">
+                    <select name="iddm" id="">
+                        <option value="0" selected>Danh mục</option>
+                        <?php
+                        foreach ($loadAllDm as $value) {
+                            extract($value);
+                            echo '<option value="' . $id . '" ' . (($tenTnctOld['iddm'] == $id) ? 'selected' : '') . '>' . $name . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
                 <div class="box_content mb10">
                     <label>Tính năng</label> <br>
                     <input type="text" name="idtn" value="<?= $tnParent['name'] ?>" required readonly disabled>

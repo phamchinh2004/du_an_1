@@ -56,42 +56,47 @@ function updateTn($id, $name)
 }
 function listTnct($idtn)
 {
-    $sql = "SELECT * FROM `tinh_nang_chi_tiet` WHERE `id_tinh_nang`='$idtn'";
-    $tnct = pdo_query($sql);
+    $sql = "SELECT *,dm.name as nameDm FROM tinh_nang_chi_tiet as tnct
+    LEFT JOIN danhmuc as dm ON dm.id=tnct.iddm
+    WHERE tnct.id_tinh_nang=?";
+    $tnct = pdo_query($sql, [$idtn]);
     return $tnct;
 }
 
-function addTnCt($idtn, $value)
+function addTnCt($idtn, $value, $iddm)
 {
-    //Kiểm tra giá trị nhập vào đã tồn tại trong db chưa, nếu chưa tồn tại->thực hiện thêm mới giá trị ngược lại hiển thị thông báo lỗi
-    $check = "SELECT `value` FROM `tinh_nang_chi_tiet` WHERE `value`='$value'";
-    $kiemtra = pdo_query_one($check);
-    if (empty($kiemtra)) {
-        $sql = "INSERT INTO `tinh_nang_chi_tiet`(`id_tinh_nang`,`value`) VALUES ('$idtn','$value')";
-        pdo_execute($sql);
-    } else {
-        $error = "Giá trị này đã tồn tại!";
+    $error = [];
+    if (empty($iddm)) {
+        $error[] = "Cần chọn danh mục";
     }
-    if (isset($error)) {
+    //Kiểm tra giá trị nhập vào đã tồn tại trong db chưa, nếu chưa tồn tại->thực hiện thêm mới giá trị ngược lại hiển thị thông báo lỗi
+    $check = "SELECT `value` FROM `tinh_nang_chi_tiet` WHERE `value`=? and `iddm`=?";
+    $kiemtra = pdo_query_one($check, [$value, $iddm]);
+    if (empty($kiemtra)) {
+        $sql = "INSERT INTO `tinh_nang_chi_tiet`(`id_tinh_nang`,`value`,`iddm`) VALUES (?,?,?)";
+        pdo_execute($sql, [$idtn, $value, $iddm]);
+    } else {
+        $error[] = "Giá trị này đã tồn tại";
+    }
+    if (!empty($error)) {
         return $error;
     }
 }
 function oldNameTnct($id)
 {
-    $sql = "SELECT * FROM `tinh_nang_chi_tiet` WHERE `id`='$id'";
-    $run = pdo_query_one($sql);
+    $sql = "SELECT * FROM `tinh_nang_chi_tiet` WHERE `id`=?";
+    $run = pdo_query_one($sql, [$id]);
     return $run;
 }
-function updateTnct($id, $value)
+function updateTnct($id, $value, $iddm)
 {
-    $check = "SELECT `value` FROM `tinh_nang_chi_tiet` WHERE `value`='$value'";
-    $kiemtra = pdo_query_one($check);
-    if (empty($kiemtra)) {
-        $sql = "UPDATE `tinh_nang_chi_tiet` SET `value`='$value' WHERE `id`='$id'";
-        pdo_execute($sql);
-    } else {
-        $error = "Giá trị này đã tồn tại!";
+    $error = [];
+    if (empty($iddm)) {
+        $error[] = "Cần chọn danh mục";
     }
+    $sql = "UPDATE `tinh_nang_chi_tiet` SET `value`='$value' WHERE `id`='$id'";
+    pdo_execute($sql);
+
     if (isset($error)) {
         return $error;
     }

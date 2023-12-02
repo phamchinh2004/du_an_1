@@ -18,17 +18,24 @@
                         <tr>
                             <th>ID</th>
                             <th>Giá trị</th>
+                            <th>Danh mục</th>
                             <th></th>
                         </tr>
-                        <?php foreach ($listTnct as $values) {
+                        <?php if(isset($listTnct)&& $listTnct!=""){
+                            foreach ($listTnct as $values) {
                             extract($values);
                             echo '<tr>
                             <td>' . $id . '</td>
                             <td>' . $value . '</td>
+                            <td>' . $nameDm . '</td>
                             <td>
                                 <a href="index.php?act=suatnct&idtnct='.$id.' &idtn='.$tnParent['id'].'"> <input type="button" value="Sửa"> </a> 
                             </td>
                         </tr>';
+                        }}else{
+                            echo "<tr>
+                                <td colspan='4'>Chưa có giá trị nào</td>
+                            </tr>";
                         } ?>
                     </table>
                     <br>
