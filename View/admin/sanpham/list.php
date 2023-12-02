@@ -14,7 +14,7 @@
                             <?php
                             foreach ($loadAllDm as $value) {
                                 extract($value);
-                                echo '<option value="' . $id . '" ' . (($iddm == $id) ? 'selected' : '') . '>' . $name . '</option>';
+                                echo '<option value="' . $id . '" ' . (($id_dm == $id) ? 'selected' : '') . '>' . $name . '</option>';
                             }
                             ?>
                         </select>

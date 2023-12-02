@@ -37,7 +37,7 @@
                                     <span>Chưa có hình ảnh</span>
                                 <?php } ?>
                             </div>
-                            <a href="index.php?"> <input class="danhmuc_name" type="button" value="<?= $name ?>"></a>
+                            <a href="index.php?act="> <input class="danhmuc_name" type="button" value="<?= $name ?>"></a>
                         </div>
                     <?php }
                 } else { ?>
@@ -73,15 +73,15 @@
                                         <span>Chưa có hình ảnh</span>
                                     <?php } ?>
                                 </div>
-                                <div class="tg" href="">Trả góp 0%/0đ</div>
-                                <div class="sale" href=""><?= number_format($giaGiam) ?>đ</div>
+                                <div class="tg" href="">Trả góp 0%/0<u>đ</u></div>
+                                <div class="sale" href="">Giảm <?= number_format($giaGiam,0,",",".") ?><u>đ</u></div>
                             </div>
 
                             <div class="items_text">
                                 <a class="item_name" href=""><?= $name ?></a>
                                 <div class="price">
-                                    <p class="price-new"><?= number_format($giaNew) ?>đ</p>
-                                    <p class="price-old"><del><?= number_format($giaban) ?>đ</del></p>
+                                    <p class="price-new"><?= number_format($giaNew,0,",",".") ?><u>đ</u></p>
+                                    <p class="price-old"><del><?= number_format($giaban,0,",",".") ?><u>đ</u></del></p>
                                 </div>
                             </div>
                             <div class="add"><a href="#">Mua ngay</a></div>
@@ -117,15 +117,15 @@
                                         <span>Chưa có hình ảnh</span>
                                     <?php } ?>
                                 </div>
-                                <div class="tg" href="">Trả góp 0%/0đ</div>
-                                <div class="sale" href="">Giảm 0đ</div>
+                                <div class="tg" href="">Trả góp 0%/0<u>đ</u></div>
+                                <div class="sale" href="">Giảm 0<u> đ</u></div>
                             </div>
 
                             <div class="items_text">
                                 <a class="item_name" href=""><?=$name?></a>
                                 <div class="price">
-                                    <p class="price-new"><?=number_format($giaban)?>đ</p>
-                                    <p class="price-old"><del><?=number_format($giaban)?>đ</del></p>
+                                    <p class="price-new"><?=number_format($giaban,0,",",".")?><u>đ</u></p>
+                                    <p class="price-old"><del><?=number_format($giaban,0,",",".")?><u>đ</u></del></p>
                                 </div>
                             </div>
                             <div class="add"><a href="#">Mua ngay</a></div>

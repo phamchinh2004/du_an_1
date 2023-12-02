@@ -4,7 +4,7 @@
             <h1>Thêm sản phẩm giảm giá</h1>
         </div>
         <div class="box_content form_content ">
-            <form action="" method="POST">
+            <form action="#" method="POST">
                 <form action="index.php?act=addSpgg" method="POST">
                     <div class="listok">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="kyw" value="<?php echo htmlspecialchars($keyw); ?>">

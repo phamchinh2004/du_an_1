@@ -124,18 +124,19 @@ function hardDeleteSp($idsp)
 
 function listSpGG()
 {
-    $sql = "SELECT topPro.*,sp.*, COUNT(ctdh.id) as luotmua, COUNT(dg.id) as luotvote, img.link as hinhanh 
+    $sql = "SELECT topPro.*, sp.*, COUNT(ctdh.id) as luotmua, COUNT(dg.id) as luotvote, img.link as hinhanh 
     FROM `product_chay_nhat` as topPro 
     LEFT JOIN `product`as sp ON sp.id=topPro.id_product
     LEFT JOIN `chi_tiet_don_hang` as ctdh ON ctdh.id_product = sp.id 
     LEFT JOIN `danh_gia` as dg ON dg.id_order_detail = ctdh.id 
     LEFT JOIN `image` as img ON img.id_product = sp.id 
-    WHERE sp.giamgia!=0
     GROUP BY sp.id
+    HAVING sp.giamgia != 0
     ORDER BY sp.id ASC";
     $run = pdo_query($sql);
     return $run;
 }
+
 function listaddSpGG($keyw = "", $iddm = 0)
 {
     $sql = "SELECT sp.*, COUNT(ctdh.id) as luotmua, COUNT(dg.id) as luotvote, img.link as hinhanh 

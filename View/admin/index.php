@@ -220,7 +220,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "sanpham/addSpSale.php";
             break;
         case 'addSpSaleDone':
-            if (isset($_POST['them']) && ($_POST['valueGiamgia'] != "")) {
+            if (isset($_POST['them']) && ($_POST['valueGiamgia'] >0) && ($_POST['valueGiamgia'] !="")) {
                 $idsp = $_POST['idsp'];
                 $valueGiamgia = $_POST['valueGiamgia'];
                 addSpSaleDone($idsp, $valueGiamgia);
