@@ -297,7 +297,7 @@ body {
 /* danhmuc */
 .danhmuc {
     width: 100%;
-    margin: 20px auto 0px auto;
+    margin: 20px auto 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
@@ -373,7 +373,7 @@ body {
     border: 1px solid #EEEE;
     border-radius: 5px;
     text-align: center;
-    height: 345px;
+    height: 365px;
     position: relative;
     overflow: hidden;
 
@@ -431,13 +431,14 @@ body {
 .items_text {
     width: 100%;
     text-align: left;
+    padding-left: 10px;
 }
 
 .items_text .item_name {
     margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
-    padding-left: 10px;
+    
 }
 
 .price {
