@@ -12,9 +12,19 @@
         <i class="fa-solid fa-cart-arrow-down"></i>
         <h3 class="mb">Giỏ hàng</h3>
     </div>
-
+    <?php 
+        if (isset($_GET['mess']) && $_GET['mess'] != "") {
+            echo "<script>
+                function mess(id){
+                    alert(id);
+                }      
+                </script>";
+            echo "<script>mess(" . json_encode($_GET['mess']) . ");</script>";
+        }
+        
+    ?>
     <div class="user-content formds_loai form_content">
-        <form action="" style="width:100%;" method="POST">
+        <div>
             <table class="mb box-cart">
                 <tr>
                     <th>STT</th>
@@ -26,17 +36,18 @@
                     <th>Thao tác</th>
                 </tr>
                 <?php if (!empty($listSpCart)) {
+                    $totalAll=0;
                     foreach ($listSpCart as $key => $value) {
                         extract($value);
-                        $gia = $giaban - ($giamgia / 100);
-                        $total = $gia * $soluong;
-                        $totalAll += $total;
-                        $hinhanh = "public/image/" . $img;
+                        $gia = $giaban - ($giaban *($giamgia / 100));
+                        $total = $gia * $cart_soluong;
+                        $totalAll+= $total;
+                        $hinhanh = "public/image/" . $hinhanh;
                         if (!is_file($hinhanh)) {
                             $hinhanh = "";
                         } ?>
                         <tr>
-                            <td></td>
+                            <td><?=$key+1?></td>
                             <td><?= $name ?></td>
                             <td><?php if ($hinhanh != "") { ?>
                                     <img src="<?= $hinhanh ?>" alt="">
@@ -44,41 +55,41 @@
                                     <img src="" alt="<?= $hinhanh ?>">
                                 <?php } ?>
                             </td>
-                            <td><input type="number" id="price1" name="price1" value="<?= $giaban ?>" readonly></td>
+                            <td><input class="total_tien" type="text" id="price1" name="price1" value="<?= number_format($gia,0,",",".") ?> đ" readonly></td>
                             <td>
                                 <form action="index.php?act=updateQuantity" method="POST">
-                                    <input type="text" hidden name="product_id" value="<?= $id ?>">
-                                    <input type="number" id="quantity1" name="soluong" value="<?= $soluong ?>" min="1">
-                                    <input type="submit" name="btnSoluong" value="Cập nhật số lượng">
+                                    <input type="text" hidden name="idsp" value="<?= $id ?>">
+                                    <input type="number" id="quantity1" name="soluong" value="<?= $cart_soluong ?>" min="1">
+                                    <input type="submit" style="margin-left: 10px;" name="btnSoluong" value="Cập nhật">
                                 </form>
                             </td>
-                            <td><input type="number" id="total1" name="total1" value="<?= $total ?>" readonly></td>
+                            <td><input class="total_tien" type="text"  style="z-index: 100;" name="total1" value="<?= number_format($total,0,",",".") ?> đ" readonly></td>
                             <td>
-                                <form action="index.php?act=formthanhtoan" method="POST">
-                                    <!-- ... (các trường thông tin sản phẩm) ... -->
-                                    <input type="text" hidden name="product_id" value="<?= $id ?>">
-                                    <input type="text" hidden name="quantity" value="<?= $soluong ?>">
-                                    <input type="submit" name="btnOrder" value="Đặt hàng">
-                                </form>
+                                <a href="index.php?act=formthanhtoan&idsp=<?=$id?>"><input style="margin-bottom:10px; background-color:;" type="button" value="Đặt hàng"> </a>
                                 <a href=""> <input type="button" value="Xoá"> </a>
                             </td>
                         </tr>
                     <?php }
                 } else { ?>
                     <tr>
+                        
                         <td colspan="7" style="text-align:center;">Bạn chưa thêm sản phẩm nào!</td>
                     </tr>
+                    <tr>
+                        <td colspan="7" class="addCart" style="text-align:center;"><a href="index.php?act=trangchu">Thêm ngay?!</a></td>
+                    </tr>
                 <?php } ?>
-                <tr>
-                    <td colspan="5">Tổng tiền:</td>
-                    <td colspan="2"><input type="number" id="grandTotal" name="grandTotal" value="<?php echo isset($totalAll) ? number_format($totalAll,0,",",".") : "0" ?>" readonly><u>đ</u></td>
+                <tr><td>&nbsp;</td>
+                    <td colspan="4" class="tongTienText">Tổng tiền:</td>
+                    <td colspan="1"><input class="total_tien indam_total" type="text" id="grandTotal" name="grandTotal" value="<?php echo isset($totalAll) ? number_format($totalAll,0,",",".") : "0" ?> đ" readonly></td>
+                    <td>&nbsp;</td>
                 </tr>
             </table>
             <div class="row mb10 ">
                 <input class="mr10" type="button" value="CHỌN TẤT CẢ">
                 <input class="mr10" type="button" value="BỎ CHỌN TẤT CẢ">
-                <a href="index.php?act=formthanhtoan"> <input class="mr10" type="button" value="ĐẶT TẤT CẢ"></a>
+                <a href="index.php?act=formthanhtoan"> <input class="mr10" type="button" value="MUA TẤT CẢ"></a>
             </div>
-        </form>
+        </div>
     </div>
 </div>

@@ -29,10 +29,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listdm = listDanhMuc();
             include "view/sptrangchu.php";
             break;
-            case 'chitietsp':
-                $listdm = listDanhMuc();
-                include "view/chitietSp.php";
-                break;
+        case 'chitietsp':
+            if (isset($_SESSION['iduser'])) {
+                if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                    $idsp = $_GET['idsp'];
+                    $sanphamDetail = spDetail($idsp);
+                    include "view/chitietSp.php";
+                } else {
+                    header("location: index.php?act=trangchu");
+                }
+            } else {
+                $needLogin = "Bạn cần đăng nhập để xem chi tiết sản phẩm!";
+                include 'view/trangchu.php';
+            }
+            break;
         case "cart":
             if (isset($_SESSION['iduser'])) {
                 $listSpCart = listCart($_SESSION['iduser']);
@@ -42,18 +52,62 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include 'view/trangchu.php';
             }
             break;
-        case "formthanhtoan":
-            if (isset($_POST['btnOrder'])) {
-                $idsp = $_POST['product_id'];
-                $soluong = $_POST['quantity'];
-                $selectSp = selectSp($idsp, $soluong);
-                if (isset($_SESSION["errorSl"])) {
-                    header("location:index.php?act=cart");
-                } else {
-                    include "view/formthanhtoan.php";
-                }
+        case "addtocart":
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET["idsp"];
+                addToCartDone($idsp);
+                header("location: index.php?act=cart");
             } else {
+                header("location: index.php?act=trangchu");
+            }
+        case "updateQuantity":
+            if (isset($_POST['btnSoluong'])) {
+                $idsp = $_POST['idsp'];
+                $soluong = $_POST['soluong'];
+                updateQuantity($idsp, $soluong);
+                header('location:index.php?act=cart');
+            } else {
+                header('location:index.php?act=cart');
+            }
+            break;
+        case "formthanhtoan":
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET["idsp"];
+                $selectInforUser = selectInforUser();
+                $selectSp = selectSp($idsp);
                 include "view/formthanhtoan.php";
+            } else {
+                header('location:index.php?act=cart');
+            }
+            break;
+        case "orderSpDone":
+            if (isset($_POST['order_confirm'])) {
+                //Biến cho thêm đơn hàng
+                $sosp = $_POST['tongSoSp'];
+                $totalAll = $_POST['tongtien'];
+                $hoten = $_POST['txthoten'];
+                $sdt = $_POST['txttel'];
+                $diachi = $_POST['txtaddress'];
+                $ghichu = $_POST['note'];
+                //------------------------------
+
+                //Biến cho thêm chi tiết đơn hàng
+                $idsp=$_POST['idsp'];
+                $slSpCart=$_POST['slSpCart'];
+                $tongTienSp= $_POST['tongTienSp'];
+                //--------------------------------
+
+                $result = datHangDone($sosp, $totalAll, $hoten, $sdt, $diachi, $ghichu);
+                if (!empty($result)) {
+                    $idDonhang= $result['MAX(id)'];
+                    addOrderDetail($slSpCart,$tongTienSp,$idsp,$idDonhang);
+                    deleteSpCart($idsp);
+                    $mess = "Đặt hàng thành công";
+                    header("location:index.php?act=cart&mess=". $mess);
+                } else {
+                    $mess = "Lấy id đơn hàng không thành công";
+                    header("location:index.php?act=cart&mess=". $mess);
+                }
             }
             break;
         case "sanpham":

@@ -20,6 +20,11 @@ function listTaiKhoan($keyw = "", $trangthai = null, $role = null)
     $run = pdo_query($sql, $params);
     return $run;
 }
+function selectInforUser(){
+    $sql = "SELECT * FROM `user` WHERE `id`=?";
+    $run = pdo_query_one($sql,[$_SESSION['iduser']]);
+    return $run;
+}
 function addTkDone($name, $username, $password, $repassword, $avatar, $email, $tel, $address, $role)
 {
     //VALIDATE

@@ -150,22 +150,22 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 include "sanpham/list.php";
             }
             break;
-        case 'hardDeleteSp':
-            if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
-                hardDeleteSp($_GET['idsp']);
-                $deleteHard = "Xóa cứng sản phẩm thành công";
-                if (isset($_POST['listok'])) {
-                    $keyw = $_POST['kyw'];
-                    $iddm = $_POST['iddm'];
-                } else {
-                    $keyw = "";
-                    $iddm = 0;
-                }
-                $loadAllDm = listDanhMuc();
-                $listSp = loadSp($keyw, $iddm);
-                include "sanpham/list.php";
-            }
-            break;
+        // case 'hardDeleteSp':
+        //     if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
+        //         hardDeleteSp($_GET['idsp']);
+        //         $deleteHard = "Xóa cứng sản phẩm thành công";
+        //         if (isset($_POST['listok'])) {
+        //             $keyw = $_POST['kyw'];
+        //             $iddm = $_POST['iddm'];
+        //         } else {
+        //             $keyw = "";
+        //             $iddm = 0;
+        //         }
+        //         $loadAllDm = listDanhMuc();
+        //         $listSp = loadSp($keyw, $iddm);
+        //         include "sanpham/list.php";
+        //     }
+        //     break;
         case 'topsp':
             $listSp = loadAllSpBanChay();
             include "sanpham/spBanChay.php";

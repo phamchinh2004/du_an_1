@@ -15,20 +15,20 @@ function pdo_get_connection()
     }
 }
 //Hàm thêm, sửa, xóa
+// Hàm thêm, sửa, xóa
 function pdo_execute($sql, $params = [])
 {
     try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($params);
+        return $stmt;
     } catch (PDOException $e) {
         error_log("Execution failed: " . $e->getMessage());
-    } finally {
-        if ($conn) {
-            unset($conn);
-        }
+        return null;
     }
 }
+
 
 // Hàm truy vấn nhiều dữ liệu
 function pdo_query($sql, $params = [])

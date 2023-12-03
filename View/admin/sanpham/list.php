@@ -63,7 +63,7 @@
                                 $addImgSp="index.php?act=addImgSp&idsp=" . $id;
                                 $addTnSp="index.php?act=addTnSp&idsp=" . $id;
                                 $softDeleteSp="index.php?act=softDeleteSp&idsp=" . $id;
-                                $hardDeleteSp="index.php?act=hardDeleteSp&idsp=" . $id;
+                                // $hardDeleteSp="index.php?act=hardDeleteSp&idsp=" . $id;
                                 echo    '<tr>
                                             <td>' . $id . '</td>
                                             <td>' . $name . '</td>
@@ -79,7 +79,6 @@
                                                 <a href="'.$addImgSp.'"> <input type="button" value="Thêm ảnh"> </a> 
                                                 <a href="' . $suaSp . '"> <input type="button" value="Sửa"> </a> 
                                                 <a href="'.$softDeleteSp.'"> <input type="button" value="Xóa mềm" onclick="return confirm(\'Bạn có chắc chắn muốn xóa mềm? Điều này sẽ đặt trạng thái của sản phẩm thành 0 và ở những trang hiển thị sản phẩm chỉ xem được những sản phẩm có trạng thái là 1!\')"> </a>
-                                                <a href="'.$hardDeleteSp.'"> <input type="button" value="Xóa cứng" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm!\')"> </a>
                                             </td>
                                         </tr>';
                             }
@@ -88,7 +87,9 @@
                                     <td colspan='10'>Không tìm thấy sản phẩm nào</td>
                                 </tr>";
                         } ?>
-                    </table>
+                    </table>                                                
+                    <!-- <a href="'.$hardDeleteSp.'"> <input type="button" value="Xóa cứng" onclick="return confirm(\'Bạn có chắc chắn muốn xóa cứng? Điều này sẽ xóa vĩnh viễn sản phẩm!\')"> </a> -->
+
                 </div>
             </form>
         </div>

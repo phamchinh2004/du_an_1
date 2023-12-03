@@ -935,6 +935,7 @@ body {
 }
 
 .formds_loai table th {
+    color: #fff;
     padding: 10px 20px;
     background-color: #FF6138;
     padding: 20px;
@@ -974,7 +975,28 @@ body {
 .form_content input[type="button"]:hover {
     background: #ff785d;
 }
-
+.total_tien{
+    padding: 5px 0 5px 10px;
+    border: none;
+}
+.indam_total{
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+.tongTienText{
+    font-size: 20px;
+    font-weight: bold;
+}
+.addCart{
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 10px 10px !important;
+    text-decoration: none;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+}
 /* form thanh toan */
 .form-order h2 {
     margin-bottom: 20px;
@@ -1014,17 +1036,23 @@ body {
     margin: 0 auto;
 }
 .box-oder{
+    width: 100%;
     border-radius: 10px;
-    display: flex;
     border: 1px solid gray;
     padding: 20px;
 }
 
 .form-order {
-    width: 60%;
+    width: 100%;
     text-align: center;
 }
-
+.style-oder{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .pttt{
     display: flex;
     margin-left: 120px;
@@ -1041,6 +1069,8 @@ body {
 }
 
 .sub-order {
+    border: 1px solid red;
+    border-radius: 10px;
     width: 40%;
 }
 .sub-order h2{
@@ -1051,7 +1081,9 @@ body {
 .sub-order th {
     padding: 5px;
 }
-
+tbody>tr{
+    padding-right: 15px;
+}
 .sub-order td:first-child,
 .sub-order th:first-child {
     width: 70%;
@@ -1061,7 +1093,19 @@ body {
 .sub-order th:last-child {
     text-align: right;
 }
-
+.borderHidden{
+    border: none;
+    width: auto !important;
+}
+.backCart{
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 10px 10px;
+    text-decoration: none;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+}
 /* done form thanh toán */
 
 /* chi tiết sản phẩm */

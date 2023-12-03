@@ -1,5 +1,8 @@
 <!-- Content -->
 <!-- banner -->
+<?php if(isset($needLogin)&& $needLogin!=""){
+    echo "".$needLogin."";
+}?>
 <main class="box_content">
     <div class="catalog mb">
         <div class="content">
@@ -78,14 +81,14 @@
                             </div>
 
                             <div class="items_text">
-                                <a class="item_name" href="index.php?act=chitietsp"><?= $name ?></a>
+                                <a class="item_name" href="index.php?act=chitietsp&idsp=<?=$id?>"><?= $name ?></a>
                                 <div class="price">
                                     <p class="price-new"><?= number_format($giaNew,0,",",".") ?><u>đ</u></p>
                                     <p class="price-old"><del><?= number_format($giaban,0,",",".") ?><u>đ</u></del></p>
                                 </div>
                             </div>
-                            <div class="add"><a href="#">Mua ngay</a></div>
-                            <div class="ctsp"> <a href="index.php?act=cart">Add cart</a></div>
+                            <div class="add"><a href="index.php?act=formthanhtoan&idsp=<?=$id?>">Mua ngay</a></div>
+                            <div class="ctsp"> <a href="index.php?act=addtocart&idsp=<?=$id?>">Add cart</a></div>
                         </div>
                     <?php }
                 } else { ?>
