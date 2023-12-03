@@ -991,7 +991,7 @@ body {
 }
 .addCart{
     border: 1px solid red;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px 10px !important;
     text-decoration: none;
     background-color: red;

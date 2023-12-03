@@ -24,7 +24,7 @@
         
     ?>
     <div class="user-content formds_loai form_content">
-        <div>
+        <div style="width: 100%;">
             <table class="mb box-cart">
                 <tr>
                     <th>STT</th>
