@@ -241,9 +241,9 @@ function dangnhap($username, $password)
     if(($query_user_data!==false) && (password_verify($password,$query_user_data['password']))){
         $_SESSION['nameuser'] = $query_user_data['name'];
         $_SESSION['iduser'] = $query_user_data['id'];
-        switch($query_user_data['role']){
+        switch($query_user_data['id_role']){
             case '1':
-                header("location: index.php");
+                header("location: index.php?act=trangchu");
             break;
             case '2':
                 header("location: index.php");
