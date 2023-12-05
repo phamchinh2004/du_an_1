@@ -110,7 +110,9 @@
                         $hinhanh = "public/image/" . $hinhanh;
                         if (!is_file($hinhanh)) {
                             $hinhanh = "";
-                        } ?>
+                        }
+                        $giaNew = $giaban - ($giaban * ($giamgia / 100));
+                        $giaGiam = $giaban - $giaNew; ?>
                         <div class="box_items">
                             <div class="box_items_bg">
                                 <div class="box_items_img">
@@ -121,18 +123,18 @@
                                     <?php } ?>
                                 </div>
                                 <div class="tg" href="">Trả góp 0%/0<u>đ</u></div>
-                                <div class="sale" href="">Giảm 0<u> đ</u></div>
+                                <div class="sale" href="">Giảm <?= number_format($giaGiam,0,",",".") ?><u> đ</u></div>
                             </div>
 
                             <div class="items_text">
                                 <a class="item_name" href="index.php?act=chitietsp"><?=$name?></a>
                                 <div class="price">
-                                    <p class="price-new"><?=number_format($giaban,0,",",".")?><u>đ</u></p>
+                                    <p class="price-new"><?=number_format($giaNew,0,",",".")?><u>đ</u></p>
                                     <p class="price-old"><del><?=number_format($giaban,0,",",".")?><u>đ</u></del></p>
                                 </div>
                             </div>
                             <div class="add"><a href="#">Mua ngay</a></div>
-                            <div class="ctsp"> <a href="index.php?act=cart">Add cart</a></div>
+                            <div class="ctsp"> <a href="index.php?act=cart&idsp=<?=$id?>">Add cart</a></div>
                         </div>
                     <?php }
                 } else { ?>

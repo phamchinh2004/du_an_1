@@ -37,13 +37,17 @@
                             $dem++;
                             extract($value);
                             $gia = $giaban - ($giaban*($giamgia / 100));
-                            $total = $gia * $soluong;
+                            if(isset($cart_soluong)){
+                                $total = $gia * $cart_soluong;
+                            }else{
+                                $total = $gia;
+                            } 
                             $totalAll += $total;
                         ?>
                             <tr>
                                 <td>
                                     <input type="text" name="idsp" value="<?=$idsp?>" hidden>
-                                    <input type="text" name="slSpCart" value="<?=$soluong?>" hidden>
+                                    <input type="text" name="slSpCart" value="<?=isset($cart_soluong)? $cart_soluong : "1"?>" hidden>
                                     <input type="text" name="tongTienSp" value="<?=$total?>" hidden>
                                     <input type="text" name="tongSoSp" value="<?=$dem?>" hidden>
                                     <?= $name ?><br>
@@ -51,14 +55,16 @@
                                 </td>
                                 <td><input class="borderHidden" type="text" value="<?= number_format($total, 0, ",", ".") ?> đ"></td>
                             </tr>
-                            <tr>
-                                <td><b>Tổng tiền:</b></td>
-                                <td style="color:red;"><input class="borderHidden" type="text" name="tongtien" value="<?= number_format($totalAll, 0, ",", ".") ?> đ"></td>
+                            
+                        <?php }?>
+                        <tr>
+                                <td><b style="font-size:20px;">Tổng tiền:</b></td>
+                                <td style="color:red;"><input class="borderHidden" style="font-size:18px;border:none;" type="text" name="tongtien" value="<?= number_format($totalAll, 0, ",", ".") ?> đ" readonly></td>
                             </tr>
                             <tr>
-                                <td class="backCart" style="text-align:center;" colspan="2"><a href="index.php?act=cart">Quay lại giỏ hàng</a></td>
+                                <td class="backCart" style="text-align:center;" colspan="2"><a style="text-decoration:none !important;color:#fff;" href="index.php?act=cart">Quay lại giỏ hàng</a></td>
                             </tr>
-                        <?php }} else { ?>
+                        <?php } else { ?>
                             <b>Không có dữ liệu</b>
                         <?php } ?>
                     </table>
