@@ -1272,3 +1272,68 @@ tbody>tr{
 .ctsp-button-right:hover{
     background-color: #f98062;
 }
+/* done chitietsanpham */
+
+/* thanh toan thanh cong */
+.page-buysuccess {
+    padding-top: 130px;
+    width: 60%;
+    margin: 0 auto;
+}
+.buysuccess-title {
+    text-align: center;
+}
+.buysuccess-title h2{
+    padding-bottom: 10px;
+}
+
+.buysuccess-title i {
+    font-size: 50px;
+    padding-bottom: 10px;
+    color: #2ab90d;
+}
+.box-thongtinkh{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+.content-thongtinkh{
+    width: 100%;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 5px;
+}
+.content-thongtinkh h3{
+    padding: 20px;
+    background-color: #e4e4e4;
+    border-bottom: 1px solid rgb(158, 158, 158)
+}
+.content-thongtinkh table{
+    padding: 20px;
+}
+.content-thongtinkh th{
+    text-align: left;
+    padding-bottom: 10px;
+}
+.content-thongtinkh td{
+    text-align: left;
+    padding-left: 100px;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.box-thongtinkh input {
+    margin-top: 20px;
+    width: 40%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #2ab90d;
+    color: #2ab90d;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+.box-thongtinkh input:hover {
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #2ab90d;
+    cursor: pointer;
+}
