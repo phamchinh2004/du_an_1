@@ -78,7 +78,9 @@
                                                 <a href="'.$addTnSp.'"> <input type="button" value="Thêm tính năng"> </a>
                                                 <a href="'.$addImgSp.'"> <input type="button" value="Thêm ảnh"> </a> 
                                                 <a href="' . $suaSp . '"> <input type="button" value="Sửa"> </a> 
-                                                <a href="'.$softDeleteSp.'"> <input type="button" value="Xóa mềm" onclick="return confirm(\'Bạn có chắc chắn muốn xóa mềm? Điều này sẽ đặt trạng thái của sản phẩm thành 0 và ở những trang hiển thị sản phẩm chỉ xem được những sản phẩm có trạng thái là 1!\')"> </a>
+                                                <a href="'.$softDeleteSp.'"> <input type="button" value="Xóa mềm" 
+                                                onclick="return confirm(\'Bạn có chắc chắn muốn xóa mềm? Điều này sẽ đặt trạng thái của sản phẩm
+                                                 thành 0 và ở những trang hiển thị sản phẩm chỉ xem được những sản phẩm có trạng thái là 1!\')"> </a>
                                             </td>
                                         </tr>';
                             }

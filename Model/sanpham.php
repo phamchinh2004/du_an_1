@@ -21,7 +21,8 @@ function loadSp($keyw = "", $iddm = 0)
     $run = pdo_query($sql, $params);
     return $run;
 }
-function loadAllSpUser( $iddm = 0){
+function loadAllSpUser($iddm = 0)
+{
     $params = [];
     $sql = "SELECT sp.*,img.link as hinhanh FROM `product` as sp
     LEFT JOIN `image` as img ON img.id_product = sp.id 
@@ -204,7 +205,8 @@ function listaddSpTop($keyw = "", $iddm = 0)
     return $run;
 }
 //Lấy danh sách sản phẩm đang hoạt động hiển thị lên trang chủ
-function listSpHome( $keyw= "", $iddm = 0){
+function listSpHome($keyw = "", $iddm = 0)
+{
     $sql = "SELECT sp.*, img.link as hinhanh 
     FROM `product` as sp
     LEFT JOIN `image` as img ON img.id_product = sp.id
@@ -223,54 +225,65 @@ function listSpHome( $keyw= "", $iddm = 0){
     return $run;
 }
 //Lấy chi tiết tiết sản phẩm để hiển thị lên trang chi tiết sản phẩm
-function spDetail($idsp){
+function spDetail($idsp)
+{
     $sql = "SELECT * FROM `product` WHERE `id`=?";
-    $run=pdo_query_one($sql, [$idsp]);
+    $run = pdo_query_one($sql, [$idsp]);
     return $run;
 }
 //Hiển thị danh sách sản phẩm lên giỏ hàng
-function listCart($id){
-    $sql = "SELECT cart.*,sp.*,image.link as hinhanh, cart.soluong as cart_soluong FROM `cart` 
+function listCart($id)
+{
+    $sql = "SELECT cart.*,sp.*,sp.id as idsp,image.link as hinhanh, cart.soluong as cart_soluong FROM `cart` 
     RIGHT JOIN `product` as sp ON sp.id=cart.id_product
     LEFT JOIN `image` ON image.id_product=sp.id
     WHERE `id_user`=?
     GROUP BY cart.id";
-    $run=pdo_query($sql, [$id]);
+    $run = pdo_query($sql, [$id]);
     return $run;
 }
 
 //Thêm sản phẩm vào giỏ hàng
 //Kiểm tra nếu sản phẩm chưa thêm vào giỏ hàng thì đặt mặc định là 1
 //Ngược lại nếu sản phẩm đã có trong giỏ hàng thì đặt số lượng cộng thêm 1
-function addToCartDone($idsp){
-    $check="SELECT * FROM `cart` WHERE `id_product`=? and `id_user`=?";
-    $runCheck=pdo_query_one($check,[$idsp,$_SESSION['iduser']]);
-    if(empty($runCheck)){
+function addToCartDone($idsp)
+{
+    $check = "SELECT * FROM `cart` WHERE `id_product`=? and `id_user`=?";
+    $runCheck = pdo_query_one($check, [$idsp, $_SESSION['iduser']]);
+    if (empty($runCheck)) {
         $sql = 'INSERT INTO `cart` (`soluong`,`id_user`,`id_product`) VALUES (?,?,?)';
-        pdo_execute($sql, [1,$_SESSION['iduser'],$idsp]);
-    }else{
+        pdo_execute($sql, [1, $_SESSION['iduser'], $idsp]);
+    } else {
         $sql = 'UPDATE `cart` SET `soluong`=`soluong`+? WHERE `id_user`=? and `id_product`=?';
-        pdo_execute($sql, [1,$_SESSION['iduser'],$idsp]);
+        pdo_execute($sql, [1, $_SESSION['iduser'], $idsp]);
     }
 }
 //Cập nhật số lượng sản phẩm trong giỏ hàng: số lượng mới= số lượng người dùng nhập vào
-function updateQuantity($idsp,$soluong){
+function updateQuantity($idsp, $soluong)
+{
     $sql = "UPDATE `cart` SET `soluong`=? WHERE `id_product`=? and `id_user`=? ";
-    pdo_execute($sql, [$soluong, $idsp,$_SESSION['iduser']]);
+    pdo_execute($sql, [$soluong, $idsp, $_SESSION['iduser']]);
 }
 //Lấy thông tin của sản phẩm được người dùng chọn trong giỏ hàng để hiển thị lên trang thanh toán
-function selectSp($idsp=0){
-    $params=[];
-    $sql = "SELECT sp.id as idsp,sp.name,sp.giaban,sp.giamgia,cart.* FROM `cart`
+function selectSp($idsp = 0)
+{
+    $params = [];
+    if ($idsp != 0) {
+        $check = 'SELECT * FROM `cart` WHERE `id_product` = ?';
+        $runCheck = pdo_query_one($check, [$idsp]);
+    }
+    if(isset($runCheck) && !empty($runCheck)) {
+    $sql = "SELECT sp.id as idsp,sp.name,sp.giaban,sp.giamgia,cart.*,cart.soluong as cart_soluong FROM `cart`
     LEFT JOIN `product` as sp ON cart.id_product=sp.id WHERE";
-    if($idsp!=0){
+    if ($idsp != 0) {
         $sql .= " `id_product`=? and";
         $params[] = $idsp;
     }
-    $sql.=" `id_user`=?";
-    $params[]=$_SESSION['iduser'];
-    $run=pdo_query($sql, $params);
+    $sql .= " `id_user`=?";
+    $params[] = $_SESSION['iduser'];
+    $run = pdo_query($sql, $params);
     return $run;
+}
 }
 //Thêm số lượng sản phẩm và thông tin đặt hàng vào bảng đơn hàng
 function datHangDone($sosp, $_totalAll, $hoten, $sdt, $diachi, $ghichu)
@@ -279,17 +292,19 @@ function datHangDone($sosp, $_totalAll, $hoten, $sdt, $diachi, $ghichu)
         `name_nguoi_nhan`, `sdt_nguoi_nhan`, `dia_chi_nhan_hang`
         , `ghi_chu`, `id_user`) VALUES(?,?,?,?,?,?,?)";
     pdo_execute($sql, [$sosp, $_totalAll, $hoten, $sdt, $diachi, $ghichu, $_SESSION['iduser']]);
-    $selectIdOder="SELECT MAX(id) FROM `donhang`";
-    $run=pdo_query_one($selectIdOder);
+    $selectIdOder = "SELECT MAX(id) FROM `donhang`";
+    $run = pdo_query_one($selectIdOder);
     return $run;
 }
 //Thêm thông tin chi tiết của sản phẩm vào chi tiết đơn hàng
-function addOrderDetail($slSpCart,$tongTienSp,$idsp,$idDonhang){
-    $sql= 'INSERT INTO `chi_tiet_don_hang` (`so_luong`,`tongtien`, `id_product`,`id_don_hang` ) VALUES (?,?,?,?)';
-    pdo_execute($sql, [$slSpCart,$tongTienSp,$idsp,$idDonhang]);
+function addOrderDetail($slSpCart, $tongTienSp, $idsp, $idDonhang)
+{
+    $sql = 'INSERT INTO `chi_tiet_don_hang` (`so_luong`,`tongtien`, `id_product`,`id_don_hang` ) VALUES (?,?,?,?)';
+    pdo_execute($sql, [$slSpCart, $tongTienSp, $idsp, $idDonhang]);
 }
 //Xóa sản phẩm trong giỏ hàng sau khi mua thành công
-function deleteSpCart($idsp){
-    $sql= 'DELETE FROM `cart` WHERE `id_product`=? and `id_user`=?';
-    pdo_execute($sql, [$idsp,$_SESSION['iduser']]);
+function deleteSpCart($idsp)
+{
+    $sql = 'DELETE FROM `cart` WHERE `id_product`=? and `id_user`=?';
+    pdo_execute($sql, [$idsp, $_SESSION['iduser']]);
 }

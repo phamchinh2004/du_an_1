@@ -60,6 +60,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             } else {
                 header("location: index.php?act=trangchu");
             }
+            break;
         case "updateQuantity":
             if (isset($_POST['btnSoluong'])) {
                 $idsp = $_POST['idsp'];
@@ -70,9 +71,22 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 header('location:index.php?act=cart');
             }
             break;
+        case "deleteSpCart":
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET["idsp"];
+                deleteSpCart($idsp);
+                $mess = "Xóa sản phẩm khỏi giỏ hàng thành công";
+                header("location:index.php?act=cart&mess=" . $mess);
+            }
+            break;
         case "formthanhtoan":
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET["idsp"];
+                $selectInforUser = selectInforUser();
+                $selectSp = selectSp($idsp);
+                include "view/formthanhtoan.php";
+            } else if (isset($_GET['ttAll'])) {
+                $idsp = 0;
                 $selectInforUser = selectInforUser();
                 $selectSp = selectSp($idsp);
                 include "view/formthanhtoan.php";
@@ -90,23 +104,42 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $diachi = $_POST['txtaddress'];
                 $ghichu = $_POST['note'];
                 //------------------------------
+                if ($sosp == '1') {
+                    //Biến cho thêm chi tiết đơn hàng
+                    $idsp = $_POST['idsp'];
+                    $slSpCart = $_POST['slSpCart'];
+                    $tongTienSp = $_POST['tongTienSp'];
+                    //--------------------------------
 
-                //Biến cho thêm chi tiết đơn hàng
-                $idsp=$_POST['idsp'];
-                $slSpCart=$_POST['slSpCart'];
-                $tongTienSp= $_POST['tongTienSp'];
-                //--------------------------------
-
-                $result = datHangDone($sosp, $totalAll, $hoten, $sdt, $diachi, $ghichu);
-                if (!empty($result)) {
-                    $idDonhang= $result['MAX(id)'];
-                    addOrderDetail($slSpCart,$tongTienSp,$idsp,$idDonhang);
-                    deleteSpCart($idsp);
-                    $mess = "Đặt hàng thành công";
-                    header("location:index.php?act=cart&mess=". $mess);
+                    $result = datHangDone($sosp, $totalAll, $hoten, $sdt, $diachi, $ghichu);
+                    if (!empty($result)) {
+                        $idDonhang = $result['MAX(id)'];
+                        addOrderDetail($slSpCart, $tongTienSp, $idsp, $idDonhang);
+                        deleteSpCart($idsp);
+                        $mess = "Đặt hàng thành công";
+                        header("location:index.php?act=cart&mess=" . $mess);
+                    } else {
+                        $mess = "Lấy id đơn hàng không thành công";
+                        header("location:index.php?act=cart&mess=" . $mess);
+                    }
                 } else {
-                    $mess = "Lấy id đơn hàng không thành công";
-                    header("location:index.php?act=cart&mess=". $mess);
+                    $result = datHangDone($sosp, $totalAll, $hoten, $sdt, $diachi, $ghichu);
+                    if (!empty($result)) {
+                        $idDonhang = $result['MAX(id)'];
+                        $listSpCart = listCart($_SESSION['iduser']);
+                        foreach ($listSpCart as $key => $value) {
+                            extract($value);
+                            $gia = $giaban - ($giaban * ($giamgia / 100));
+                            $tongTienSp = $gia * $cart_soluong;
+                            addOrderDetail($cart_soluong, $tongTienSp, $idsp, $idDonhang);
+                            deleteSpCart($idsp);
+                        }
+                        $mess = "Đặt hàng thành công";
+                        header("location:index.php?act=cart&mess=" . $mess);
+                    } else {
+                        $mess = "Lấy id đơn hàng không thành công";
+                        header("location:index.php?act=cart&mess=" . $mess);
+                    }
                 }
             }
             break;
