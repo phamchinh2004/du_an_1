@@ -438,7 +438,7 @@ body {
     margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
-    
+
 }
 
 .price {
@@ -976,20 +976,24 @@ body {
 .form_content input[type="button"]:hover {
     background: #ff785d;
 }
-.total_tien{
+
+.total_tien {
     padding: 5px 0 5px 10px;
     border: none;
 }
-.indam_total{
+
+.indam_total {
     font-weight: bold;
     font-size: 20px;
-    
+
 }
-.tongTienText{
+
+.tongTienText {
     font-size: 20px;
     font-weight: bold;
 }
-.addCart{
+
+.addCart {
     border: 1px solid red;
     /* border-radius: 20px; */
     padding: 10px 10px !important;
@@ -998,6 +1002,7 @@ body {
     color: #fff;
     font-weight: bold;
 }
+
 /* form thanh toan */
 .form-order h2 {
     margin-bottom: 20px;
@@ -1024,6 +1029,7 @@ body {
     font-weight: bold;
     border: none;
 }
+
 .form-order input[type="submit"]:hover {
     background-color: #f9755b;
     cursor: pointer;
@@ -1031,12 +1037,13 @@ body {
 }
 
 .page-order {
-    
+
     padding-top: 130px;
     width: 70%;
     margin: 0 auto;
 }
-.box-oder{
+
+.box-oder {
     width: 100%;
     border-radius: 10px;
     border: 1px solid gray;
@@ -1047,22 +1054,26 @@ body {
     width: 100%;
     text-align: center;
 }
-.style-oder{
+
+.style-oder {
     width: auto;
     height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.pttt{
+
+.pttt {
     display: flex;
     margin-left: 120px;
     margin-bottom: 20px;
 }
-.form-order h3{
+
+.form-order h3 {
     padding-bottom: 10px;
 }
-.pttt p{
+
+.pttt p {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #f42428;
@@ -1072,7 +1083,8 @@ body {
 .sub-order {
     width: 40%;
 }
-.sub-order h2{
+
+.sub-order h2 {
     text-align: center;
 }
 
@@ -1080,9 +1092,11 @@ body {
 .sub-order th {
     padding: 5px;
 }
-tbody>tr{
+
+tbody>tr {
     padding-right: 15px;
 }
+
 .sub-order td:first-child,
 .sub-order th:first-child {
     width: 70%;
@@ -1092,11 +1106,13 @@ tbody>tr{
 .sub-order th:last-child {
     text-align: right;
 }
-.borderHidden{
+
+.borderHidden {
     border: none !important;
     width: auto !important;
 }
-.backCart{
+
+.backCart {
     border: 1px solid red;
     border-radius: 20px;
     padding: 10px 10px;
@@ -1105,127 +1121,151 @@ tbody>tr{
     color: #fff;
     font-weight: bold;
 }
+
 /* done form thanh toán */
 
 /* chi tiết sản phẩm */
-.box-spct{
+.box-spct {
     width: 100%;
 }
-.ctsp-top{
+
+.ctsp-top {
     width: 100%;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgb(164, 164, 164);
     padding-bottom: 10px;
 }
-.ctsp-title{
+
+.ctsp-title {
     font-size: 22px;
-    font-weight: bold;  
+    font-weight: bold;
 }
+
 .ctsp-title-rate {
     text-align: right;
 }
 
-.ctsp-title-rate i{
+.ctsp-title-rate i {
     color: #F6FB06;
 }
-.ctsp-title-rate a{
+
+.ctsp-title-rate a {
     text-decoration: none;
     font-size: 14px;
 }
-.content-ctsp{
+
+.content-ctsp {
     width: 100%;
     display: flex;
 }
-.ctsp-left{
+
+.ctsp-left {
     width: 30%;
     margin-right: 30px;
 }
-.ctsp-img-top{
+
+.ctsp-img-top {
     border: 1px solid gray;
     text-align: center;
     padding-top: 20px;
     border-radius: 5px;
     height: 350px;
 }
-.ctsp-slide-img{
+
+.ctsp-slide-img {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
 }
-.ctsp-slide-img img{
+
+.ctsp-slide-img img {
     border: 1px solid gray;
     border-radius: 5px;
 }
-.ctsp-ttsale i{
+
+.ctsp-ttsale i {
     color: #c20303;
     padding-right: 5px;
 }
-.ctsp-right{
+
+.ctsp-right {
     width: 70%;
 }
-.ctsp-right-price{
+
+.ctsp-right-price {
     display: flex;
 }
-.ctsp-right-price .price-new{
+
+.ctsp-right-price .price-new {
     font-size: 23px;
     color: #c20303;
     padding-right: 30px;
     font-weight: bold;
 }
-.ctsp-right-price .price-old{
+
+.ctsp-right-price .price-old {
     padding-top: 3px;
     font-size: 16px;
     color: #898888;
 }
 
-.ctsp-kythuat{
+.ctsp-kythuat {
     width: 50%;
     border: 1px solid rgb(158, 158, 158);
     border-radius: 5px;
 }
-.ctsp-kythuat h3{
+
+.ctsp-kythuat h3 {
     padding: 10px;
     background-color: #e4e4e4;
     border-bottom: 1px solid rgb(158, 158, 158)
 }
-.ctsp-kythuat table{
+
+.ctsp-kythuat table {
     padding: 10px;
 }
-.ctsp-kythuat th{
+
+.ctsp-kythuat th {
     text-align: left;
     padding-bottom: 5px;
 }
-.ctsp-kythuat td{
+
+.ctsp-kythuat td {
     text-align: left;
     padding-left: 20px;
     font-size: 15px;
     padding-bottom: 5px;
 }
 
-.ctsp-khuyenmai{
+.ctsp-khuyenmai {
     width: 100%;
     border: 1px solid rgb(158, 158, 158);
     border-radius: 5px;
 }
-.ctsp-khuyenmai h3{
+
+.ctsp-khuyenmai h3 {
     padding: 10px 0 0 10px;
     background-color: #e4e4e4;
 }
-.ctsp-khuyenmai h5{
+
+.ctsp-khuyenmai h5 {
     color: #989090;
     padding: 5px 0 10px 10px;
     background-color: #e4e4e4;
     border-bottom: 1px solid rgb(158, 158, 158)
 }
-.ctsp-box-khuyenmai{
+
+.ctsp-box-khuyenmai {
     padding: 10px;
 }
-.ctsp-ttkm{
+
+.ctsp-ttkm {
     display: flex;
     padding-bottom: 10px;
 }
-.ctsp-box-khuyenmai .ctsp-sttkm{
+
+.ctsp-box-khuyenmai .ctsp-sttkm {
     height: 25px;
     padding: 3px 8px 5px 8px;
     border-radius: 50%;
@@ -1234,11 +1274,12 @@ tbody>tr{
     margin-right: 10px;
 }
 
-.ctsp-box-button{
+.ctsp-box-button {
     width: 100%;
     display: flex;
 }
-.ctsp-button-left{
+
+.ctsp-button-left {
     margin-left: 25px;
     height: 80px;
     width: 60%;
@@ -1250,7 +1291,8 @@ tbody>tr{
     border-radius: 10px;
     margin-right: 40px;
 }
-.ctsp-button-right{
+
+.ctsp-button-right {
     height: 80px;
     text-align: center;
     text-decoration: none;
@@ -1260,16 +1302,20 @@ tbody>tr{
     border-radius: 10px;
     font-size: 20px;
 }
-.ctsp-button-right i{
+
+.ctsp-button-right i {
     padding-top: 5px;
     font-size: 25px;
 }
-.ctsp-button-left:hover{
+
+.ctsp-button-left:hover {
     background-color: #f73437;
 }
-.ctsp-button-right:hover{
+
+.ctsp-button-right:hover {
     background-color: #f98062;
 }
+
 /* done chitietsanpham */
 
 /* thanh toan thanh cong */
@@ -1278,10 +1324,12 @@ tbody>tr{
     width: 60%;
     margin: 0 auto;
 }
+
 .buysuccess-title {
     text-align: center;
 }
-.buysuccess-title h2{
+
+.buysuccess-title h2 {
     padding-bottom: 10px;
 }
 
@@ -1290,29 +1338,35 @@ tbody>tr{
     padding-bottom: 10px;
     color: #2ab90d;
 }
-.box-thongtinkh{
+
+.box-thongtinkh {
     width: 70%;
     margin: 0 auto;
     text-align: center;
 }
-.content-thongtinkh{
+
+.content-thongtinkh {
     width: 100%;
     border: 1px solid rgb(158, 158, 158);
     border-radius: 5px;
 }
-.content-thongtinkh h3{
+
+.content-thongtinkh h3 {
     padding: 20px;
     background-color: #e4e4e4;
     border-bottom: 1px solid rgb(158, 158, 158)
 }
-.content-thongtinkh table{
+
+.content-thongtinkh table {
     padding: 20px;
 }
-.content-thongtinkh th{
+
+.content-thongtinkh th {
     text-align: left;
     padding-bottom: 10px;
 }
-.content-thongtinkh td{
+
+.content-thongtinkh td {
     text-align: left;
     padding-left: 100px;
     font-size: 15px;
@@ -1329,9 +1383,124 @@ tbody>tr{
     border-radius: 4px;
     background-color: #FFF;
 }
+
 .box-thongtinkh input:hover {
     border: 1px solid #fff;
     color: #fff;
     background-color: #2ab90d;
     cursor: pointer;
+}
+
+/* done thanh toán thành công */
+
+/* Đơn hàng của tôi */
+
+.mb5 {
+    margin-bottom: 10px;
+}
+
+.box-myoder {
+    padding-top: 130px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.header-myoder {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 60px;
+    border-radius: 5px;
+    border: 1px solid rgb(198, 185, 185);
+}
+
+.header-myoder p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #cc0a0d;
+}
+
+.header-myoder a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(205, 198, 198);
+}
+
+.header-myoder a:hover {
+    color: #cc0a0d;
+}
+
+.item-myoder {
+    width: 100%;
+    box-shadow: 0 5px 10px rgb(161, 160, 160);
+}
+
+.item-myoder-top {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.myoder-right {
+    display: flex;
+}
+
+.myoder-img {
+    padding-right: 20px;
+}
+
+.myoder-text {
+    padding-top: 14px;
+    font-size: 20px;
+}
+
+.myoder-price {
+    text-align: right;
+    font-size: 20px;
+    padding-top: 80px;
+}
+
+.myoder-price p {
+    font-size: 22px;
+    color: #e70a0a;
+}
+
+.myoder-price i {
+    font-size: 15px;
+    padding: 8px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #ff6138;
+    margin-right: 10px;
+}
+
+.myoder-price b {
+    font-size: 25px;
+    color: #e70a0a;
+    margin-left: 10px;
+}
+
+.myoder-price del {
+    color: #c5c1c1;
+}
+
+.item-myoder-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.item-myoder-bottom input {
+    font-weight: bold;
+    color: #FFF;
+    padding: 13px 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: #c20303;
+}
+
+.item-myoder-bottom input:hover {
+    cursor: pointer;
+    background-color: #db0707;
 }

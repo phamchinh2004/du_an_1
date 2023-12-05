@@ -156,6 +156,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "user":
             include "view/user/user.php";
             break;
+        case "myoder":
+            include "view/user/myoder.php";
+            break;
         case "doimk":
             include "view/user/doimk.php";
             break;
