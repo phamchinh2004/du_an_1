@@ -24,4 +24,8 @@
         $params[]=$iddm;
         pdo_execute($sql,$params);
     }
+    function deleteDm($id){
+        $sql = "delete from danhmuc where id=". $id;
+        pdo_query($sql);
+    }
 ?>

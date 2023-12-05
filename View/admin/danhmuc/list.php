@@ -35,7 +35,7 @@
                                     <td>'.$hinhpath.'</td>
                                     <td>
                                         <a href="'.$sua.'"> <input type="button" value="Sửa"> </a> 
-                                        <a href="'.$xoa.'"> <input type="button" value="Xóa"> </a> 
+                                        <a href="'.$xoa.'"> <input type="button" value="Xóa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa danh mục này không?\')"> </a> 
                                     </td>
                                 </tr>';
                         } ?>
