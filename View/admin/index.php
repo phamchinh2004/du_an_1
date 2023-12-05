@@ -279,6 +279,13 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 include "danhmuc/update.php";
             }
             break;
+        case 'xoaDm':
+            if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+                deleteDm($_GET['iddm']);
+            }
+            $listdm = listDanhMuc();
+            include "danhmuc/list.php";
+            break;
         case 'updateDmDone':
             if (isset($_POST['sua']) && ($_GET['iddm'] != "")) {
                 $iddm = $_GET['iddm'];
