@@ -30,17 +30,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/sptrangchu.php";
             break;
         case 'chitietsp':
-            if (isset($_SESSION['iduser'])) {
-                if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
-                    $idsp = $_GET['idsp'];
-                    $sanphamDetail = spDetail($idsp);
-                    include "view/chitietSp.php";
-                } else {
-                    header("location: index.php?act=trangchu");
-                }
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET['idsp'];
+                $sanphamDetail = spDetail($idsp);
+                include "view/chitietSp.php";
             } else {
-                $needLogin = "Bạn cần đăng nhập để xem chi tiết sản phẩm!";
-                include 'view/trangchu.php';
+                header("location: index.php?act=trangchu");
             }
             break;
         case "cart":
@@ -48,17 +43,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $listSpCart = listCart($_SESSION['iduser']);
                 include "view/cart.php";
             } else {
-                $needLogin = "Bạn cần phải đăng nhập để xem giỏ hàng";
-                include 'view/trangchu.php';
+                header("location: index.php?act=login");
             }
             break;
         case "addtocart":
-            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
-                $idsp = $_GET["idsp"];
-                addToCartDone($idsp);
-                header("location: index.php?act=cart");
+            if (isset($_SESSION['iduser'])) {
+                if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                    $idsp = $_GET["idsp"];
+                    addToCartDone($idsp);
+                    header("location: index.php?act=cart");
+                } else {
+                    header("location: index.php?act=trangchu");
+                }
             } else {
-                header("location: index.php?act=trangchu");
+                header("location: index.php?act=login");
             }
             break;
         case "updateQuantity":

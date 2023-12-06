@@ -227,7 +227,9 @@ function listSpHome($keyw = "", $iddm = 0)
 //Lấy chi tiết tiết sản phẩm để hiển thị lên trang chi tiết sản phẩm
 function spDetail($idsp)
 {
-    $sql = "SELECT * FROM `product` WHERE `id`=?";
+    $sql = "SELECT *,img.* FROM `product` as sp
+    LEFT JOIN `image` as img ON img.id_product=sp.id
+    WHERE sp.id=?";
     $run = pdo_query_one($sql, [$idsp]);
     return $run;
 }
@@ -268,11 +270,6 @@ function updateQuantity($idsp, $soluong)
 function selectSp($idsp = 0)
 {
     $params = [];
-    if ($idsp != 0) {
-        $check = 'SELECT * FROM `cart` WHERE `id_product` = ?';
-        $runCheck = pdo_query_one($check, [$idsp]);
-    }
-    if(isset($runCheck) && !empty($runCheck)) {
     $sql = "SELECT sp.id as idsp,sp.name,sp.giaban,sp.giamgia,cart.*,cart.soluong as cart_soluong FROM `cart`
     LEFT JOIN `product` as sp ON cart.id_product=sp.id WHERE";
     if ($idsp != 0) {
@@ -284,6 +281,8 @@ function selectSp($idsp = 0)
     $run = pdo_query($sql, $params);
     return $run;
 }
+function selectSpOne($idsp = 0){
+
 }
 //Thêm số lượng sản phẩm và thông tin đặt hàng vào bảng đơn hàng
 function datHangDone($sosp, $_totalAll, $hoten, $sdt, $diachi, $ghichu)

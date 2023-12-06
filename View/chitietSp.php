@@ -11,6 +11,12 @@
     <?php if (!empty($sanphamDetail)) {
         extract($sanphamDetail);
         $giaNew = $giaban - ($giaban * ($giamgia / 100));
+        $hinhanhChinh = "public/image/" . $link;
+        $hinhanhList = [];
+
+        if (is_file($hinhanhChinh)) {
+            $hinhanhList[] = $hinhanhChinh;
+        }
     } ?>
     <div class="box-ctsp">
         <div class="ctsp-top mb">
@@ -29,13 +35,13 @@
         <div class="content-ctsp">
             <div class="ctsp-left">
                 <div class="ctsp-img-top mb">
-                    <img src="public/image/dienthoai.jpg" alt="" width="250px">
+                    <img src="<?= $hinhanhChinh ?>" alt="" width="250px">
                 </div>
+
                 <div class="ctsp-slide-img mb">
-                    <img src="public/image/dienthoai.jpg" alt="" width="50px">
-                    <img src="public/image/dienthoai.jpg" alt="" width="50px">
-                    <img src="public/image/dienthoai.jpg" alt="" width="50px">
-                    <img src="public/image/dienthoai.jpg" alt="" width="50px">
+                    <?php foreach ($hinhanhList as $value) { ?>
+                        <img src="<?= $value ?>" alt="" width="50px">
+                    <?php } ?>
                 </div>
                 <div class="ctsp-ttsale mb">
                     <div class="ttsale1 mb"><i class="fa-solid fa-medal"></i> Hàng chính hãng - Bảo hành 12 tháng</div>
@@ -44,8 +50,8 @@
             </div>
             <div class="ctsp-right">
                 <div class="ctsp-right-price mb">
-                    <p class="price-new"><?=number_format($giaNew,0,",",".")?> VNĐ</p>
-                    <p class="price-old"><del><?=number_format($giaban,0,",",".")?> VNĐ</del></p>
+                    <p class="price-new"><?= number_format($giaNew, 0, ",", ".") ?> VNĐ</p>
+                    <p class="price-old"><del><?= number_format($giaban, 0, ",", ".") ?> VNĐ</del></p>
                 </div>
                 <div class="ctsp-kythuat mb">
                     <h3>Thông số kỹ thuật</h3>
@@ -87,7 +93,7 @@
                     </div>
                 </div>
                 <div class="ctsp-box-button">
-                    <a href="index.php?act=formthanhtoan&idsp=<?= isset($id) ? $id : "";?>" class="ctsp-button-left">
+                    <a href="index.php?act=formthanhtoan&idsp=<?= isset($id) ? $id : ""; ?>" class="ctsp-button-left">
                         <h3>MUA NGAY</h3>
                         <p>Giao hàng miễn phí cho lần đầu</p>
                     </a>

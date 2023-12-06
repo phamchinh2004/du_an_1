@@ -243,7 +243,8 @@ function dangnhap($username, $password)
         $_SESSION['iduser'] = $query_user_data['id'];
         switch($query_user_data['id_role']){
             case '1':
-                header("location: index.php?act=trangchu");
+                $LoginSucc="Đăng nhập thành công";
+                header("location: index.php?act=trangchu&LoginSucc=$LoginSucc");
             break;
             case '2':
                 header("location: index.php");
