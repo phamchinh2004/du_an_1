@@ -9,12 +9,12 @@
             } else if (isset($ImgSusc)) {
                 echo "<span style='color:green;'>$ImgSusc</span><br>";
             }
-            if (isset($_SESSION['error'])&& $_SESSION['error']!="") {
+            if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
                 foreach ($_SESSION['error'] as $mess) {
                     echo "<span style='color:red;'>$mess</span><br>";
                 }
                 unset($_SESSION['error']);
-            } 
+            }
             if (isset($_SESSION['update_failed'])) {
                 echo '<div style="color: red;">' . $_SESSION['update_failed'] . '</div>';
                 unset($_SESSION['update_failed']); // Xóa thông báo sau khi hiển thị
@@ -69,7 +69,15 @@
                 </div>
                 <div class="box_content mb10">
                     <label>Vai trò </label> <br>
-                    <input type="number" name="role" value="' . $role . '" placeholder="Nhập vào vai trò">
+                    <select name="role" id="">';
+                    if (isset($listRole)) {
+                        foreach ($listRole as $value) {
+                            extract($value);
+                            $isSelected = ($OldDataTk['id_role'] == $value['id']) ? 'selected' : '';
+                            echo '<option value="' . $value['id'] . '" ' . $isSelected . '>' . $name . '</option>';
+                        }
+                    }
+                    echo ' </select>
                 </div>
                 <div class="row">
                     <input class="mr20" type="submit" value="CẬP NHẬT" name="update">

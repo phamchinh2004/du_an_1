@@ -18,7 +18,7 @@
                             <th>ID</th>
                             <th>Tên tính năng</th>
                             <th>Tổng value</th>
-                            <th></th>
+                            <th>Thao tác</th>
                         </tr>
                         <?php foreach ($tinhnang as $value) {
                             extract($value);

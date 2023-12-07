@@ -25,6 +25,11 @@ function selectInforUser(){
     $run = pdo_query_one($sql,[$_SESSION['iduser']]);
     return $run;
 }
+function loadAllRole(){
+    $sql = 'SELECT * FROM `role`';
+    $run=pdo_query($sql);
+    return $run;
+}
 function addTkDone($name, $username, $password, $repassword, $avatar, $email, $tel, $address, $role)
 {
     //VALIDATE
@@ -113,7 +118,7 @@ function addTkDone($name, $username, $password, $repassword, $avatar, $email, $t
     if ($check) {
         if ($role != "") {
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user`(`name`, `username`, `password`, `avatar`, `email`,`tel`, `address`, `role`) VALUES (?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO `user`(`name`, `username`, `password`, `avatar`, `email`,`tel`, `address`, `id_role`) VALUES (?,?,?,?,?,?,?,?)";
             pdo_execute($sql, [$name, $username, $password, $avatar, $email, $tel, $address, $role]);
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -225,7 +230,7 @@ function updateTkDone($idtk, $name, $username, $usernameOld, $password, $avatarN
             $params[] = $avatarNew;
         }
         $sql .= ",`email`=?,`tel`=?,
-                `address`=?,`role`=?, `updateAt`=CURRENT_TIMESTAMP WHERE `id`=?";
+                `address`=?,`id_role`=?, `updateAt`=CURRENT_TIMESTAMP WHERE `id`=?";
         $params = array_merge($params, [$email, $tel, $address, $role, $idtk]);
         pdo_execute($sql, $params);
     } else {
@@ -247,7 +252,7 @@ function dangnhap($username, $password)
                 header("location: index.php?act=trangchu&LoginSucc=$LoginSucc");
             break;
             case '2':
-                header("location: index.php");
+                header("location: view/shipper/index.php");
             break;
             case '3':
                 header("location: index.php");

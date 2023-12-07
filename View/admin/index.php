@@ -7,11 +7,13 @@ include "../../model/tinhnang.php";
 include "../../model/danhmuc.php";
 include "../../model/sanpham.php";
 include "../../model/taikhoan.php";
+include "../../model/donhang.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
     switch ($act) {
         case 'trangchu':
+            $listTopKh=topUser();
             include "main.php";
             break;
             //Hiển thị sản phẩm theo tìm kiếm và lọc (nếu không tìm kiếm và lọc sẽ hiển thị tất cả sp)
@@ -150,22 +152,22 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 include "sanpham/list.php";
             }
             break;
-        // case 'hardDeleteSp':
-        //     if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
-        //         hardDeleteSp($_GET['idsp']);
-        //         $deleteHard = "Xóa cứng sản phẩm thành công";
-        //         if (isset($_POST['listok'])) {
-        //             $keyw = $_POST['kyw'];
-        //             $iddm = $_POST['iddm'];
-        //         } else {
-        //             $keyw = "";
-        //             $iddm = 0;
-        //         }
-        //         $loadAllDm = listDanhMuc();
-        //         $listSp = loadSp($keyw, $iddm);
-        //         include "sanpham/list.php";
-        //     }
-        //     break;
+            // case 'hardDeleteSp':
+            //     if (isset($_GET['idsp']) && ($_GET['idsp'] != "")) {
+            //         hardDeleteSp($_GET['idsp']);
+            //         $deleteHard = "Xóa cứng sản phẩm thành công";
+            //         if (isset($_POST['listok'])) {
+            //             $keyw = $_POST['kyw'];
+            //             $iddm = $_POST['iddm'];
+            //         } else {
+            //             $keyw = "";
+            //             $iddm = 0;
+            //         }
+            //         $loadAllDm = listDanhMuc();
+            //         $listSp = loadSp($keyw, $iddm);
+            //         include "sanpham/list.php";
+            //     }
+            //     break;
         case 'topsp':
             $listSp = loadAllSpBanChay();
             include "sanpham/spBanChay.php";
@@ -220,7 +222,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "sanpham/addSpSale.php";
             break;
         case 'addSpSaleDone':
-            if (isset($_POST['them']) && ($_POST['valueGiamgia'] >0) && ($_POST['valueGiamgia'] !="")) {
+            if (isset($_POST['them']) && ($_POST['valueGiamgia'] > 0) && ($_POST['valueGiamgia'] != "")) {
                 $idsp = $_POST['idsp'];
                 $valueGiamgia = $_POST['valueGiamgia'];
                 addSpSaleDone($idsp, $valueGiamgia);
@@ -427,6 +429,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             include "taikhoan/list.php";
             break;
         case 'addTk':
+            $listRole=loadAllRole();
             include "taikhoan/add.php";
             break;
         case 'addTkDone':
@@ -466,6 +469,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             break;
         case 'suaTk':
             if (isset($_GET['idtk']) && ($_GET['idtk'] != "")) {
+                $listRole=loadAllRole();
                 $OldDataTk = loadOldDataTk($_GET['idtk']);
                 include "taikhoan/updateTk.php";
             }
@@ -530,6 +534,56 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 xoaTk($_GET['idtk']);
                 $_SESSION['xoaSucc'] = "Xóa tài khoản thành công";
                 header("location: index.php?act=listtk");
+            }
+            break;
+        case 'listdh':
+            $keyw = null;
+            if (isset($_POST['listok'])) {
+                $keyw = isset($_POST['keyw']) ? $_POST['keyw'] : null;
+            }
+            $trangthai = isset($_GET['trangthai']) ? $_GET['trangthai'] : null;
+            $listdh = listDonHang($keyw, $trangthai);
+            include "donhang/list.php";
+            break;
+        case 'chitietdonhang':
+            if (isset($_GET['iddh']) && $_GET['iddh'] != "") {
+                $iddh = $_GET['iddh'];
+                $chiTietDonHang = chiTietDonHang($iddh);
+                include "donhang/chitietdonhang.php";
+            } else {
+                header("location:index.php?act=listdh");
+            }
+            break;
+        case 'nhanDh':
+            if (isset($_GET['iddh']) && $_GET['iddh']) {
+                $iddh = $_GET['iddh'];
+                nhanDonHang($iddh);
+                $nhanSucc = "Nhận đơn hàng thành công";
+                header('location:index.php?act=listdh&nhanSucc=' . $nhanSucc);
+            }
+            break;
+        case 'huyDh':
+            if (isset($_GET['iddh']) && $_GET['iddh']) {
+                $iddh = $_GET['iddh'];
+                huyDonHang($iddh);
+                $nhanSucc = "Hủy đơn hàng thành công";
+                header('location:index.php?act=listdh&huySucc=' . $nhanSucc);
+            }
+            break;
+        case 'nhanDhShip':
+            if (isset($_GET['iddh']) && $_GET['iddh']) {
+                $iddh = $_GET['iddh'];
+                nhanDonHangShip($iddh);
+                $nhanSucc = "Nhận đơn hàng thành công";
+                header('location:index.php?act=listdh&nhanSucc=' . $nhanSucc);
+            }
+            break;
+        case 'huyDhShip':
+            if (isset($_GET['iddh']) && $_GET['iddh']) {
+                $iddh = $_GET['iddh'];
+                huyDonHangShip($iddh);
+                $nhanSucc = "Hủy đơn hàng thành công";
+                header('location:index.php?act=listdh&huySucc=' . $nhanSucc);
             }
             break;
     }

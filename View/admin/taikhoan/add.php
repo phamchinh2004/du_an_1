@@ -51,7 +51,14 @@
                 </div>
                 <div class="box_content mb10">
                     <label>Vai trò </label> <br>
-                    <input type="number" name="role" value="" placeholder="Nhập vào vai trò">
+                    <select name="role" id="">
+                        <?php
+                        if(isset($listRole)){
+                            foreach($listRole as $value){
+                                extract($value);?>
+                                <option value="<?=$id?>"><?=$name?></option>
+                            <?php }}?>
+                    </select>
                 </div>
                 <div class="row">
                     <input class="mr20" type="submit" value="THÊM MỚI" name="themmoi">

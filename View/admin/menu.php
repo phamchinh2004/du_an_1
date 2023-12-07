@@ -38,7 +38,7 @@
                     <a class="aside_menu_list_item_link" href="index.php?act=listtn">Tính năng</a>
                 </li>
                 <li class="aside_menu_list_item">
-                    <a class="aside_menu_list_item_link" href="">Đơn hàng</a>
+                    <a class="aside_menu_list_item_link" href="index.php?act=listdh&trangthai=1">Đơn hàng</a>
                 </li>
                 <li class="aside_menu_list_item">
                     <a class="aside_menu_list_item_link" href="index.php?act=listtk">Tài khoản</a>

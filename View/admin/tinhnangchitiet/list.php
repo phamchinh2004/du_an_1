@@ -19,7 +19,7 @@
                             <th>ID</th>
                             <th>Giá trị</th>
                             <th>Danh mục</th>
-                            <th></th>
+                            <th>Thao tác</th>
                         </tr>
                         <?php if(isset($listTnct)&& $listTnct!=""){
                             foreach ($listTnct as $values) {
