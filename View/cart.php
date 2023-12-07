@@ -92,7 +92,10 @@
             <div class="row mb10 ">
                 <input class="mr10" type="button" value="CHỌN TẤT CẢ">
                 <input class="mr10" type="button" value="BỎ CHỌN TẤT CẢ">
-                <a href="index.php?act=formthanhtoan&ttAll"> <input class="mr10" type="button" value="MUA TẤT CẢ"></a>
+                <?php if(!empty($listSpCart)){ ?>
+                        <a href="index.php?act=formthanhtoan&ttAll"> <input class="mr10" type="button" value="MUA TẤT CẢ"></a>
+               <?php }?>
+                
             </div>
         </div>
     </div>

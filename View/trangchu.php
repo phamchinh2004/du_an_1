@@ -93,7 +93,7 @@
                                     <p class="price-old"><del><?= number_format($giaban, 0, ",", ".") ?><u>đ</u></del></p>
                                 </div>
                             </div>
-                            <div class="add"><a href="index.php?act=formthanhtoan&idsp=<?= $id ?>">Mua ngay</a></div>
+                            <div class="add"><a href="index.php?act=formthanhtoanOne&idsp=<?= $id ?>">Mua ngay</a></div>
                             <div class="ctsp"> <a href="index.php?act=addtocart&idsp=<?= $id ?>">Add cart</a></div>
                         </div>
                     <?php }

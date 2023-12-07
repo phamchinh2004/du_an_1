@@ -99,19 +99,19 @@
                 <input type="email" name="email" value="" placeholder="Nhập vào email">
             </div>
             <div class="form-group">
-                <label>Username </label>
+                <label>Tên đăng nhập </label>
                 <input type="text" name="username" value="" placeholder="Nhập vào tên đăng nhập">
             </div>
             <div class="form-group">
-                <label>Password </label>
+                <label>Mật khẩu </label>
                 <input type="password" name="password" value="" placeholder="Nhập vào mật khẩu" onpaste="return false;">
             </div>
             <div class="form-group">
-                <label>Repassword </label>
+                <label>Nhập lại mật khẩu </label>
                 <input type="password" name="repassword" value="" placeholder="Xác nhận mật khẩu" onpaste="return false;">
             </div>
             <div class="form-group">
-                <label>Avatar</label>
+                <label>Ảnh đại diện</label>
                 <input type="file" name="avatar">
             </div>
             <div class="form-group">

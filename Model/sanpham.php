@@ -282,7 +282,9 @@ function selectSp($idsp = 0)
     return $run;
 }
 function selectSpOne($idsp = 0){
-
+    $sql="SELECT * FROM `product` WHERE `id` = ?";
+    $run=pdo_query_one($sql, [$idsp]);
+    return $run;
 }
 //Thêm số lượng sản phẩm và thông tin đặt hàng vào bảng đơn hàng
 function datHangDone($sosp, $_totalAll, $hoten, $sdt, $diachi, $ghichu)
@@ -306,4 +308,7 @@ function deleteSpCart($idsp)
 {
     $sql = 'DELETE FROM `cart` WHERE `id_product`=? and `id_user`=?';
     pdo_execute($sql, [$idsp, $_SESSION['iduser']]);
+}
+function listOderChoXacNhan($trangthai=0){
+
 }

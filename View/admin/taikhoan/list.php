@@ -57,7 +57,6 @@
                             <th hidden>ID</th>
                             <th>Tên người dùng</th>
                             <th>Username</th>
-                            <th>Password</th>
                             <th>Avatar</th>
                             <th>Email</th>
                             <th>Số điện thoại</th>
@@ -90,7 +89,6 @@
                                             <td hidden>' . $id . '</td>
                                             <td>' . $name . '</td>
                                             <td>' . $username . '</td>
-                                            <td>' . $password . '</td>
                                             <td>' . $hinhpath. '</td>
                                             <td>' . $email . '</td>
                                             <td>' . $tel . '</td>

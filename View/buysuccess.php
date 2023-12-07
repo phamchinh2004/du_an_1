@@ -9,14 +9,6 @@
             <h3>Thông tin đặt hàng</h3>
             <table>
                 <tr>
-                    <th>Mã đơn hàng:</th>
-                    <td>123432</td>
-                </tr>
-                <tr>
-                    <th>Hình thức thanh toán:</th>
-                    <td>Thanh toán sau khi nhận hàng</td>
-                </tr>
-                <tr>
                     <th>Họ tên khách hàng:</th>
                     <td>Nguyen Van A</td>
                 </tr>
@@ -24,8 +16,16 @@
                     <th>Số điện thoại:</th>
                     <td>0987654321</td>
                 </tr>
+                <tr>
+                    <th>Địa chỉ:</th>
+                    <td>0987654321</td>
+                </tr>
+                <tr>
+                    <th>Hình thức thanh toán:</th>
+                    <td>Thanh toán sau khi nhận hàng</td>
+                </tr>
             </table>
         </div>
-        <a href="index.php?act=sptrangchu"><input class="" type="button" value="MUA THÊM SẢN PHẨM KHÁC"></a>
+        <a href="index.php?act=myorder"><input class="" type="button" value="XEM TRẠNG THÁI ĐƠN HÀNG"></a>
     </div>
 </div>

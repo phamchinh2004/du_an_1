@@ -36,10 +36,6 @@
                 <div class="box_content mb10">
                     <label>Username </label> <br>
                     <input type="text" name="username" value="' . $username . '" placeholder="Nhập vào tên đăng nhập">
-                </div>
-                <div class="box_content mb10">
-                    <label>Password </label> <br>
-                    <input type="text" name="password" value="' . $password . '" placeholder="Nhập vào mật khẩu">
                 </div>';
 
                     $imgOld = "../../public/image/" . $avatar;

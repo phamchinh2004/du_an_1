@@ -81,6 +81,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET["idsp"];
                 $selectInforUser = selectInforUser();
+                $selectSpOne=selectSpOne($idsp);
                 $selectSp = selectSp($idsp);
                 include "view/formthanhtoan.php";
             } else if (isset($_GET['ttAll'])) {
@@ -90,6 +91,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/formthanhtoan.php";
             } else {
                 header('location:index.php?act=cart');
+            }
+            break;
+        case "formthanhtoanOne":
+            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                $idsp = $_GET["idsp"];
+                $selectInforUser = selectInforUser();
+                $selectSpOne=selectSpOne($idsp);
+                include "view/formthanhtoan.php";
             }
             break;
         case "orderSpDone":
@@ -115,7 +124,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         addOrderDetail($slSpCart, $tongTienSp, $idsp, $idDonhang);
                         deleteSpCart($idsp);
                         $mess = "Đặt hàng thành công";
-                        header("location:index.php?act=cart&mess=" . $mess);
+                        header("location:index.php?act=buySucc&mess=" . $mess ."&idOrder=".$idDonhang);
                     } else {
                         $mess = "Lấy id đơn hàng không thành công";
                         header("location:index.php?act=cart&mess=" . $mess);
@@ -133,7 +142,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             deleteSpCart($idsp);
                         }
                         $mess = "Đặt hàng thành công";
-                        header("location:index.php?act=cart&mess=" . $mess);
+                        header("location:index.php?act=buySucc&mess=" . $mess ."&idOrder=".$idDonhang);
                     } else {
                         $mess = "Lấy id đơn hàng không thành công";
                         header("location:index.php?act=cart&mess=" . $mess);
@@ -155,6 +164,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/user/user.php";
             break;
         case "myoder":
+            $oderChoXacNhan=listOderChoXacNhan();
             include "view/user/myoder.php";
             break;
         case "doimk":
