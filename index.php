@@ -179,6 +179,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             // break;
             include "view/user/myorder.php";
             break;
+        case "myOderDetail":
+            if(isset($_GET["iddh"]) && $_GET[""] != "iddh") {
+                $iddh=$_GET['iddh'];
+                $listOrderDetail=loadOderDetail($iddh);
+                include 'view/user/orderDetail.php';
+            break;
         case "doimk":
             include "view/user/doimk.php";
             break;

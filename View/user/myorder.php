@@ -3,7 +3,7 @@
         <div class="header-myoder mb">
             <a href="index.php?act=myorder&trangthai=1">Chờ xác nhận</a>
             <a href="index.php?act=myorder&trangthai=2">Đang giao</a>
-            <a href="index.php?act=myorder&trangthai=3">Đã giao</a>
+            <a href="index.php?act=myorder&trangthai=3">Đã hoàn thành</a>
             <a href="index.php?act=myorder&trangthai=4">Đã huỷ</a>
             <a href="index.php?act=myorder&trangthai=5">Trả hàng</a>
         </div>
