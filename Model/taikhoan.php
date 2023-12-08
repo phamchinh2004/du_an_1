@@ -285,3 +285,8 @@ function dangxuat()
     session_destroy();
     header("location: index.php");
 }
+function check_email($email){
+    $sql = "select * from user where email='". $email."'";
+    $checkmail = pdo_query_one($sql);
+    return $checkmail;
+}

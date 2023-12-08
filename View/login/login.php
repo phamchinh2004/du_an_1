@@ -23,7 +23,7 @@
         </div>
         <div class="additional-options">
             <div class="register_css">Bạn chưa có tài khoản? <a href="index.php?act=signUp"><u style="color: red;">Đăng ký</u></a> ngay!</div>
-            <a class="forget_css" href="#">Quên mật khẩu?</a>
+            <a class="forget_css" href="index.php?act=quenmk" style="color:blue">Quên mật khẩu?</a>
         </div>
         <div class="form-group">
             <button type="submit" name="btnsubmit">Đăng Nhập</button>

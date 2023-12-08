@@ -1761,3 +1761,40 @@ tbody>tr {
     background-color: #f12f2f;
     
 }
+
+/* quenmk */
+.box-quenmk{
+    font-size: 27px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.box-quenmk form{
+    padding: 30px;
+}
+.box-quenmk input[type="email"]{
+    padding: 10px;
+    width: 100%;
+    border-radius:5px ;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+}
+.box-quenmk input[type="submit"],
+.box-quenmk input[type="reset"]{
+    padding: 10px 15px;
+    border-radius:5px ;
+    border: none;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background-color: #dd1d1d;
+    color: #f2f2f2;
+}
+.box-quenmk input[type="submit"]:hover,
+.box-quenmk input[type="reset"]:hover{
+    cursor: pointer;
+    background-color: #f03838;
+}
+.box-quenmk h3{
+    text-align: center;
+}
+/* done quenmk */

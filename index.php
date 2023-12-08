@@ -176,6 +176,19 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "updatetk":
             include "view/user/update.php";
             break;
+        case "quenmk":
+            if ((isset($_POST['guiemail'])) && ($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $checkemail = check_email($email);
+                if ((is_array($checkemail))) {
+                    $thongbao = "Mật khẩu của bạn là: ".$checkemail['password'];
+                }else{
+                    $thongbao = "Email này không tồn tại trên hệ thống!";
+                }
+                
+            }
+            include "view/login/quenmk.php";
+            break;
         case "login":
             include "view/login/login.php";
             break;
