@@ -160,6 +160,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listdm = listDanhMuc();
             include "view/sptrangchu.php";
             break;
+        case "formrate":
+            include "view/formrate.php";
+            break;
         case "user":
             include "view/user/user.php";
             break;

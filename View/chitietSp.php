@@ -18,7 +18,7 @@
             $hinhanhList[] = $hinhanhChinh;
         }
     } ?>
-    <div class="box-ctsp">
+    <div class="box-ctsp mb">
         <div class="ctsp-top mb">
             <div class="ctsp-title">
                 <?= $name ?>
@@ -105,5 +105,227 @@
 
             </div>
         </div>
+    </div>
+    <hr style="border:3px solid #f1f1f1" class="mb">
+    <div class="box-rate mb">
+        <h2>Đánh giá sản phẩm</h2>
+        <div class="box-ratetb ">
+            <div class="ratetb1">
+                <p class="bt5">Đánh giá trung bình</p>
+                <h1 class="bt5" style="color:red">5/5</h1>
+                <div class="star-ratetb1 bt5">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                </div>
+                <p style="color:rgb(207, 204, 204)">10 đánh giá</p>
+            </div>
+            <div class="ratetb2">
+                <div class="ratetb2-box">
+                    <div class="sl-rate">
+                        <p class="ml">5</p>
+                        <i class="fa-solid fa-star ml"></i>
+                        <div class="bar-container ml"> 
+                            <div class="bar-5"></div>
+                        </div>
+                        <p style="color:rgb(207, 204, 204)">8</p>
+                    </div>
+                    <div class="sl-rate">
+                        <p class="ml">4</p>
+                        <i class="fa-solid fa-star ml"></i>
+                        <div class="bar-container ml"> 
+                            <div class="bar-4"></div>
+                        </div>
+                        <p style="color:rgb(207, 204, 204)">2</p>
+                    </div>
+                    <div class="sl-rate">
+                        <p class="ml">3</p>
+                        <i class="fa-solid fa-star ml"></i>
+                        <div class="bar-container ml"> 
+                            <div class="bar-3"></div>
+                        </div>
+                        <p style="color:rgb(207, 204, 204)">0</p>
+                    </div>
+                    <div class="sl-rate">
+                        <p class="ml">2</p>
+                        <i class="fa-solid fa-star ml"></i>
+                        <div class="bar-container ml"> 
+                            <div class="bar-2"></div>
+                        </div>
+                        <p style="color:rgb(207, 204, 204)">0</p>
+                    </div>
+                    <div class="sl-rate">
+                        <p class="ml">1</p>
+                        <i class="fa-solid fa-star ml"></i>
+                        <div class="bar-container ml"> 
+                            <div class="bar-1"></div>
+                        </div>
+                        <p style="color:rgb(207, 204, 204)">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ratetb3">
+                <div class="ratetb3-box">
+                    <span>BẠN ĐÃ DÙNG SẢN PHẨM NÀY?</span>
+                    <a href="index.php?act=formrate"><input type="button" value="GỬI ĐÁNH GIÁ"></a>
+                </div>
+            </div>
+        </div>
+        <div class="user-rate">
+            <!-- 1box user -->
+            <div class="box-content-user-rate">
+                <div class="content-user-rate">
+                    <div class="avt-user-rate ml">T</div>
+                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
+                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
+                </div>
+                <div class="star-user-rate bt5 ml30">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="user-comment bt5 ml30">
+                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
+                </div>
+                <div class="time-rate ml30">
+                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
+                </div>
+            </div>
+            <!-- 1box user -->
+            <div class="box-content-user-rate">
+                <div class="content-user-rate">
+                    <div class="avt-user-rate ml">T</div>
+                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
+                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
+                </div>
+                <div class="star-user-rate bt5 ml30">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="user-comment bt5 ml30">
+                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
+                </div>
+                <div class="time-rate ml30">
+                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
+                </div>
+            </div>
+            <!-- 1box user -->
+            <div class="box-content-user-rate">
+                <div class="content-user-rate">
+                    <div class="avt-user-rate ml">T</div>
+                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
+                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
+                </div>
+                <div class="star-user-rate bt5 ml30">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="user-comment bt5 ml30">
+                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
+                </div>
+                <div class="time-rate ml30">
+                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
+                </div>
+            </div>
+            <div class="end-page-rate mb">
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a class="active" href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="mb">SẢN PHẨM CÙNG LOẠI</h2>
+    <div class="items">
+    <div class="box_items">
+        <div class="box_items_bg">
+            <div class="box_items_img">
+                <img src="public/image/dienthoai.jpg" alt="">  
+            </div>
+            <div class="tg" href="">Trả góp 0%/0đ</div>
+            <div class="sale" href="">Giảm 1.999.999đ</div>
+        </div>
+
+        <div class="items_text">
+            <a class="item_name" href="">Iphone 14 Pro Max</a>
+            <div class="price">
+                <p class="price-new">15.999.000đ</p>
+                <p class="price-old"><del>17.998.999đ</del></p>
+            </div>
+        </div>
+        <div class="add" ><a href="#">Mua ngay</a></div>
+        <div class="ctsp"> <a href="#">Chi tiết</a></div>
+    </div>
+    <div class="box_items">
+        <div class="box_items_bg">
+            <div class="box_items_img">
+                <img src="public/image/dienthoai.jpg" alt="">  
+            </div>
+            <div class="tg" href="">Trả góp 0%/0đ</div>
+            <div class="sale" href="">Giảm 1.999.999đ</div>
+        </div>
+
+        <div class="items_text">
+            <a class="item_name" href="">Iphone 14 Pro Max</a>
+            <div class="price">
+                <p class="price-new">15.999.000đ</p>
+                <p class="price-old"><del>17.998.999đ</del></p>
+            </div>
+        </div>
+        <div class="add" ><a href="#">Mua ngay</a></div>
+        <div class="ctsp"> <a href="#">Chi tiết</a></div>
+    </div>
+    <div class="box_items">
+        <div class="box_items_bg">
+            <div class="box_items_img">
+                <img src="public/image/dienthoai.jpg" alt="">  
+            </div>
+            <div class="tg" href="">Trả góp 0%/0đ</div>
+            <div class="sale" href="">Giảm 1.999.999đ</div>
+        </div>
+
+        <div class="items_text">
+            <a class="item_name" href="">Iphone 14 Pro Max</a>
+            <div class="price">
+                <p class="price-new">15.999.000đ</p>
+                <p class="price-old"><del>17.998.999đ</del></p>
+            </div>
+        </div>
+        <div class="add" ><a href="#">Mua ngay</a></div>
+        <div class="ctsp"> <a href="#">Chi tiết</a></div>
+    </div>
+    <div class="box_items">
+        <div class="box_items_bg">
+            <div class="box_items_img">
+                <img src="public/image/dienthoai.jpg" alt="">  
+            </div>
+            <div class="tg" href="">Trả góp 0%/0đ</div>
+            <div class="sale" href="">Giảm 1.999.999đ</div>
+        </div>
+
+        <div class="items_text">
+            <a class="item_name" href="">Iphone 14 Pro Max</a>
+            <div class="price">
+                <p class="price-new">15.999.000đ</p>
+                <p class="price-old"><del>17.998.999đ</del></p>
+            </div>
+        </div>
+        <div class="add" ><a href="#">Mua ngay</a></div>
+        <div class="ctsp"> <a href="#">Chi tiết</a></div>
+    </div>
     </div>
 </div>
