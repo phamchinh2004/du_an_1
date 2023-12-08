@@ -29,7 +29,10 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <a href="#"><?php foreach($loadAllVote as $value){extract($value);echo $luotVote;}?> ĐÁNH GIÁ</a>
+                <a><?php foreach ($loadAllVote as $value) {
+                        extract($value);
+                        echo $luotVote;
+                    } ?> ĐÁNH GIÁ</a>
             </div>
         </div>
         <div class="content-ctsp">
@@ -93,7 +96,7 @@
                     </div>
                 </div>
                 <div class="ctsp-box-button">
-                    <a href="index.php?act=formthanhtoanOne&idsp=<?= $sanphamDetail['id']?>" class="ctsp-button-left">
+                    <a href="index.php?act=formthanhtoanOne&idsp=<?= $sanphamDetail['id'] ?>" class="ctsp-button-left">
                         <h3>MUA NGAY</h3>
                         <p>Giao hàng miễn phí cho lần đầu</p>
                     </a>
@@ -114,20 +117,23 @@
                 <p class="bt5">Đánh giá trung bình</p>
                 <h1 class="bt5" style="color:red">5/5</h1>
                 <div class="star-ratetb1 bt5">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
-                <p style="color:rgb(207, 204, 204)"><?php foreach($loadAllVote as $value){extract($value);echo $luotVote;}?></p>
+                <p style="color:rgb(207, 204, 204)"><?php foreach ($loadAllVote as $value) {
+                                                        extract($value);
+                                                        echo $luotVote;
+                                                    } ?></p>
             </div>
             <div class="ratetb2">
                 <div class="ratetb2-box">
                     <div class="sl-rate">
                         <p class="ml">5</p>
                         <i class="fa-solid fa-star ml"></i>
-                        <div class="bar-container ml"> 
+                        <div class="bar-container ml">
                             <div class="bar-5"></div>
                         </div>
                         <p style="color:rgb(207, 204, 204)">8</p>
@@ -135,7 +141,7 @@
                     <div class="sl-rate">
                         <p class="ml">4</p>
                         <i class="fa-solid fa-star ml"></i>
-                        <div class="bar-container ml"> 
+                        <div class="bar-container ml">
                             <div class="bar-4"></div>
                         </div>
                         <p style="color:rgb(207, 204, 204)">2</p>
@@ -143,7 +149,7 @@
                     <div class="sl-rate">
                         <p class="ml">3</p>
                         <i class="fa-solid fa-star ml"></i>
-                        <div class="bar-container ml"> 
+                        <div class="bar-container ml">
                             <div class="bar-3"></div>
                         </div>
                         <p style="color:rgb(207, 204, 204)">0</p>
@@ -151,7 +157,7 @@
                     <div class="sl-rate">
                         <p class="ml">2</p>
                         <i class="fa-solid fa-star ml"></i>
-                        <div class="bar-container ml"> 
+                        <div class="bar-container ml">
                             <div class="bar-2"></div>
                         </div>
                         <p style="color:rgb(207, 204, 204)">0</p>
@@ -159,7 +165,7 @@
                     <div class="sl-rate">
                         <p class="ml">1</p>
                         <i class="fa-solid fa-star ml"></i>
-                        <div class="bar-container ml"> 
+                        <div class="bar-container ml">
                             <div class="bar-1"></div>
                         </div>
                         <p style="color:rgb(207, 204, 204)">0</p>
@@ -175,125 +181,125 @@
         </div>
         <div class="user-rate">
             <!-- 1box user -->
-            <?php if(isset($loadAllVote) && $loadAllVote!=""){
-                foreach($loadAllVote as $value){
-                    extract($value);?>
-            <div class="box-content-user-rate">
-                <div class="content-user-rate">
-                    <div class="avt-user-rate ml"><?=$chu_cai_dau?></div>
-                    <div class="name-user-rate ml"><?=$nameUser?></div>
-                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
-                </div>
-                <div class="user-comment bt5 ml30">
-                SỐ SAO : <?=$soSao?>
-                </div>
-                <div class="star-user-rate bt5 ml30">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="user-comment bt5 ml30">
-                    <?=$content?>
-                </div>
-                <div class="time-rate ml30">
-                    <?=$timeVote?> | <a href="#">Thích</a> | <a href="#">Trả lời</a>
-                </div>
-            </div>
-            <?php }}else{?>
+            <?php if (isset($loadAllVote) && $loadAllVote != "") {
+                foreach ($loadAllVote as $value) {
+                    extract($value); ?>
+                    <div class="box-content-user-rate">
+                        <div class="content-user-rate">
+                            <div class="avt-user-rate ml"><?= $chu_cai_dau ?></div>
+                            <div class="name-user-rate ml"><?= $nameUser ?></div>
+                            <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
+                        </div>
+                        <div class="user-comment bt5 ml30">
+                            SỐ SAO : <?= $soSao ?>
+                        </div>
+                        <div class="star-user-rate bt5 ml30">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="user-comment bt5 ml30">
+                            <?= $content ?>
+                        </div>
+                        <div class="time-rate ml30">
+                            <?= $timeVote ?> | <a href="#">Thích</a> | <a href="#">Trả lời</a>
+                        </div>
+                    </div>
+                <?php } ?><div class="end-page-rate mb">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a class="active" href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div><?php } else { ?>
                 <span>Chưa có đánh giá nào!</span>
-                <?php }?>
+            <?php } ?>
             <!-- 1box user -->
-            <div class="end-page-rate mb">
-                <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a class="active" href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">&raquo;</a>
-                </div>
-            </div>
+
         </div>
     </div>
     <h2 class="mb">SẢN PHẨM CÙNG LOẠI</h2>
     <div class="items">
-    <div class="box_items">
-        <div class="box_items_bg">
-            <div class="box_items_img">
-                <img src="public/image/dienthoai.jpg" alt="">  
+        <div class="box_items">
+            <div class="box_items_bg">
+                <div class="box_items_img">
+                    <img src="public/image/dienthoai.jpg" alt="">
+                </div>
+                <div class="tg" href="">Trả góp 0%/0đ</div>
+                <div class="sale" href="">Giảm 1.999.999đ</div>
             </div>
-            <div class="tg" href="">Trả góp 0%/0đ</div>
-            <div class="sale" href="">Giảm 1.999.999đ</div>
-        </div>
 
-        <div class="items_text">
-            <a class="item_name" href="">Iphone 14 Pro Max</a>
-            <div class="price">
-                <p class="price-new">15.999.000đ</p>
-                <p class="price-old"><del>17.998.999đ</del></p>
+            <div class="items_text">
+                <a class="item_name" href="">Iphone 14 Pro Max</a>
+                <div class="price">
+                    <p class="price-new">15.999.000đ</p>
+                    <p class="price-old"><del>17.998.999đ</del></p>
+                </div>
             </div>
+            <div class="add"><a href="#">Mua ngay</a></div>
+            <div class="ctsp"> <a href="#">Chi tiết</a></div>
         </div>
-        <div class="add" ><a href="#">Mua ngay</a></div>
-        <div class="ctsp"> <a href="#">Chi tiết</a></div>
-    </div>
-    <div class="box_items">
-        <div class="box_items_bg">
-            <div class="box_items_img">
-                <img src="public/image/dienthoai.jpg" alt="">  
+        <div class="box_items">
+            <div class="box_items_bg">
+                <div class="box_items_img">
+                    <img src="public/image/dienthoai.jpg" alt="">
+                </div>
+                <div class="tg" href="">Trả góp 0%/0đ</div>
+                <div class="sale" href="">Giảm 1.999.999đ</div>
             </div>
-            <div class="tg" href="">Trả góp 0%/0đ</div>
-            <div class="sale" href="">Giảm 1.999.999đ</div>
-        </div>
 
-        <div class="items_text">
-            <a class="item_name" href="">Iphone 14 Pro Max</a>
-            <div class="price">
-                <p class="price-new">15.999.000đ</p>
-                <p class="price-old"><del>17.998.999đ</del></p>
+            <div class="items_text">
+                <a class="item_name" href="">Iphone 14 Pro Max</a>
+                <div class="price">
+                    <p class="price-new">15.999.000đ</p>
+                    <p class="price-old"><del>17.998.999đ</del></p>
+                </div>
             </div>
+            <div class="add"><a href="#">Mua ngay</a></div>
+            <div class="ctsp"> <a href="#">Chi tiết</a></div>
         </div>
-        <div class="add" ><a href="#">Mua ngay</a></div>
-        <div class="ctsp"> <a href="#">Chi tiết</a></div>
-    </div>
-    <div class="box_items">
-        <div class="box_items_bg">
-            <div class="box_items_img">
-                <img src="public/image/dienthoai.jpg" alt="">  
+        <div class="box_items">
+            <div class="box_items_bg">
+                <div class="box_items_img">
+                    <img src="public/image/dienthoai.jpg" alt="">
+                </div>
+                <div class="tg" href="">Trả góp 0%/0đ</div>
+                <div class="sale" href="">Giảm 1.999.999đ</div>
             </div>
-            <div class="tg" href="">Trả góp 0%/0đ</div>
-            <div class="sale" href="">Giảm 1.999.999đ</div>
-        </div>
 
-        <div class="items_text">
-            <a class="item_name" href="">Iphone 14 Pro Max</a>
-            <div class="price">
-                <p class="price-new">15.999.000đ</p>
-                <p class="price-old"><del>17.998.999đ</del></p>
+            <div class="items_text">
+                <a class="item_name" href="">Iphone 14 Pro Max</a>
+                <div class="price">
+                    <p class="price-new">15.999.000đ</p>
+                    <p class="price-old"><del>17.998.999đ</del></p>
+                </div>
             </div>
+            <div class="add"><a href="#">Mua ngay</a></div>
+            <div class="ctsp"> <a href="#">Chi tiết</a></div>
         </div>
-        <div class="add" ><a href="#">Mua ngay</a></div>
-        <div class="ctsp"> <a href="#">Chi tiết</a></div>
-    </div>
-    <div class="box_items">
-        <div class="box_items_bg">
-            <div class="box_items_img">
-                <img src="public/image/dienthoai.jpg" alt="">  
+        <div class="box_items">
+            <div class="box_items_bg">
+                <div class="box_items_img">
+                    <img src="public/image/dienthoai.jpg" alt="">
+                </div>
+                <div class="tg" href="">Trả góp 0%/0đ</div>
+                <div class="sale" href="">Giảm 1.999.999đ</div>
             </div>
-            <div class="tg" href="">Trả góp 0%/0đ</div>
-            <div class="sale" href="">Giảm 1.999.999đ</div>
-        </div>
 
-        <div class="items_text">
-            <a class="item_name" href="">Iphone 14 Pro Max</a>
-            <div class="price">
-                <p class="price-new">15.999.000đ</p>
-                <p class="price-old"><del>17.998.999đ</del></p>
+            <div class="items_text">
+                <a class="item_name" href="">Iphone 14 Pro Max</a>
+                <div class="price">
+                    <p class="price-new">15.999.000đ</p>
+                    <p class="price-old"><del>17.998.999đ</del></p>
+                </div>
             </div>
+            <div class="add"><a href="#">Mua ngay</a></div>
+            <div class="ctsp"> <a href="#">Chi tiết</a></div>
         </div>
-        <div class="add" ><a href="#">Mua ngay</a></div>
-        <div class="ctsp"> <a href="#">Chi tiết</a></div>
-    </div>
     </div>
 </div>

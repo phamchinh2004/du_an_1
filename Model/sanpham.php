@@ -234,7 +234,7 @@ function spDetail($idsp)
     return $run;
 }
 function loadAllVote($idsp){
-    $sql = "SELECT COUNT(danh_gia.id) as luotVote,danh_gia.content as content, sp.name as namesp
+    $sql = "SELECT COUNT(danh_gia.id) as luotVote,danh_gia.content as content, sp.name as namesp,
     danh_gia.id_star as soSao,danh_gia.vote_time as timeVote,user.name as nameUser,LEFT(user.name,1) as chu_cai_dau 
     FROM `danh_gia`
     LEFT JOIN `chi_tiet_don_hang` as ctdh ON ctdh.id=danh_gia.id_order_detail
