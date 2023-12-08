@@ -25,11 +25,11 @@
                 </div>
             </div>
         </div>
-        <?php foreach ($inforUser as $value) {
+        <?php if(isset($inforUser) && $inforUser!="") {
 
-            $hinhpath="public/image/".$value['avatar'];
-            $doimk="index.php?act=doimk&iduser=".$value['id'];
-            $updatetk="index.php?act=updatetk&iduser=".$value['id'];
+            $hinhpath="public/image/".$inforUser['avatar'];
+            $doimk="index.php?act=doimk&iduser=".$inforUser['id'];
+            $updatetk="index.php?act=updatetk&iduser=".$inforUser['id'];
             if(is_file($hinhpath)){
                 $hinhpath="<img src='".$hinhpath."'>";
             }else{
@@ -38,10 +38,10 @@
         echo '<div class="box-left">
                 <div class="img-user">'.$hinhpath.'</div>
                 <div class="thongtin-user">
-                    <p>Họ tên: <b>'.$value['name'].'</b></p>
-                    <p>SĐT: <b>'.$value['tel'].'</b></p>
-                    <p>Email: <b>'.$value['email'].'</b></p>
-                    <p>Địa chỉ: <b>'.$value['address'].'</b></p>
+                    <p>Họ tên: <b>'.$inforUser['name'].'</b></p>
+                    <p>SĐT: <b>'.$inforUser['tel'].'</b></p>
+                    <p>Email: <b>'.$inforUser['email'].'</b></p>
+                    <p>Địa chỉ: <b>'.$inforUser['address'].'</b></p>
                     <div class="dmk mb"><a href="'.$doimk.'">Đổi mật khẩu</a></div>
                     <div class="udt-tk"> <a href="'.$updatetk.'">Cập nhật tài khoản</a></div>
                 
