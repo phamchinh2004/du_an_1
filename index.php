@@ -34,6 +34,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET['idsp'];
                 $sanphamDetail = spDetail($idsp);
+                $loadAllVote = loadAllVote($idsp);
                 include "view/chitietSp.php";
             } else {
                 header("location: index.php?act=trangchu");
@@ -79,27 +80,34 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             break;
         case "formthanhtoan":
-            if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
-                $idsp = $_GET["idsp"];
-                $selectInforUser = selectInforUser();
-                $selectSpOne=selectSpOne($idsp);
-                $selectSp = selectSp($idsp);
-                include "view/formthanhtoan.php";
-            } else if (isset($_GET['ttAll'])) {
-                $idsp = 0;
-                $selectInforUser = selectInforUser();
-                $selectSp = selectSp($idsp);
-                include "view/formthanhtoan.php";
+            if (isset($_SESSION['iduser'])) {
+                if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
+                    $idsp = $_GET["idsp"];
+                    $selectInforUser = selectInforUser();
+                    $selectSpOne = selectSpOne($idsp);
+                    $selectSp = selectSp($idsp);
+                    include "view/formthanhtoan.php";
+                } else if (isset($_GET['ttAll'])) {
+                    $idsp = 0;
+                    $selectInforUser = selectInforUser();
+                    $selectSp = selectSp($idsp);
+                    include "view/formthanhtoan.php";
+                } else {
+                    header('location:index.php?act=cart');
+                }
             } else {
-                header('location:index.php?act=cart');
+                header("location: index.php?act=login");
             }
             break;
         case "formthanhtoanOne":
+            if (isset($_SESSION['iduser'])) {
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET["idsp"];
                 $selectInforUser = selectInforUser();
-                $selectSpOne=selectSpOne($idsp);
+                $selectSpOne = selectSpOne($idsp);
                 include "view/formthanhtoan.php";
+            }}else{
+                header("location: index.php?act=login");
             }
             break;
         case "orderSpDone":
@@ -125,7 +133,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         addOrderDetail($slSpCart, $tongTienSp, $idsp, $idDonhang);
                         deleteSpCart($idsp);
                         $mess = "Đặt hàng thành công";
-                        header("location:index.php?act=buySucc&mess=" . $mess ."&idOrder=".$idDonhang);
+                        header("location:index.php?act=buySucc&mess=" . $mess . "&idOrder=" . $idDonhang);
                     } else {
                         $mess = "Lấy id đơn hàng không thành công";
                         header("location:index.php?act=cart&mess=" . $mess);
@@ -152,7 +160,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             break;
         case "buySucc":
-            $echoOrderDone=echoDonHang();
+            $echoOrderDone = echoDonHang();
             include "view/buysuccess.php";
             break;
         case "sanpham":
@@ -173,17 +181,37 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case "myorder":
             $trangthai = isset($_GET['trangthai']) ? $_GET['trangthai'] : null;
-            $oderUser=listOder($trangthai);
+            $oderUser = listOder($trangthai);
             // var_dump($oderUser);
             // var_dump($_SESSION['iduser']);
             // break;
             include "view/user/myorder.php";
             break;
         case "myOderDetail":
-            if(isset($_GET["iddh"]) && $_GET[""] != "iddh") {
-                $iddh=$_GET['iddh'];
-                $listOrderDetail=loadOderDetail($iddh);
+            if (isset($_GET["iddh"]) && $_GET[""] != "iddh") {
+                $iddh = $_GET['iddh'];
+                $listOrderDetail = loadOderDetail($iddh);
                 include 'view/user/orderDetail.php';
+            }
+            break;
+        case 'danhGia':
+            if (isset($_GET['iddhct']) && $_GET['iddhct'] != "") {
+                $iddhct = $_GET["iddhct"];
+                $loadVote = loadVote($iddhct);
+                $loadStar = loadStar();
+                include "view/formrate.php";
+            }
+            break;
+        case "voteDone":
+            if (isset($_POST['btnSubmit'])) {
+                $idctdh = $_POST['idctdh'];
+                $soSao = $_POST['star'];
+                $content = $_POST['content'];
+                voteDone($content, $soSao, $idctdh);
+                setTrangThai($idctdh);
+                $mess = "Đánh giá thành công!";
+                header("location: index.php?act=myorder&voteSucc=" . $mess);
+            }
             break;
         case "doimk":
             include "view/user/doimk.php";
@@ -196,11 +224,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $email = $_POST['email'];
                 $checkemail = check_email($email);
                 if ((is_array($checkemail))) {
-                    $thongbao = "Mật khẩu của bạn là: ".$checkemail['password'];
-                }else{
+                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
+                } else {
                     $thongbao = "Email này không tồn tại trên hệ thống!";
                 }
-                
             }
             include "view/login/quenmk.php";
             break;

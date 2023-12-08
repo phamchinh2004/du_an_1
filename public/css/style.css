@@ -1661,10 +1661,18 @@ tbody>tr {
 }
 
 .item-myoder {
+    margin: 15px 0;
     width: 100%;
     box-shadow: 0 5px 10px rgb(161, 160, 160);
 }
-
+.backMyorder{
+    padding: 7px 20px;
+    border:1px solid black;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:20px;
+}
 .item-myoder-top {
     border-bottom: 1px solid gray;
     display: flex;

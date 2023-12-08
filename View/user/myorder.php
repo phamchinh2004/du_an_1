@@ -1,3 +1,10 @@
+<?php
+    if (isset($_GET['voteSucc']) && $_GET['voteSucc'] != "") {
+        echo "<script>
+                alert('" . $_GET['voteSucc'] . "');
+            </script>";
+    }
+?>
 <div class="box-myoder">
     <div class="content-myoder">
         <div class="header-myoder mb">
@@ -32,7 +39,7 @@
                     </div>
                     <div class="item-myoder-bottom">
                         <p>Vui lòng chỉ nhấn “ Hủy” nếu bạn có vấn đề về sản phẩm hoặc các vấn đề khác</p>
-                        <a href="index.php?act=myOderDetail&iddh=<?=$id?>"><input type="button" value="XEM CHI TIẾT"></a>
+                        <a href="index.php?act=myOderDetail&iddh=<?=$iddh?>"><input type="button" value="XEM CHI TIẾT"></a>
                         <?php if ($id_trang_thai == 1) { ?>
                             <a href="index.php?act=cancleMyOder"><input type="button" value="HỦY"></a>
                         <?php } ?>

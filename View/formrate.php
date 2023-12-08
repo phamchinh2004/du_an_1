@@ -16,11 +16,29 @@
 <div class="box-formrate">
     <div class="box-content-formrate">
         <h2 class="mb">ĐÁNH GIÁ SẢN PHẨM</h2>
-        <form class="content-formrate">
+        <form action="index.php?act=voteDone" class="content-formrate" method="post">
+            <?php if(isset($loadVote) && $loadVote!=""){
+                foreach($loadVote as $vote){
+                extract($vote);
+                $hinhanh="public/image/".$img;
+                if(!is_file($hinhanh)){
+                    $hinhanh="";
+                }?>
             <div class="sp-userbuy">
-                <img src="public/image/dienthoai.jpg" alt="" width="100">
-                <h3>iPhone 14 Pro Max / SL: 1</h3>
+                <input type="text" name="idctdh" value="<?=$idctdh?>" hidden>
+                <img src="<?=$hinhanh?>" alt="" width="100">
+                <h3><?=$namesp?></h3>
             </div>
+            <?php }?>
+            <label for="">Vui lòng chọn số sao</label>
+            <select name="star" id="">
+                <?php
+                if(isset($loadStar) && $loadStar!= ""){
+                 foreach($loadStar as $value){
+                    extract($value);?>
+                <option value="<?=$id?>"><?=$name?></option>
+                <?php }}}?>
+            </select>
             <div class="user-rating mb">
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
@@ -28,8 +46,8 @@
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
             </div>
-            <textarea name="" id="" cols="80" rows="10" placeholder="Hãy chia sẻ nhận xét của bạn về sản phẩm của chúng tôi. Lưu ý: nếu đánh giá có ngôn từ không phù hợp chúng tôi sẽ ẩn đi!"></textarea><br><br>
-            <a href="#"><input type="button" value="Xác nhận"></a>
+            <textarea name="content" id="" cols="80" rows="10" placeholder="Hãy chia sẻ nhận xét của bạn về sản phẩm của chúng tôi. Lưu ý: nếu đánh giá có ngôn từ không phù hợp chúng tôi sẽ ẩn đi!"></textarea><br><br>
+            <a href="#"><input name="btnSubmit" type="submit" value="Xác nhận"></a>
     </form>
     </div> 
     

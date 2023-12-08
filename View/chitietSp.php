@@ -120,7 +120,7 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 </div>
-                <p style="color:rgb(207, 204, 204)">10 đánh giá</p>
+                <p style="color:rgb(207, 204, 204)"><?php foreach($loadAllVote as $value){extract($value);echo $luotVote;}?></p>
             </div>
             <div class="ratetb2">
                 <div class="ratetb2-box">
@@ -175,11 +175,17 @@
         </div>
         <div class="user-rate">
             <!-- 1box user -->
+            <?php if(isset($loadAllVote) && $loadAllVote!=""){
+                foreach($loadAllVote as $value){
+                    extract($value);?>
             <div class="box-content-user-rate">
                 <div class="content-user-rate">
-                    <div class="avt-user-rate ml">T</div>
-                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
+                    <div class="avt-user-rate ml"><?=$chu_cai_dau?></div>
+                    <div class="name-user-rate ml"><?=$nameUser?></div>
                     <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
+                </div>
+                <div class="user-comment bt5 ml30">
+                SỐ SAO : <?=$soSao?>
                 </div>
                 <div class="star-user-rate bt5 ml30">
                     <i class="fa-solid fa-star"></i>
@@ -189,54 +195,16 @@
                     <i class="fa-solid fa-star"></i>
                 </div>
                 <div class="user-comment bt5 ml30">
-                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
+                    <?=$content?>
                 </div>
                 <div class="time-rate ml30">
-                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
+                    <?=$timeVote?> | <a href="#">Thích</a> | <a href="#">Trả lời</a>
                 </div>
             </div>
+            <?php }}else{?>
+                <span>Chưa có đánh giá nào!</span>
+                <?php }?>
             <!-- 1box user -->
-            <div class="box-content-user-rate">
-                <div class="content-user-rate">
-                    <div class="avt-user-rate ml">T</div>
-                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
-                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
-                </div>
-                <div class="star-user-rate bt5 ml30">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="user-comment bt5 ml30">
-                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
-                </div>
-                <div class="time-rate ml30">
-                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
-                </div>
-            </div>
-            <!-- 1box user -->
-            <div class="box-content-user-rate">
-                <div class="content-user-rate">
-                    <div class="avt-user-rate ml">T</div>
-                    <div class="name-user-rate ml">Trương Đắc Sơn</div>
-                    <div class="ml" style="color:#ff6138;padding-top: 3px;"><i class="fa-solid fa-circle-check ml" style="color:#ff6138"></i>Đã mua tại San's Mobile</div>
-                </div>
-                <div class="star-user-rate bt5 ml30">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="user-comment bt5 ml30">
-                    Nhận xét: máy thiết kế ổn áp đó, dùng được cả 2 sim, bắt sóng cũng mạnh, khá hài lòng khi bỏ tiền ra mua nó
-                </div>
-                <div class="time-rate ml30">
-                    4 ngày trước | <a href="#">Thích</a> | <a href="#">Trả lời</a>
-                </div>
-            </div>
             <div class="end-page-rate mb">
                 <div class="pagination">
                     <a href="#">&laquo;</a>
