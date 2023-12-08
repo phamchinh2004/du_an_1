@@ -290,3 +290,8 @@ function check_email($email){
     $checkmail = pdo_query_one($sql);
     return $checkmail;
 }
+function load_one_user($id){
+    $sql = "select * from  `user` where `id`= $id";
+    $run=pdo_query_one($sql);
+    return $run;
+}

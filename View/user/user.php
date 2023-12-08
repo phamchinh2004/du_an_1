@@ -8,7 +8,7 @@
     </div>
     <h2 class="mb">THÔNG TIN TÀI KHOẢN</h2>
     <div class="user-content">
-        
+
         <div class="box-right">
             <div class="box-right-item">
                 <div class="box-right-cart mb">
@@ -25,18 +25,28 @@
                 </div>
             </div>
         </div>
-        <div class="box-left">
-            <div class="img-user">
-                <img src="public/image/avt.jpg" alt="">
-            </div>
-            <div class="thongtin-user">
-                <p>Họ tên: <b>Admin</b></p>
-                <p>SĐT: <b>0123456789</b></p>
-                <p>Email: <b>Admin@gmail.com</b></p>
-                <p>Địa chỉ: <b>Nam Từ Liêm, Hà Nội</b></p>
-                <div class="dmk mb"><a href="index.php?act=doimk">Đổi mật khẩu</a></div>
-                <div class="udt-tk"> <a href="index.php?act=updatetk">Cập nhật tài khoản</a></div>
-            </div>
-        </div>
+        <?php foreach ($inforUser as $value) {
+
+            $hinhpath="public/image/".$value['avatar'];
+            $doimk="index.php?act=doimk&iduser=".$value['id'];
+            $updatetk="index.php?act=updatetk&iduser=".$value['id'];
+            if(is_file($hinhpath)){
+                $hinhpath="<img src='".$hinhpath."'>";
+            }else{
+                $hinhpath="Chưa có hình ảnh";
+            }
+        echo '<div class="box-left">
+                <div class="img-user">'.$hinhpath.'</div>
+                <div class="thongtin-user">
+                    <p>Họ tên: <b>'.$value['name'].'</b></p>
+                    <p>SĐT: <b>'.$value['tel'].'</b></p>
+                    <p>Email: <b>'.$value['email'].'</b></p>
+                    <p>Địa chỉ: <b>'.$value['address'].'</b></p>
+                    <div class="dmk mb"><a href="'.$doimk.'">Đổi mật khẩu</a></div>
+                    <div class="udt-tk"> <a href="'.$updatetk.'">Cập nhật tài khoản</a></div>
+                
+                </div>
+            </div>';
+        } ?>
     </div>
 </div>

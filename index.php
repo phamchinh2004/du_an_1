@@ -177,6 +177,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/formrate.php";
             break;
         case "user":
+            $inforUser=load_one_user($_SESSION['iduser']);
+            // var_dump($inforUser);
+            // var_dump($_SESSION['iduser']);
             include "view/user/user.php";
             break;
         case "myorder":
