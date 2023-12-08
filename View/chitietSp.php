@@ -29,7 +29,7 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <a href="#">273 ĐÁNH GIÁ</a>
+                <a href="#"><?php foreach($loadAllVote as $value){extract($value);echo $luotVote;}?> ĐÁNH GIÁ</a>
             </div>
         </div>
         <div class="content-ctsp">

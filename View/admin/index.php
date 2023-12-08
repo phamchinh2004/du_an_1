@@ -8,6 +8,7 @@ include "../../model/danhmuc.php";
 include "../../model/sanpham.php";
 include "../../model/taikhoan.php";
 include "../../model/donhang.php";
+include "../../model/danhgia.php";
 include "menu.php";
 if (isset($_GET['act']) && ($_GET['act']) != "") {
     $act = ($_GET['act']);
@@ -570,20 +571,24 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 header('location:index.php?act=listdh&huySucc=' . $nhanSucc);
             }
             break;
-        case 'nhanDhShip':
-            if (isset($_GET['iddh']) && $_GET['iddh']) {
-                $iddh = $_GET['iddh'];
-                nhanDonHangShip($iddh);
-                $nhanSucc = "Nhận đơn hàng thành công";
-                header('location:index.php?act=listdh&nhanSucc=' . $nhanSucc);
+        case 'listvote':
+            $listSp = listSpVoted();
+            include "danhgia/list.php";
+            break;
+        case 'loadVoteSp':
+            if(isset($_GET['idsp']) && $_GET['idsp']){
+                $idsp = $_GET['idsp'];
+                $loadAllVote=loadAllVoteDetail($idsp);
+                include "danhgia/listDanhGia.php";
             }
             break;
-        case 'huyDhShip':
-            if (isset($_GET['iddh']) && $_GET['iddh']) {
-                $iddh = $_GET['iddh'];
-                huyDonHangShip($iddh);
-                $nhanSucc = "Hủy đơn hàng thành công";
-                header('location:index.php?act=listdh&huySucc=' . $nhanSucc);
+        case 'deleteVoteSp':
+            if (isset($_GET['iddg']) && $_GET['iddg']) {
+                $iddg = $_GET['iddg'];
+                deleteVoteSp($iddg);
+                $idsp=$_GET['idsp'];
+                $mess="Xóa đánh giá thành công";
+                header("location: index.php?act=loadVoteSp&idsp=". $idsp."&xoaSucc=".$mess);
             }
             break;
     }
