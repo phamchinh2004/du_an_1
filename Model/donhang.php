@@ -14,6 +14,14 @@ function listDonHang($key = null, $trangthai = null)
     $run = pdo_query($sql, $params);
     return $run;
 }
+function listSpVoted()
+{
+    $sql="SELECT sp.* FROM `product` as sp
+    LEFT JOIN `chi_tiet_don_hang` as ctdh ON ctdh.id_product=sp.id
+    WHERE ctdh.trangThaiVote=2";
+    $run = pdo_query($sql);
+    return $run;
+}
 function listOder($trangthai = 0)
 {
     $params = [];
@@ -21,11 +29,11 @@ function listOder($trangthai = 0)
      FROM `donhang` 
      LEFT JOIN `user` ON user.id=donhang.id_user
      WHERE user.id_role=1 AND `id_user`=?";
-    $params[]=$_SESSION['iduser'];
+    $params[] = $_SESSION['iduser'];
     if ($trangthai != null) {
         $sql .= " AND `id_trang_thai`=?";
         $params[] = $trangthai;
-    }else{
+    } else {
         $sql .= " AND `id_trang_thai`=?";
         $params[] = 1;
     }
@@ -64,7 +72,7 @@ function huyDonHangShip($iddh)
 }
 function topUser()
 {
-    $sql = "SELECT user.id,user.name,user.tel,COUNT(donhang.id) as 'tongDonHang',COUNT(dhct.id)'tongSoSanPham' 
+    $sql = "SELECT user.id,user.name,user.tel,COUNT(DISTINCT donhang.id) as 'tongDonHang',COUNT(DISTINCT dhct.id)'tongSoSanPham' 
         FROM `user` 
         LEFT JOIN `donhang` ON donhang.id_user=user.id 
         LEFT JOIN `chi_tiet_don_hang` as dhct ON dhct.id_don_hang=donhang.id 
@@ -87,33 +95,38 @@ function echoDonHang()
     $run = pdo_query($sql);
     return $run;
 }
-function loadOderDetail($iddh){
+function loadOderDetail($iddh)
+{
     $sql = "SELECT *,ct.id as iddhct,ct.so_luong as slct 
     FROM `chi_tiet_don_hang` as ct
     LEFT JOIN `product` as sp ON sp.id=ct.id_product 
     WHERE `id_don_hang`=?";
-    $run = pdo_query($sql,[$iddh]);
+    $run = pdo_query($sql, [$iddh]);
     return $run;
 }
-function loadVote($iddhct){
+function loadVote($iddhct)
+{
     $sql = "SELECT ctdh.id as idctdh,sp.id as idsp,sp.name AS namesp, image.link AS img
     FROM `chi_tiet_don_hang` AS ctdh
     LEFT JOIN `product` AS sp ON sp.id = ctdh.id_product
     LEFT JOIN `image` ON image.id_product = sp.id
     WHERE ctdh.id=?";
-    $run = pdo_query($sql,[$iddhct]);
+    $run = pdo_query($sql, [$iddhct]);
     return $run;
 }
-function loadStar(){
+function loadStar()
+{
     $sql = "SELECT * FROM `vote_star` WHERE 1";
     $run = pdo_query($sql);
     return $run;
 }
-function voteDone($content,$soSao,$iddhct){
-    $sql="INSERT INTO `danh_gia`(`content`,`id_star`,`id_order_detail`,`id_user`) VALUES (?,?,?,?)";
-    pdo_execute($sql,[$content,$soSao,$iddhct,$_SESSION['iduser']]);
+function voteDone($content, $soSao, $iddhct)
+{
+    $sql = "INSERT INTO `danh_gia`(`content`,`id_star`,`id_order_detail`,`id_user`) VALUES (?,?,?,?)";
+    pdo_execute($sql, [$content, $soSao, $iddhct, $_SESSION['iduser']]);
 }
-function setTrangThai($idctdh){
+function setTrangThai($idctdh)
+{
     $sql = 'UPDATE "chi_tiet_don_hang" SET `trangThaiVote`=? WHERE `id`=?';
-    pdo_execute($sql,[2,$idctdh]);
+    pdo_execute($sql, [2, $idctdh]);
 }

@@ -34,6 +34,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['idsp']) && $_GET['idsp'] != "") {
                 $idsp = $_GET['idsp'];
                 $sanphamDetail = spDetail($idsp);
+                tangLuotXem($idsp);
                 $loadAllVote = loadAllVote($idsp);
                 include "view/chitietSp.php";
             } else {

@@ -44,7 +44,7 @@
                     <a class="aside_menu_list_item_link" href="index.php?act=listtk">Tài khoản</a>
                 </li>
                 <li class="aside_menu_list_item">
-                    <a class="aside_menu_list_item_link" href="">Đánh giá</a>
+                    <a class="aside_menu_list_item_link" href="index.php?act=listvote">Đánh giá</a>
                 </li>
                 <li class="aside_menu_list_item">
                     <a class="aside_menu_list_item_link" href="">Thống kê</a>

@@ -234,9 +234,11 @@ function spDetail($idsp)
     return $run;
 }
 function loadAllVote($idsp){
-    $sql = "SELECT COUNT(danh_gia.id) as luotVote,danh_gia.content as content,danh_gia.id_star as soSao,danh_gia.vote_time as timeVote,user.name as nameUser,LEFT(user.name,1) as chu_cai_dau 
+    $sql = "SELECT COUNT(danh_gia.id) as luotVote,danh_gia.content as content, sp.name as namesp
+    danh_gia.id_star as soSao,danh_gia.vote_time as timeVote,user.name as nameUser,LEFT(user.name,1) as chu_cai_dau 
     FROM `danh_gia`
     LEFT JOIN `chi_tiet_don_hang` as ctdh ON ctdh.id=danh_gia.id_order_detail
+    LEFT JOIN `product` as sp ON sp.id=ctdh.id_product
     LEFT JOIN `user` ON user.id=danh_gia.id_user    
     WHERE ctdh.id_product=?";
     $run = pdo_query($sql, [$idsp]);
@@ -317,4 +319,8 @@ function deleteSpCart($idsp)
 {
     $sql = 'DELETE FROM `cart` WHERE `id_product`=? and `id_user`=?';
     pdo_execute($sql, [$idsp, $_SESSION['iduser']]);
+}
+function tangLuotXem($idsp){
+    $sql="UPDATE `product` SET `luotxem`=`luotxem`+1 WHERE `id`=?";
+    pdo_execute($sql,[$idsp]);
 }
