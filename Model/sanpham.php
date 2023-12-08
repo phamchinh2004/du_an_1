@@ -227,7 +227,7 @@ function listSpHome($keyw = "", $iddm = 0)
 //Lấy chi tiết tiết sản phẩm để hiển thị lên trang chi tiết sản phẩm
 function spDetail($idsp)
 {
-    $sql = "SELECT *,img.* FROM `product` as sp
+    $sql = "SELECT *,sp.id as idsp,img.* FROM `product` as sp
     LEFT JOIN `image` as img ON img.id_product=sp.id
     WHERE sp.id=?";
     $run = pdo_query_one($sql, [$idsp]);

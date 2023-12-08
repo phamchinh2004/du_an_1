@@ -96,11 +96,11 @@
                     </div>
                 </div>
                 <div class="ctsp-box-button">
-                    <a href="index.php?act=formthanhtoanOne&idsp=<?= $sanphamDetail['id'] ?>" class="ctsp-button-left">
+                    <a href="index.php?act=formthanhtoanOne&idsp=<?= $sanphamDetail['idsp'] ?>" class="ctsp-button-left">
                         <h3>MUA NGAY</h3>
                         <p>Giao hàng miễn phí cho lần đầu</p>
                     </a>
-                    <a href="index.php?act=addtocart&idsp=<?= $sanphamDetail['id'] ?>" class="ctsp-button-right">
+                    <a href="index.php?act=addtocart&idsp=<?= $sanphamDetail['idsp'] ?>" class="ctsp-button-right">
                         <h4>Thêm giỏ hàng</h4>
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
