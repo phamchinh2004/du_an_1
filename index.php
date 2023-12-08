@@ -3,6 +3,7 @@ include "model/pdo.php";
 include "model/taikhoan.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
+include "model/donhang.php";
 include "view/header.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -142,13 +143,17 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                             deleteSpCart($idsp);
                         }
                         $mess = "Đặt hàng thành công";
-                        header("location:index.php?act=buySucc&mess=" . $mess ."&idOrder=".$idDonhang);
+                        header("location:index.php?act=buySucc&mess=" . $mess);
                     } else {
                         $mess = "Lấy id đơn hàng không thành công";
                         header("location:index.php?act=cart&mess=" . $mess);
                     }
                 }
             }
+            break;
+        case "buySucc":
+            $echoOrderDone=echoDonHang();
+            include "view/buysuccess.php";
             break;
         case "sanpham":
             if (isset($_GET['iddm']) && $_GET['iddm'] != "") {
@@ -163,9 +168,13 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "user":
             include "view/user/user.php";
             break;
-        case "myoder":
-            $oderChoXacNhan=listOderChoXacNhan();
-            include "view/user/myoder.php";
+        case "myorder":
+            $trangthai = isset($_GET['trangthai']) ? $_GET['trangthai'] : null;
+            $oderUser=listOder($trangthai);
+            // var_dump($oderUser);
+            // var_dump($_SESSION['iduser']);
+            // break;
+            include "view/user/myorder.php";
             break;
         case "doimk":
             include "view/user/doimk.php";

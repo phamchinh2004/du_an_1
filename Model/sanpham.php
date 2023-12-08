@@ -309,6 +309,3 @@ function deleteSpCart($idsp)
     $sql = 'DELETE FROM `cart` WHERE `id_product`=? and `id_user`=?';
     pdo_execute($sql, [$idsp, $_SESSION['iduser']]);
 }
-function listOderChoXacNhan($trangthai=0){
-
-}

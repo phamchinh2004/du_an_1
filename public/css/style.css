@@ -1368,7 +1368,7 @@ tbody>tr {
 
 .content-thongtinkh td {
     text-align: left;
-    padding-left: 100px;
+    /* padding-left: 100px; */
     font-size: 15px;
     padding-bottom: 5px;
 }

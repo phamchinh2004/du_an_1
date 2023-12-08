@@ -12,7 +12,7 @@
         <div class="box-right">
             <div class="box-right-item">
                 <div class="box-right-cart mb">
-                    <a class="focus-cart" href="index.php?act=myoder"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng của tôi</a>
+                    <a class="focus-cart" href="index.php?act=myorder"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng của tôi</a>
                 
                 </div>
                 <div class="box-right-cart mb">

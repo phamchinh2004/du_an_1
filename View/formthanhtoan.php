@@ -145,7 +145,7 @@
                                 <td><b style="font-size:20px;">Tổng tiền:</b></td>
                                 <td style="color:red;">
                                     <input class="borderHidden" style="font-size:18px;border:none;" type="text" name="tongtien" 
-                                    value="<?= number_format($totalAll, 0, ",", ".") ?> đ" readonly>
+                                    value="<?=$totalAll ?> đ" readonly>
                                 </td>
                             </tr>
                             <tr>

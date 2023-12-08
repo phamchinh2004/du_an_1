@@ -24,6 +24,7 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                 <div class="arrange_loctk_forms">
                     <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh">Tất cả</a>
                     <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh&trangthai=1">Chờ xác nhận</a>
+                    <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh&trangthai=6">Đã đóng gói - Chờ giao hàng</a>
                     <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh&trangthai=2">Đang giao hàng</a>
                     <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh&trangthai=3">Đã giao hàng</a>
                     <a class="listok arrange_loctk_forms_link" href="index.php?act=listdh&trangthai=4">Đã hủy</a>
@@ -60,7 +61,7 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                                             <td>' . $ghi_chu . '</td>
                                             <td>' . $order_time     . '</td>
                                             <td>' . $so_luong . '</td>
-                                            <td>' . $tong_tien . '</td>
+                                            <td>' . number_format($tong_tien,0,",",".") . 'đ</td>
                                             <td>';
 
                                 if ($trangthai == 1) {
