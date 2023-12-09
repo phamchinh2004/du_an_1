@@ -33,7 +33,7 @@
                             <p class="mb5">Số sản phẩm: <?= $so_luong ?></p>
                             <div class="total-myoder-price">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                TỔNG TIỀN : <b><?=number_format( $tong_tien,0,",",".") ?>đ</b>
+                                TỔNG TIỀN : <b><?=$tong_tien ?></b>
                             </div>
                         </div>
                     </div>
