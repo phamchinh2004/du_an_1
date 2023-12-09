@@ -19,11 +19,11 @@
                                 THÀNH TIỀN : <b><?= $tongtien ?> đ</b>
                             </div>
                         </div>
-                        <?php if ($trangThaiVote == 1) { ?>
+                        <?php if($trangThaiDh==3){if ($trangThaiVote == 1) { ?>
                             <a href="index.php?act=danhGia&iddhct=<?= $iddhct ?>">Đánh giá</a>
                         <?php } else { ?>
                             <span>Đã đánh giá</span>
-                        <?php } ?>
+                        <?php }} ?>
                     </div>
             <?php }
             } ?>
