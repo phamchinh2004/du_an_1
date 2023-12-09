@@ -1,4 +1,5 @@
 <div class="register-form">
+    <div class="thongbao">
         <?php
         if (isset($_SESSION['imgFail']) && ($_SESSION['imgFail']!="")) {
             echo '<span style="color: red;">' . $_SESSION['imgFail'] . '</span>';
@@ -11,27 +12,28 @@
             unset($_SESSION['error']);
         }
         ?>
+        </div>
         <form class="box-register" action="index.php?act=sendRegister" method="POST" enctype="multipart/form-data">
         <h2 class="title_login">Đăng Ký</h2>
             <div class="form-register">
                 <label>Tên người dùng </label>
-                <input type="text" name="name" value="" placeholder="Nhập vào tên">
+                <input type="text" name="name" value="" placeholder="Nhập vào tên" require>
             </div>
             <div class="form-register">
                 <label>Email </label>
-                <input type="email" name="email" value="" placeholder="Nhập vào email">
+                <input type="email" name="email" value="" placeholder="Nhập vào email" require>
             </div>
             <div class="form-register">
                 <label>Tên đăng nhập </label>
-                <input type="text" name="username" value="" placeholder="Nhập vào tên đăng nhập">
+                <input type="text" name="username" value="" placeholder="Nhập vào tên đăng nhập" require>
             </div>
             <div class="form-register">
                 <label>Mật khẩu </label>
-                <input type="password" name="password" value="" placeholder="Nhập vào mật khẩu" onpaste="return false;">
+                <input type="password" name="password" value="" placeholder="Nhập vào mật khẩu" onpaste="return false;" require>
             </div>
             <div class="form-register">
                 <label>Nhập lại mật khẩu </label>
-                <input type="password" name="repassword" value="" placeholder="Xác nhận mật khẩu" onpaste="return false;">
+                <input type="password" name="repassword" value="" placeholder="Xác nhận mật khẩu" onpaste="return false;" require>
             </div>
             <div class="form-register">
                 <label>Ảnh đại diện</label>
@@ -39,11 +41,11 @@
             </div>
             <div class="form-register">
                 <label>Số điện thoại </label>
-                <input type="number" name="tel" value="" placeholder="Nhập vào số điện thoại">
+                <input type="number" name="tel" value="" placeholder="Nhập vào số điện thoại" require>
             </div>
             <div class="form-register">
                 <label>Địa chỉ</label>
-                <input type="text" name="address" value="" placeholder="Nhập vào địa chỉ">
+                <input type="text" name="address" value="" placeholder="Nhập vào địa chỉ" require>
             </div>
 
                 <button type="submit" name="btnsubmit">Đăng Ký</button>

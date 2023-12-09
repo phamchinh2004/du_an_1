@@ -8,7 +8,7 @@
 <div class="content">
     <div class="box_content">
         <div class="box_content font_title">
-            <h1>Đánh giá của sản phẩm <?php foreach($loadAllVote as $value){extract($value);echo $namesp;}?></h1>
+            <h1>Đánh giá của sản phẩm <?php foreach($loadAllVote as $value){extract($value);echo $namesp;break;}?></h1>
         </div>
         <div class="box_content form_content ">
             <form action="#" method="POST">

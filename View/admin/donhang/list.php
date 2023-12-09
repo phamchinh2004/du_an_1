@@ -61,7 +61,7 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                                             <td>' . $ghi_chu . '</td>
                                             <td>' . $order_time     . '</td>
                                             <td>' . $so_luong . '</td>
-                                            <td>' . number_format($tong_tien,0,",",".") . 'đ</td>
+                                            <td>' . $tong_tien.'</td>
                                             <td>';
 
                                 if ($trangthai == 1) {

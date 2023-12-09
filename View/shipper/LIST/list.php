@@ -29,7 +29,7 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                             <th>Ghi chú</th>
                             <th>Số sản phẩm</th>
                             <th>Tổng tiền</th>
-                            <th>Hoa hồng</th>
+                            
                             <th>Thao tác</th>
                         </tr>
                         <?php if (!empty($listdh)) {
@@ -43,7 +43,7 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                                 $confirmNhan = "Xác nhận giao đơn hàng này?";
                                 $Cancle = "Bạn có chắc chắn không nhận đơn hàng này không?";
                                 $confirmDone="Xác nhận đã giao đơn hàng này?";
-                                $hoa_hong=$tong_tien*(0.1);
+                                
                                 echo    '<tr>
                                             <td>' . $id . '</td>
                                             <td>' . $name_nguoi_nhan . '</td>
@@ -51,8 +51,8 @@ if (isset($_GET['nhanSucc']) && $_GET['nhanSucc'] != "") {
                                             <td>' . $dia_chi_nhan_hang . '</td>
                                             <td>' . $ghi_chu . '</td>
                                             <td>' . $so_luong . '</td>
-                                            <td>' . number_format($tong_tien,0,",",".") . 'đ</td>
-                                            <td style="font-weight:bold;">' . number_format($hoa_hong,0,",",".") . 'đ</td>
+                                            <td>' .$tong_tien. 'đ</td>
+                                            
                                             <td>';
 
                                 if ($trangthai == 6) {

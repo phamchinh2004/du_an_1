@@ -794,7 +794,9 @@ body {
     background-color: #ff785d;
 }
 /*Register*/
-
+.register-form .thongbao{
+    text-align: center;
+}
 .register-form {
     width: 70%;
     margin: 0 auto;
