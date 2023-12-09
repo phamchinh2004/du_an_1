@@ -97,9 +97,10 @@ function echoDonHang()
 }
 function loadOderDetail($iddh)
 {
-    $sql = "SELECT *,ct.id as iddhct,ct.so_luong as slct 
+    $sql = "SELECT *,ct.id as iddhct,ct.so_luong as slct,donhang.id_trang_thai as trangThaiDh 
     FROM `chi_tiet_don_hang` as ct
-    LEFT JOIN `product` as sp ON sp.id=ct.id_product 
+    LEFT JOIN `product` as sp ON sp.id=ct.id_product
+    LEFT JOIN `donhang` ON donhang.id=ct.id_don_hang
     WHERE `id_don_hang`=?";
     $run = pdo_query($sql, [$iddh]);
     return $run;
