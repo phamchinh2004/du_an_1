@@ -37,6 +37,7 @@ function listOder($trangthai = 0)
         $sql .= " AND `id_trang_thai`=?";
         $params[] = 1;
     }
+    $sql.=" ORDER BY donhang.id desc";
     $run = pdo_query($sql, $params);
     return $run;
 }
